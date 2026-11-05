@@ -17,7 +17,7 @@
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="w-3 h-3 bg-emerald-500 rounded-full animate-ping"></div>
-                <h1 class="text-xl font-black tracking-wider text-emerald-400">B.STATS <span class="text-xs text-slate-400 font-normal">| Ultra Deep Data Engine</span></h1>
+                <h1 class="text-xl font-black tracking-wider text-emerald-400">B.STATS <span class="text-xs text-slate-400 font-normal">| Ultimate Match Engine 2026</span></h1>
             </div>
             <div class="text-xs bg-emerald-950 text-emerald-300 px-3 py-1.5 rounded-full border border-emerald-500/30 font-bold">
                 PREDIKSI BASTIANN
@@ -29,13 +29,13 @@
     <main class="max-w-7xl mx-auto px-4 mt-8">
         
         <div class="bg-gradient-to-r from-emerald-950/80 via-slate-900 to-slate-950 border border-emerald-500/30 rounded-2xl p-6 mb-8 emerald-glow">
-            <h2 class="text-lg font-bold text-emerald-300 mb-1">DASHBOARD ANALISIS & PREDIKSI AKURAT</h2>
-            <p class="text-sm text-slate-400">19 Match Lengkap + Strategi HT + Best Opinion (2 Opsi) + Prediksi Skor Utama & Alternatif</p>
+            <h2 class="text-lg font-bold text-emerald-300 mb-1">DASHBOARD ANALISIS & PREDIKSI TERBARU</h2>
+            <p class="text-sm text-slate-400">Data UEFA Match (06.11.2026) Lengkap + Best Opinion (2 Opsi) + Deep Data HT</p>
         </div>
 
         <!-- Cards Match Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6" id="match-grid">
-            <!-- Cards match akan di-render otomatis via JS biar kodenya rapi dan ringan -->
+            <!-- Render via JavaScript -->
         </div>
 
     </main>
@@ -50,292 +50,271 @@
 
     <script>
         const matchesData = [
-            // 1. AEK vs Real Madrid
             {
-                id: 1, league: "UEFA Champions League - Round 4", time: "12:45 AM",
-                home: "AEK Athens", away: "Real Madrid", odds: "7.00 | 6.00 | 1.33",
-                btts: "55% Moderate", bttsDesc: "Madrid dominan mutlak, AEK cuma nunggu momen serangan balik.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5/3.0", ouDesc: "Laga diprediksi terbuka sejak menit awal oleh gempuran Madrid.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Tekanan sayap Madrid bakal hasilkan banyak tendangan sudut.",
-                pick: "Real Madrid Win & Over 1.5 Goals", pickOdds: "1.33",
-                // FITUR BARU & LENGKAP:
-                bestOption1: "Opsi 1 (Over/BTTS): Over 2.5 Total Gol (Odds 1.55) - Sangat Aman",
-                bestOption2: "Opsi 2 (Safety/Handicap): Real Madrid -1.5 Asian Handicap (Odds 1.85)",
-                scoreMain: "1 - 3", scoreAlt: "0 - 3",
-                motivation: "Real Madrid butuh kemenangan besar buat kunci juara grup dan lagi haus gol.",
-                // STRATEGI & METRIK STATISTIK BABAK PERTAMA (HT)
-                htStrategy: "Real Madrid bakal langsung ngegas high-pressing di 20 menit pertama. AEK bakal numpuk 5 bek di belakang.",
-                htPossession: "32% vs 68%", htShotsOnTarget: "1 vs 4", htCorners: "1 vs 4", htExpectedGoals: "0.25 vs 1.15"
-            },
-            // 2. Fenerbahce vs Liverpool
-            {
-                id: 2, league: "UEFA Champions League - Round 4", time: "12:45 AM",
-                home: "Fenerbahce", away: "Liverpool", odds: "5.30 | 4.90 | 1.54",
-                btts: "88% High Confidence", bttsDesc: "Atmosfer kandang Turki panas, Fenerbahce ngotot cetak gol.",
-                htOu: "HT: Over 1.5", ftOu: "FT: Over 2.5/3.0", ouDesc: "Jual beli serangan intensif sejak kick-off babak pertama.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Intensitas crossing tinggi dari kedua tim.",
-                pick: "Liverpool Win / BTTS Yes", pickOdds: "1.54",
-                bestOption1: "Opsi 1 (Over/BTTS): Both Teams To Score (BTTS Yes) - Odds 1.62",
-                bestOption2: "Opsi 2 (Safety/Handicap): Over 2.5 Total Goals - Odds 1.57",
-                scoreMain: "1 - 2", scoreAlt: "2 - 3",
-                motivation: "Kedua tim sama-sama main terbuka dan berani keluar menyerang.",
-                htStrategy: "Fenerbahce akan manfaatkan riuh suporter untuk gempur Liverpool di awal. Transisi cepat Liverpool sangat mematikan.",
-                htPossession: "45% vs 55%", htShotsOnTarget: "2 vs 3", htCorners: "2 vs 3", htExpectedGoals: "0.65 vs 0.95"
-            },
-            // 3. Dortmund vs Real Betis
-            {
-                id: 3, league: "UEFA Champions League - Round 4", time: "3:00 AM",
-                home: "Borussia Dortmund", away: "Real Betis", odds: "1.75 | 3.90 | 4.20",
-                btts: "72% Moderate", bttsDesc: "Dortmund dominan di Signal Iduna Park, Betis ancam via set-piece.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5", ouDesc: "Dortmund diprediksi pegang kendali penuh.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Sayap cepat Dortmund memicu deflected ball jadi corner.",
-                pick: "Borussia Dortmund Win (1X2)", pickOdds: "1.75",
-                bestOption1: "Opsi 1 (Safety): Borussia Dortmund Win (ML) - Odds 1.75",
-                bestOption2: "Opsi 2 (Over): Over 2.5 Goals - Odds 1.80",
-                scoreMain: "2 - 1", scoreAlt: "2 - 0",
-                motivation: "Dortmund butuh 3 poin kandang aman untuk amankan posisi klasemen.",
-                htStrategy: "Dortmund membangun serangan dari bawah, Betis menunggu di blok tengah sebelum melakukan counter.",
+                id: 1, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "Anderlecht", away: "FC Salzburg", odds: "1.189 | 3.905 | 3.67",
+                btts: "72% Moderate", bttsDesc: "Anderlecht mendominasi lini tengah, Salzburg andalkan serangan balik cepat.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Tuan rumah mengambil inisiatif menyerang sejak menit awal.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Tekanan konstan Anderlecht menghasilkan banyak tendangan sudut.",
+                pick: "Anderlecht Win (1X2)", pickOdds: "1.189",
+                bestOption1: "Opsi 1 (Safety): Anderlecht Win (1X2) - Odds 1.189",
+                bestOption2: "Opsi 2 (Over): Over 2.5 Total Gol - Odds 1.70",
+                scoreMain: "2 - 0", scoreAlt: "2 - 1",
+                motivation: "Anderlecht mengincar poin penuh kandang untuk mengamankan posisi klasemen.",
+                htStrategy: "Anderlecht menekan ketat di lini pertahanan lawan sejak menit pertama.",
                 htPossession: "58% vs 42%", htShotsOnTarget: "3 vs 1", htCorners: "3 vs 1", htExpectedGoals: "0.85 vs 0.35"
             },
-            // 4. FC Porto vs Napoli
             {
-                id: 4, league: "UEFA Champions League - Round 4", time: "3:00 AM",
-                home: "FC Porto", away: "Napoli", odds: "2.15 | 3.40 | 3.30",
-                btts: "78% High", bttsDesc: "Kekuatan berimbang, pertarungan fisik ketat di lini tengah.",
-                htOu: "HT: Under 1.5", ftOu: "FT: Over 2.5", ouDesc: "Babak pertama cenderung adu taktik, babak kedua pecah gol.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Banyak tembakan terblok menghasilkan corner.",
-                pick: "FC Porto Draw No Bet (DNB)", pickOdds: "2.15",
-                bestOption1: "Opsi 1 (Safety): FC Porto Double Chance (1X) - Odds 1.35",
+                id: 2, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "Lillestrom", away: "Viktoria Plzen", odds: "2.918 | 3.875 | 2.324",
+                btts: "75% High", bttsDesc: "Kedua tim punya lini serang terbuka dengan pertahanan yang agak rapuh.",
+                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5", ouDesc: "Potensi jual beli serangan sangat tinggi di babak pertama.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Banyak duel sayap memicu bola keluar lapangan.",
+                pick: "Viktoria Plzen Draw No Bet (DNB)", pickOdds: "2.324",
+                bestOption1: "Opsi 1 (Safety): Viktoria Plzen Double Chance (X2) - Odds 1.42",
                 bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.70",
-                scoreMain: "1 - 1", scoreAlt: "2 - 1",
-                motivation: "Kedua tim tidak ingin kalah, fokus ke disiplin taktik dan kehati-hatian.",
-                htStrategy: "Duel fisik tinggi di lini tengah. Babak pertama minim risiko.",
-                htPossession: "50% vs 50%", htShotsOnTarget: "2 vs 2", htCorners: "2 vs 2", htExpectedGoals: "0.50 vs 0.50"
+                scoreMain: "1 - 2", scoreAlt: "1 - 1",
+                motivation: "Plzen membutuhkan kemenangan tandang untuk menjaga asa lolos fase grup.",
+                htStrategy: "Plzen bermain efektif melalui transisi cepat dari lini tengah.",
+                htPossession: "47% vs 53%", htShotsOnTarget: "2 vs 3", htCorners: "2 vs 3", htExpectedGoals: "0.55 vs 0.90"
             },
-            // 5. PSV vs Club Brugge
             {
-                id: 5, league: "UEFA Champions League - Round 4", time: "3:00 AM",
-                home: "PSV Eindhoven", away: "Club Brugge", odds: "2.05 | 4.10 | 2.90",
-                btts: "75% High", bttsDesc: "Gaya main PSV yang menyerang meninggalkan celah di belakang.",
-                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Peluang gol tinggi sejak awal babak.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Gempuran dari lini wing-back PSV sangat aktif.",
-                pick: "PSV Eindhoven Win", pickOdds: "2.05",
-                bestOption1: "Opsi 1 (Over): Over 2.5 Total Goals - Odds 1.65",
-                bestOption2: "Opsi 2 (Safety): PSV Draw No Bet - Odds 1.50",
-                scoreMain: "2 - 1", scoreAlt: "3 - 1",
-                motivation: "PSV sangat haus kemenangan di kandang sendiri.",
-                htStrategy: "PSV menekan penuh di 30 menit awal untuk mengincar gol cepat.",
-                htPossession: "55% vs 45%", htShotsOnTarget: "3 vs 2", htCorners: "3 vs 2", htExpectedGoals: "0.80 vs 0.45"
+                id: 3, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "Real Sociedad", away: "Lyon", odds: "1.668 | 4.445 | 5.1",
+                btts: "68% Moderate", bttsDesc: "Sociedad sangat solid di kandang, Lyon mengandalkan kreativitas lini depan.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Sociedad mendominasi penguasaan bola secara total.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Serangan bergelombang dari sisi sayap tuan rumah.",
+                pick: "Real Sociedad Win (1X2)", pickOdds: "1.668",
+                bestOption1: "Opsi 1 (Safety): Real Sociedad Win (1X2) - Odds 1.668",
+                bestOption2: "Opsi 2 (Over): Real Sociedad Team Over 1.5 - Odds 1.80",
+                scoreMain: "2 - 1", scoreAlt: "2 - 0",
+                motivation: "Sociedad ingin memanfaatkan dukungan publik stadion sendiri.",
+                htStrategy: "Mengontrol tempo permainan dan menekan dari lini tengah.",
+                htPossession: "60% vs 40%", htShotsOnTarget: "4 vs 2", htCorners: "3 vs 1", htExpectedGoals: "1.10 vs 0.50"
             },
-            // 6. RB Leipzig vs Man City
             {
-                id: 6, league: "UEFA Champions League - Round 4", time: "3:00 AM",
-                home: "RB Leipzig", away: "Manchester City", odds: "5.50 | 4.50 | 1.53",
-                btts: "70% Moderate", bttsDesc: "City kuasai bola, Leipzig andalkan serangan kilat.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5", ouDesc: "City bakal mendikte tempo permainan.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Kurungan City memaksa bek Leipzig buang bola keluar.",
-                pick: "Manchester City Win", pickOdds: "1.53",
-                bestOption1: "Opsi 1 (Safety): Manchester City Win (ML) - Odds 1.53",
-                bestOption2: "Opsi 2 (Over): Over 2.5 Goals - Odds 1.60",
-                scoreMain: "1 - 3", scoreAlt: "0 - 2",
-                motivation: "City ingin mengunci tiket kualifikasi secepat mungkin.",
-                htStrategy: "Possession total oleh Man City. Leipzig menunggu kesalahan umpan.",
-                htPossession: "38% vs 62%", htShotsOnTarget: "1 vs 4", htCorners: "1 vs 4", htExpectedGoals: "0.35 vs 1.10"
+                id: 4, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "Crystal Palace", away: "TSG Hoffenheim", odds: "1.898 | 4.24 | 3.875",
+                btts: "78% High", bttsDesc: "Gaya main fisik Inggris beradu dengan efisiensi taktik Jerman.",
+                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5", ouDesc: "Laga terbuka dengan intensitas fisik yang sangat tinggi.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Duel udara intensif menghasilkan banyak bola mati.",
+                pick: "Crystal Palace Win", pickOdds: "1.898",
+                bestOption1: "Opsi 1 (Safety): Crystal Palace Win - Odds 1.898",
+                bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.65",
+                scoreMain: "2 - 1", scoreAlt: "3.2",
+                motivation: "Palace mengincar kemenangan kandang meyakinkan.",
+                htStrategy: "Memaksimalkan kecepatan pemain sayap di 30 menit awal.",
+                htPossession: "52% vs 48%", htShotsOnTarget: "3 vs 2", htCorners: "4 vs 2", htExpectedGoals: "0.95 vs 0.70"
             },
-            // 7. Lens vs Como
             {
-                id: 7, league: "UEFA Champions League - Round 4", time: "3:00 AM",
-                home: "RC Lens", away: "Como", odds: "3.00 | 3.75 | 2.15",
-                btts: "68% Moderate", bttsDesc: "Como kejutan musim ini, Lens punya rekor bagus kandang.",
-                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Pertandingan diprediksi berimbang ketat.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Adu taktik dari bola-bola mati.",
-                pick: "Como Win / Double Chance (X2)", pickOdds: "2.15",
-                bestOption1: "Opsi 1 (Safety): Como Double Chance (X2) - Odds 1.38",
-                bestOption2: "Opsi 2 (Under): Under 2.5 Total Goals - Odds 1.85",
-                scoreMain: "0 - 1", scoreAlt: "1 - 1",
-                motivation: "Como bermain sangat disiplin untuk curi poin tandang.",
-                htStrategy: "Como merapat di lini tengah dan mematikan pergerakan kreasi Lens.",
-                htPossession: "48% vs 52%", htShotsOnTarget: "2 vs 2", htCorners: "2 vs 2", htExpectedGoals: "0.40 vs 0.60"
-            },
-            // 8. Slavia Praha vs Arsenal
-            {
-                id: 8, league: "UEFA Champions League - Round 4", time: "3:00 AM",
-                home: "SK Slavia Praha", away: "Arsenal", odds: "7.50 | 5.75 | 1.33",
-                btts: "52% Low", bttsDesc: "Pertahanan Arsenal sangat rapi dan kokoh.",
-                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Arsenal diprediksi unggul kualitas teknis jauh.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Set-piece berbahaya Arsenal akan hasilkan corner.",
-                pick: "Arsenal Win (1X2)", pickOdds: "1.33",
-                bestOption1: "Opsi 1 (Safety): Arsenal Win & Over 1.5 Goals - Odds 1.50",
-                bestOption2: "Opsi 2 (Safety Clean Sheet): Arsenal Win to Nil - Odds 2.00",
-                scoreMain: "0 - 2", scoreAlt: "0 - 3",
-                motivation: "Arsenal ingin menang tanpa kebobolan untuk jaga rekrut pertahanan.",
-                htStrategy: "Arsenal mengontrol laga penuh sejak menit pertama dengan struktur organisasi yang rapi.",
-                htPossession: "35% vs 65%", htShotsOnTarget: "1 vs 3", htCorners: "1 vs 3", htExpectedGoals: "0.20 vs 0.90"
-            },
-            // 9. Viking vs Sabah Baku
-            {
-                id: 9, league: "UEFA Champions League - Round 4", time: "3:00 AM",
-                home: "Viking", away: "Sabah Baku", odds: "1.53 | 4.75 | 5.75",
-                btts: "70% Moderate", bttsDesc: "Viking kuat di kandang, Sabah Baku main tanpa beban.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5", ouDesc: "Tempo cepat dan fisik dari Viking.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Gempuran nonstop dari tuan rumah.",
-                pick: "Viking Win", pickOdds: "1.53",
-                bestOption1: "Opsi 1 (Safety): Viking Win (ML) - Odds 1.53",
-                bestOption2: "Opsi 2 (Over): Over 2.5 Goals - Odds 1.60",
-                scoreMain: "3 - 1", scoreAlt: "2 - 0",
-                motivation: "Viking tampil spartan di depan pendukung sendiri.",
-                htStrategy: "Viking memanfaatkan keunggulan fisik dan kecepatan wing-back.",
-                htPossession: "60% vs 40%", htShotsOnTarget: "4 vs 1", htCorners: "4 vs 1", htExpectedGoals: "1.05 vs 0.30"
-            },
-            // 10. Baku Sporting vs Qarabag Khankendi
-            {
-                id: 10, league: "Azerbaijan: First Division - Round 7", time: "6:00 PM",
-                home: "Baku Sporting FK", away: "Qarabag Khankendi", odds: "2.80 | 3.20 | 2.30",
-                btts: "60% Moderate", bttsDesc: "Derby lokal dengan permainan cenderung disiplin.",
-                htOu: "HT: Under 1.0", ftOu: "FT: Under 2.5", ouDesc: "Minim peluang bersih di babak pertama.",
-                corner: "Under 8.5 Total Corner", cornerDesc: "Bola banyak tertahan di tengah.",
-                pick: "Qarabag Khankendi Draw No Bet", pickOdds: "1.70",
-                bestOption1: "Opsi 1 (Safety): Double Chance Qarabag (X2) - Odds 1.35",
-                bestOption2: "Opsi 2 (Under): Under 2.5 Goals - Odds 1.75",
-                scoreMain: "0 - 1", scoreAlt: "1 - 1",
-                motivation: "Kedua tim bermain hati-hati menjaga poin liga.",
-                htStrategy: "Fokus pada kerapatan pertahanan di babak pertama.",
-                htPossession: "47% vs 53%", htShotsOnTarget: "1 vs 2", htCorners: "1 vs 2", htExpectedGoals: "0.30 vs 0.45"
-            },
-            // 11. Karvan Evlakh vs Al Shimali
-            {
-                id: 11, league: "Azerbaijan: First Division - Round 7", time: "6:00 PM",
-                home: "Karvan Evlakh", away: "Al Shimali", odds: "1.80 | 3.40 | 4.00",
-                btts: "65% Moderate", bttsDesc: "Tuan rumah punya produktivitas gol baik.",
-                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Karvan bakal langsung menekan.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Serangan bertubi Karvan memicu corner.",
-                pick: "Karvan Evlakh Win", pickOdds: "1.80",
-                bestOption1: "Opsi 1 (Safety): Karvan Evlakh Win - Odds 1.80",
-                bestOption2: "Opsi 2 (Over): Over 1.5 Team Goals Karvan - Odds 1.85",
-                scoreMain: "2 - 0", scoreAlt: "2 - 1",
-                motivation: "Karvan ingin melanjutkan tren positif di kandang.",
-                htStrategy: "Karvan langsung mengambil inisiatif serangan sejak peluit awal.",
-                htPossession: "56% vs 44%", htShotsOnTarget: "3 vs 1", htCorners: "3 vs 1", htExpectedGoals: "0.75 vs 0.25"
-            },
-            // 12. PFK Zaqatala vs FK MOIK Baku
-            {
-                id: 12, league: "Azerbaijan: First Division - Round 7", time: "6:00 PM",
-                home: "PFK Zaqatala", away: "FK MOIK Baku", odds: "2.40 | 3.10 | 2.70",
-                btts: "70% High", bttsDesc: "Lini belakang kedua tim sama-sama sering rawan eror.",
-                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Potensi terjadi aksi saling balas gol.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Transisi cepat membuat bola sering keluar lapang.",
-                pick: "Over 2.0 Total Goals", pickOdds: "1.50",
-                bestOption1: "Opsi 1 (BTTS): Both Teams To Score (Yes) - Odds 1.75",
-                bestOption2: "Opsi 2 (Safety): Double Chance Zaqatala (1X) - Odds 1.40",
-                scoreMain: "1 - 1", scoreAlt: "2 - 2",
-                motivation: "Kedua tim sama-sama butuh poin untuk merangkak naik.",
-                htStrategy: "Permainan terbuka tanpa kompromi dari kedua belah pihak.",
-                htPossession: "50% vs 50%", htShotsOnTarget: "2 vs 2", htCorners: "2 vs 2", htExpectedGoals: "0.60 vs 0.60"
-            },
-            // 13. Sabail FC vs Cebrayil
-            {
-                id: 13, league: "Azerbaijan: First Division - Round 7", time: "6:00 PM",
-                home: "Sabail FC", away: "Cebrayil", odds: "1.60 | 3.60 | 5.00",
-                btts: "55% Moderate", bttsDesc: "Sabail mendominasi dari segi kualitas skuat.",
-                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Sabail diunggulkan menang mudah.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Tekanan konstan Sabail ke area lawan.",
-                pick: "Sabail FC Win", pickOdds: "1.60",
-                bestOption1: "Opsi 1 (Safety): Sabail FC Win - Odds 1.60",
-                bestOption2: "Opsi 2 (Over): Sabail Team Over 1.5 Goals - Odds 1.70",
+                id: 5, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "Milan", away: "Ferencvaros", odds: "1.351 | 5.45 | 9.3",
+                btts: "55% Low", bttsDesc: "Milan superior di San Siro, Ferencvaros bertahan total.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Gempuran total tuan rumah sepanjang 90 menit.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Kurungan pertahanan lawan memicu banyak corner.",
+                pick: "Milan Win (1X2)", pickOdds: "1.351",
+                bestOption1: "Opsi 1 (Safety): Milan Win & Over 1.5 Goals - Odds 1.55",
+                bestOption2: "Opsi 2 (Handicap): Milan -1.0 Asian Handicap - Odds 1.62",
                 scoreMain: "2 - 0", scoreAlt: "3 - 0",
-                motivation: "Sabail ingin mengamankan posisi puncak klasemen.",
-                htStrategy: "Sabail mengurung pertahanan Cebrayil dengan umpan-umpan pendek.",
-                htPossession: "62% vs 38%", htShotsOnTarget: "4 vs 0", htCorners: "4 vs 1", htExpectedGoals: "0.95 vs 0.15"
+                motivation: "Milan butuh 3 poin bersih untuk mengamankan posisi puncak grup.",
+                htStrategy: "Menekan langsung sejak peluit pertama dibunyikan.",
+                htPossession: "65% vs 35%", htShotsOnTarget: "5 vs 1", htCorners: "4 vs 1", htExpectedGoals: "1.40 vs 0.20"
             },
-            // 14. Al-Muharraq vs Al-Jazira
             {
-                id: 14, league: "AFC Champions League Two - Group B", time: "1:15 AM",
-                home: "Al-Muharraq", away: "Al-Jazira (UAE)", odds: "2.90 | 3.30 | 2.20",
-                btts: "80% High", bttsDesc: "Karakter sepak bola Timur Tengah yang agresif.",
-                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Laga panas adu gengsi klub Asia.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Serangan sayap cepat tiada henti.",
-                pick: "Both Teams To Score (BTTS Yes)", pickOdds: "1.65",
-                bestOption1: "Opsi 1 (BTTS): Both Teams To Score (Yes) - Odds 1.65",
-                bestOption2: "Opsi 2 (Over): Over 2.5 Goals - Odds 1.75",
-                scoreMain: "2 - 2", scoreAlt: "1 - 2",
-                motivation: "Sama-sama tidak mau kalah demi gengsi kualifikasi AFC.",
-                htStrategy: "Adu serangan balik cepat di kedua sisi lapangan.",
-                htPossession: "46% vs 54%", htShotsOnTarget: "3 vs 3", htCorners: "3 vs 3", htExpectedGoals: "0.70 vs 0.85"
+                id: 6, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "AC Sparta Prague", away: "Bournemouth", odds: "7.1 | 4.97 | 1.451",
+                btts: "70% Moderate", bttsDesc: "Bournemouth diunggulkan secara materi, Sparta Praha ulet di kandang.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Bournemouth tampil menyerang sejak awal babak.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Transisi cepat dari tim tamu memicu banyak tendangan sudut.",
+                pick: "Bournemouth Win", pickOdds: "1.451",
+                bestOption1: "Opsi 1 (Safety): Bournemouth Win (1X2) - Odds 1.451",
+                bestOption2: "Opsi 2 (Over): Over 2.5 Total Gol - Odds 1.68",
+                scoreMain: "1 - 2", scoreAlt: "0 - 2",
+                motivation: "Bournemouth mengincar kemenangan tandang penuh poin.",
+                htStrategy: "Mengandalkan pressing ketat di lini pertahanan lawan.",
+                htPossession: "44% vs 56%", htShotsOnTarget: "2 vs 4", htCorners: "3 vs 4", htExpectedGoals: "0.60 vs 1.25"
             },
-            // 15. Al Taawoun vs Al-Faisaly
             {
-                id: 15, league: "AFC Champions League Two - Group C", time: "1:15 AM",
-                home: "Al Taawoun", away: "Al-Faisaly Amman", odds: "1.50 | 4.00 | 5.50",
-                btts: "60% Moderate", bttsDesc: "Al Taawoun sangat dominan jika main di Arab Saudi.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5", ouDesc: "Tuan rumah unggul kualitas pemain asing.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Al Taawoun membombardir pertahanan lawan.",
-                pick: "Al Taawoun Win", pickOdds: "1.50",
-                bestOption1: "Opsi 1 (Safety): Al Taawoun Win - Odds 1.50",
-                bestOption2: "Opsi 2 (Over): Al Taawoun Team Over 1.5 - Odds 1.60",
-                scoreMain: "3 - 0", scoreAlt: "2 - 0",
-                motivation: "Al Taawoun menargetkan pesta gol untuk selisih gol grup.",
-                htStrategy: "Al Taawoun langsung menekan tinggi sejak awal laga.",
-                htPossession: "64% vs 36%", htShotsOnTarget: "5 vs 1", htCorners: "4 vs 1", htExpectedGoals: "1.20 vs 0.20"
+                id: 7, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "Levski Sofia", away: "Jagiellonia Bialystok", odds: "2.10 | 3.40 | 3.20",
+                btts: "65% Moderate", bttsDesc: "Kekuatan berimbang, pertarungan taktik ketat.",
+                htOu: "HT: Under 1.5", ftOu: "FT: Under 2.5", ouDesc: "Kedua tim bermain hati-hati di awal laga.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Banyak duel lini tengah menghasilkan set-piece.",
+                pick: "Levski Sofia Draw No Bet", pickOdds: "1.52",
+                bestOption1: "Opsi 1 (Safety): Levski Sofia Double Chance (1X) - Odds 1.30",
+                bestOption2: "Opsi 2 (Under): Under 2.5 Total Gol - Odds 1.75",
+                scoreMain: "1 - 0", scoreAlt: "1 - 1",
+                motivation: "Fokus penuh pada pengamanan poin kandang.",
+                htStrategy: "Disiplin bertahan dan mengandalkan serangan balik terukur.",
+                htPossession: "50% vs 50%", htShotsOnTarget: "2 vs 2", htCorners: "3 vs 2", htExpectedGoals: "0.55 vs 0.50"
             },
-            // 16. Lion City vs Adelaide United
             {
-                id: 16, league: "AFC Champions League Two - Group F", time: "5:00 PM",
-                home: "Lion City Sailors", away: "Adelaide United", odds: "3.20 | 3.60 | 2.00",
-                btts: "85% High", bttsDesc: "Gaya A-League Adelaide bertemu wakil Singapura yang terbuka.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 3.0", ouDesc: "Potensi hujan gol sangat tinggi.",
-                corner: "Over 10.5 Total Corner", cornerDesc: "Gaya Australia yang mengandalkan crossing tinggi.",
-                pick: "Over 2.5 Total Goals", pickOdds: "1.55",
-                bestOption1: "Opsi 1 (Over): Over 2.5 Total Goals - Odds 1.55",
-                bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.50",
-                scoreMain: "2 - 3", scoreAlt: "1 - 3",
-                motivation: "Adelaide mengincar poin penuh dengan permainan fisik menyerang.",
-                htStrategy: "Adelaide mendominasi duel udara dan umpan silang.",
-                htPossession: "42% vs 58%", htShotsOnTarget: "2 vs 4", htCorners: "2 vs 5", htExpectedGoals: "0.60 vs 1.15"
+                id: 8, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "N.E.C.", away: "AC Omonia", odds: "1.95 | 3.50 | 3.80",
+                btts: "68% Moderate", bttsDesc: "N.E.C. lebih diunggulkan berkat performa kandang stabil.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Tuan rumah mengambil kendali permainan.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Serangan sayap konsisten dari N.E.C.",
+                pick: "N.E.C. Win", pickOdds: "1.95",
+                bestOption1: "Opsi 1 (Safety): N.E.C. Win (1X2) - Odds 1.95",
+                bestOption2: "Opsi 2 (Over): Over 2.5 Total Gol - Odds 1.82",
+                scoreMain: "2 - 0", scoreAlt: "2 - 1",
+                motivation: "N.E.C. ingin mengamankan posisi di papan atas grup.",
+                htStrategy: "Inisiatif menyerang sejak menit awal babak pertama.",
+                htPossession: "55% vs 45%", htShotsOnTarget: "4 vs 2", htCorners: "3 vs 2", htExpectedGoals: "1.00 vs 0.45"
             },
-            // 17. BG Pathum vs Tai Po
             {
-                id: 17, league: "AFC Champions League Two - Group F", time: "7:15 PM",
-                home: "BG Pathum United", away: "Tai Po", odds: "1.35 | 4.80 | 7.00",
-                btts: "50% Low", bttsDesc: "Pathum terlalu tangguh buat klub asal Hong Kong ini.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5/3.0", ouDesc: "Laga satu arah dominasi Pathum.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Kurungan penuh menghasilkan banyak corner.",
-                pick: "BG Pathum Win & Over 1.5 Goals", pickOdds: "1.45",
-                bestOption1: "Opsi 1 (Safety): BG Pathum -1.5 Handicap - Odds 1.90",
-                bestOption2: "Opsi 2 (Over): BG Pathum Team Over 2.0 Goals - Odds 1.65",
+                id: 9, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:45)",
+                home: "AZ Alkmaar", away: "Juventus", odds: "3.50 | 3.60 | 2.05",
+                btts: "72% High", bttsDesc: "Juventus kuat secara taktik, AZ Alkmaar berbahaya di kandang dengan tempo cepat.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Pertandingan diprediksi berjalan terbuka dan menarik.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Intensitas serangan tinggi dari kedua tim.",
+                pick: "Juventus Win / Double Chance (X2)", pickOdds: "1.30",
+                bestOption1: "Opsi 1 (Safety): Juventus Double Chance (X2) - Odds 1.30",
+                bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.70",
+                scoreMain: "1 - 2", scoreAlt: "1 - 1",
+                motivation: "Juventus mengincar poin penuh untuk menguasai puncak klasemen.",
+                htStrategy: "Juventus mengandalkan pengalaman dan efektivitas lini depan.",
+                htPossession: "48% vs 52%", htShotsOnTarget: "3 vs 4", htCorners: "4 vs 4", htExpectedGoals: "0.75 vs 1.10"
+            },
+            {
+                id: 10, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:00)",
+                home: "Bayer Leverkusen", away: "Olympique de Marseille", odds: "1.321 | 6.05 | 9.2",
+                btts: "65% Moderate", bttsDesc: "Leverkusen superior di kandang, Marseille andalkan kecepatan serangan balik.",
+                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5/3.0", ouDesc: "Gaya main menyerang Leverkusen menjanjikan banyak gol.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Tekanan intensif tuan rumah membuahkan banyak corner.",
+                pick: "Bayer Leverkusen Win", pickOdds: "1.321",
+                bestOption1: "Opsi 1 (Safety): Bayer Leverkusen Win - Odds 1.321",
+                bestOption2: "Opsi 2 (Over): Over 2.5 Total Gol - Odds 1.55",
+                scoreMain: "3 - 1", scoreAlt: "2 - 0",
+                motivation: "Leverkusen ingin mempertahankan rekor sempurna di kandang.",
+                htStrategy: "Pressing ketat dan penguasaan bola dominan sejak menit pertama.",
+                htPossession: "62% vs 38%", htShotsOnTarget: "5 vs 2", htCorners: "5 vs 2", htExpectedGoals: "1.50 vs 0.60"
+            },
+            {
+                id: 11, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (03:00)",
+                home: "Celtic", away: "Besiktas", odds: "3.1 | 3.835 | 2.232",
+                btts: "80% High", bttsDesc: "Atmosfer Celtic Park mendongkrak tuan rumah, Besiktas punya lini serang tajam.",
+                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5", ouDesc: "Laga panas dengan jual beli serangan sengit.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Tempo permainan cepat menghasilkan banyak tendangan sudut.",
+                pick: "Besiktas Draw No Bet", pickOdds: "1.65",
+                bestOption1: "Opsi 1 (Safety): Besiktas Double Chance (X2) - Odds 1.40",
+                bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.60",
+                scoreMain: "1 - 2", scoreAlt: "2 - 2",
+                motivation: "Kedua tim memburu kemenangan penting untuk posisi grup.",
+                htStrategy: "Celtic menekan di awal, Besiktas membalas lewat serangan balik cepat.",
+                htPossession: "50% vs 50%", htShotsOnTarget: "3 vs 3", htCorners: "4 vs 4", htExpectedGoals: "0.85 vs 0.95"
+            },
+            {
+                id: 12, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (03:00)",
+                home: "Hapoel Be'er Sheva", away: "OFI Crete", odds: "2.149 | 3.625 | 3.445",
+                btts: "68% Moderate", bttsDesc: "Hapoel lebih diunggulkan bermain di kandang sendiri.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Tuan rumah mengambil inisiatif menyerang.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Dominasi serangan sayap Hapoel.",
+                pick: "Hapoel Be'er Sheva Win", pickOdds: "2.149",
+                bestOption1: "Opsi 1 (Safety): Hapoel Be'er Sheva DNB - Odds 1.50",
+                bestOption2: "Opsi 2 (Over): Over 2.5 Total Gol - Odds 1.80",
+                scoreMain: "2 - 1", scoreAlt: "1 - 1",
+                motivation: "Mengamankan poin penuh di kandang sendiri.",
+                htStrategy: "Menekan pertahanan lawan secara konstan.",
+                htPossession: "54% vs 46%", htShotsOnTarget: "3 vs 2", htCorners: "3 vs 2", htExpectedGoals: "0.90 vs 0.50"
+            },
+            {
+                id: 13, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:00)",
+                home: "Benfica", away: "Lech Poznan", odds: "1.159 | 8.65 | 18.5",
+                btts: "50% Low", bttsDesc: "Benfica jauh di atas kertas dan sangat dominan di kandang.",
+                htOu: "HT: Over 1.0", ftOu: "FT: Over 3.0", ouDesc: "Potensi kemenangan besar bagi wakil Portugal.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Kurungan total area pertahanan Lech Poznan.",
+                pick: "Benfica Win & Over 2.5 Goals", pickOdds: "1.45",
+                bestOption1: "Opsi 1 (Safety): Benfica Win (1X2) - Odds 1.159",
+                bestOption2: "Opsi 2 (Handicap): Benfica -1.5 Handicap - Odds 1.50",
                 scoreMain: "3 - 0", scoreAlt: "4 - 0",
-                motivation: "Pathum ingin mengamankan posisi teratas grup secepatnya.",
-                htStrategy: "Pathum memegang bola penuh dan mengurung Tai Po di setengah lapangan.",
-                htPossession: "68% vs 32%", htShotsOnTarget: "5 vs 0", htCorners: "5 vs 0", htExpectedGoals: "1.30 vs 0.10"
+                motivation: "Benfica memburu kemenangan telak untuk selisih gol.",
+                htStrategy: "Membombardir pertahanan lawan sejak menit pertama.",
+                htPossession: "70% vs 30%", htShotsOnTarget: "6 vs 1", htCorners: "5 vs 1", htExpectedGoals: "1.80 vs 0.20"
             },
-            // 18. Machida Zelvia vs Shanghai Shenhua
             {
-                id: 18, league: "AFC Champions League Two - Group G", time: "5:00 PM",
-                home: "Machida Zelvia", away: "Shanghai Shenhua", odds: "1.90 | 3.40 | 3.60",
-                btts: "65% Moderate", bttsDesc: "Disiplin tinggi ala J-League vs kekuatan finansial Tiongkok.",
-                htOu: "HT: Under 1.0", ftOu: "FT: Over 2.0", ouDesc: "Adu ketat taktik disiplin di babak pertama.",
-                corner: "Over 8.5 Total Corner", cornerDesc: "Banyak blok tembakan dari pertahanan rapat Machida.",
-                pick: "Machida Zelvia Win (DNB)", pickOdds: "1.40",
-                bestOption1: "Opsi 1 (Safety): Machida Zelvia Win (1X2) - Odds 1.90",
-                bestOption2: "Opsi 2 (Under): Under 2.5 Total Goals - Odds 1.70",
+                id: 14, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (03:00)",
+                home: "Celta", away: "Royale Union Saint-Gilloise", odds: "2.312 | 3.565 | 3.14",
+                btts: "72% High", bttsDesc: "Celta kuat di kandang, Union SG punya efektivitas serangan tajam.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Laga seimbang dengan peluang gol di kedua sisi.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Adu intensitas serangan sayap.",
+                pick: "Celta Win / Double Chance (1X)", pickOdds: "1.38",
+                bestOption1: "Opsi 1 (Safety): Celta Double Chance (1X) - Odds 1.38",
+                bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.70",
+                scoreMain: "2 - 1", scoreAlt: "1 - 1",
+                motivation: "Celta mengincar poin penuh di hadapan pendukungnya.",
+                htStrategy: "Mengambil alih tempo permainan sejak babak pertama.",
+                htPossession: "53% vs 47%", htShotsOnTarget: "3 vs 2", htCorners: "4 vs 3", htExpectedGoals: "0.85 vs 0.70"
+            },
+            {
+                id: 15, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (03:00)",
+                home: "Sturm Graz", away: "Celje", odds: "1.542 | 4.665 | 5.93",
+                btts: "65% Moderate", bttsDesc: "Sturm Graz diunggulkan berkat konsistensi permainan kandang.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Tuan rumah menekan sejak awal laga.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Serangan konstan Sturm Graz menghasilkan corner.",
+                pick: "Sturm Graz Win", pickOdds: "1.542",
+                bestOption1: "Opsi 1 (Safety): Sturm Graz Win (1X2) - Odds 1.542",
+                bestOption2: "Opsi 2 (Over): Over 2.5 Total Gol - Odds 1.65",
+                scoreMain: "2 - 0", scoreAlt: "2 - 1",
+                motivation: "Mengamankan posisi aman di klasemen grup.",
+                htStrategy: "Membangun serangan cepat dari lini tengah.",
+                htPossession: "57% vs 43%", htShotsOnTarget: "4 vs 1", htCorners: "4 vs 2", htExpectedGoals: "1.15 vs 0.40"
+            },
+            {
+                id: 16, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (00:00)",
+                home: "Sunderland", away: "Dinamo Zagreb", odds: "2.10 | 3.40 | 3.20",
+                btts: "70% Moderate", bttsDesc: "Sunderland tampil penuh semangat, Dinamo Zagreb berpengalaman di Eropa.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Pertandingan ketat dengan intensitas tinggi.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Duel fisik ketat memicu banyak bola mati.",
+                pick: "Sunderland Win (DNB)", pickOdds: "1.52",
+                bestOption1: "Opsi 1 (Safety): Sunderland Double Chance (1X) - Odds 1.32",
+                bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.75",
+                scoreMain: "2 - 1", scoreAlt: "1 - 1",
+                motivation: "Sunderland ingin unjuk gigi di kompetisi Eropa.",
+                htStrategy: "Pressing tinggi untuk mengganggu aliran bola lawan.",
+                htPossession: "51% vs 49%", htShotsOnTarget: "3 vs 2", htCorners: "4 vs 3", htExpectedGoals: "0.80 vs 0.70"
+            },
+            {
+                id: 17, league: "UEFA Europa League - Tour 4", time: "06.11.2026 (03:00)",
+                home: "S.C.U. Torreense", away: "Ararat-Armenia", odds: "1.85 | 3.50 | 4.10",
+                btts: "60% Moderate", bttsDesc: "Torreense lebih solid dalam penguasaan bola.",
+                htOu: "HT: Under 1.5", ftOu: "Under 2.5", ouDesc: "Laga cenderung hati-hati dengan minim gol.",
+                corner: "Under 9.5 Total Corner", cornerDesc: "Permainan terpusat di area lini tengah.",
+                pick: "S.C.U. Torreense Win", pickOdds: "1.85",
+                bestOption1: "Opsi 1 (Safety): Torreense Win (1X2) - Odds 1.85",
+                bestOption2: "Opsi 2 (Under): Under 2.5 Total Gol - Odds 1.70",
                 scoreMain: "1 - 0", scoreAlt: "2 - 0",
-                motivation: "Machida fokus pada efisiensi taktik dan tidak mau kebobolan.",
-                htStrategy: "Machida disiplin menjaga jarak antar lini secara sangat terstruktur.",
-                htPossession: "53% vs 47%", htShotsOnTarget: "2 vs 1", htCorners: "2 vs 1", htExpectedGoals: "0.50 vs 0.30"
+                motivation: "Mengincar kemenangan tipis untuk efisiensi poin.",
+                htStrategy: "Disiplin bertahan dan memanfaatkan peluang sekecil mungkin.",
+                htPossession: "54% vs 46%", htShotsOnTarget: "2 vs 1", htCorners: "3 vs 2", htExpectedGoals: "0.70 vs 0.35"
             },
-            // 19. Svay Rieng vs Tampines Rovers
             {
-                id: 19, league: "AFC Champions League Two - Group G", time: "7:15 PM",
-                home: "Preah Khan Reach Svay Rieng", away: "Tampines Rovers", odds: "2.50 | 3.50 | 2.40",
-                btts: "88% High", bttsDesc: "Dua klub Asia Tenggara yang selalu main terbuka.",
-                htOu: "HT: Over 1.0", ftOu: "FT: Over 2.5/3.0", ouDesc: "Saling balas serangan sejak awal.",
-                corner: "Over 9.5 Total Corner", cornerDesc: "Laga sangat dinamis memicu bola keluar.",
-                pick: "Both Teams To Score (BTTS Yes)", pickOdds: "1.55",
-                bestOption1: "Opsi 1 (BTTS): Both Teams To Score (Yes) - Odds 1.55",
-                bestOption2: "Opsi 2 (Over): Over 2.5 Total Goals - Odds 1.62",
-                scoreMain: "2 - 2", scoreAlt: "3 - 2",
-                motivation: "Kedua tim sama-sama tidak suka bertahan dan ingin memenangkan laga.",
-                htStrategy: "Laga terbuka cepat tanpa banyak kompromi bertahan.",
-                htPossession: "49% vs 51%", htShotsOnTarget: "3 vs 3", htCorners: "3 vs 3", htExpectedGoals: "0.80 vs 0.80"
+                id: 18, league: "UEFA Conference Europa - Tour 3", time: "06.11.2026 (00:00)",
+                home: "AGF Aarhus", away: "Braga", odds: "3.20 | 3.50 | 2.15",
+                btts: "72% High", bttsDesc: "Braga diunggulkan kualitas teknik, Aarhus tangguh secara fisik di kandang.",
+                htOu: "HT: Over 0.5", ftOu: "FT: Over 2.5", ouDesc: "Jual beli serangan berpotensi terjadi.",
+                corner: "Over 9.5 Total Corner", cornerDesc: "Intensitas serangan sayap yang tinggi.",
+                pick: "Braga Win / Double Chance (X2)", pickOdds: "1.32",
+                bestOption1: "Opsi 1 (Safety): Braga Double Chance (X2) - Odds 1.32",
+                bestOption2: "Opsi 2 (BTTS): Both Teams To Score (Yes) - Odds 1.72",
+                scoreMain: "1 - 2", scoreAlt: "1 - 1",
+                motivation: "Braga mengincar poin penuh tandang.",
+                htStrategy: "Mengandalkan penguasaan bola di lini tengah.",
+                htPossession: "46% vs 54%", htShotsOnTarget: "2 vs 4", htCorners: "4 vs 4", htExpectedGoals: "0.65 vs 1.10"
+            },
+            {
+                id: 19, league: "UEFA Conference Europa - Tour 3", time: "06.11.2026 (00:45)",
+                home: "Atalanta", away: "Kairat", odds: "1.108 | 10.9 | 23",
+                btts: "45% Low", bttsDesc: "Atalanta sangat superior dan dominan di kandang.",
+                htOu: "HT: Over 1.0", ftOu: "FT: Over 3.0", ouDesc: "Potensi kemenangan mutlak bagi tuan rumah.",
+                corner: "Over 8.5 Total Corner", cornerDesc: "Gempuran total Atalanta sepanjang laga.",
+                pick: "Atalanta Win & Over 2.5 Goals", pickOdds: "1.35",
+                bestOption1: "Opsi 1 (Safety): Atalanta Win (1X2) - Odds 1.108",
+                bestOption2: "Opsi 2 (Handicap): Atalanta -2.0 Handicap - Odds 1.55",
+                scoreMain: "3 - 0", scoreAlt: "4 - 0",
+                motivation: "Memburu kemenangan besar untuk mendominasi grup.",
+                htStrategy: "Menekan total dari menit pertama tanpa ampun.",
+                htPossession: "72% vs 28%", htShotsOnTarget: "7 vs 1", htCorners: "6 vs 1", htExpectedGoals: "2.10 vs 0.20"
             }
         ];
 
