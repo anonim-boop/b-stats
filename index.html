@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Master Match Analysis & Parlay Engine</title>
+  <title>Master Match Analysis & Parlay Engine (27 Match)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background-color: #090d16; color: #f1f5f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -20,19 +20,19 @@
   <header class="max-w-7xl mx-auto mb-8 border-b border-slate-800 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
     <div>
       <h1 class="text-3xl font-extrabold text-blue-400">⚡ Master Match & Parlay Engine</h1>
-      <p class="text-slate-400 text-sm mt-1">24 Match Lengkap + 5 Safe Picks + Real Data (O/U, BTTS, Corner, HT, Handicap) + 500 Layering</p>
+      <p class="text-slate-400 text-sm mt-1">27 Match Lengkap (24 Match Lama + 3 Match Baru) + 5 Safe Picks + Real Data & 500 Layering</p>
     </div>
     <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 text-right min-w-[200px]">
       <span class="text-xs text-slate-400 block">Parlay Slip Terpilih:</span>
       <span id="parlay-count" class="text-lg font-bold text-emerald-400">0 Tim</span>
-      <span id="total-odds" class="text-xs text-blue-300 block mt-1">Total Odds: 1.00</span>
+      <span id="total-odds" class="text-xs text-blue-300 block mt-1">Total Odds Est: 1.00</span>
     </div>
   </header>
 
   <!-- CONTROL PANEL (FILTER) -->
   <section class="max-w-7xl mx-auto mb-6 flex flex-wrap gap-3 items-center justify-between">
     <div class="flex flex-wrap gap-2">
-      <button onclick="filterMatch('all')" class="bg-blue-600 px-4 py-2 rounded text-sm font-semibold hover:bg-blue-500 transition">Semua (24 Match)</button>
+      <button onclick="filterMatch('all')" class="bg-blue-600 px-4 py-2 rounded text-sm font-semibold hover:bg-blue-500 transition">Semua (27 Match)</button>
       <button onclick="filterMatch('safe')" class="bg-purple-600 px-4 py-2 rounded text-sm font-semibold hover:bg-purple-500 transition">🛡️ 5 Team Safe Picks</button>
       <button onclick="filterMatch('sengit')" class="bg-red-600 px-4 py-2 rounded text-sm font-semibold hover:bg-red-500 transition">🔥 Sengit / Ketat</button>
       <button onclick="filterMatch('biasa')" class="bg-emerald-600 px-4 py-2 rounded text-sm font-semibold hover:bg-emerald-500 transition">⚽ Dominan / Biasa</button>
@@ -60,8 +60,9 @@
   </main>
 
   <script>
-    // DATA MURNI 24 MATCH SCREENSHOT DENGAN REAL ODDS & STATISTIK TIM
+    // DATA 24 MATCH LAMA + 3 MATCH BARU (TOTAL 27 MATCH)
     const matchesData = [
+      // --- 24 MATCH LAMA ---
       {
         id: 1, league: "Kejuaraan Inggris: Liga Primer", home: "Brighton", away: "Brentford", odds: { m1: 1.909, x: 4.155, m2: 3.98 },
         intensitas: "Sengit", isSafe: false, safePickOption: "",
@@ -229,6 +230,29 @@
         logikaBaru: "Laga degradasi krusial; kedua tim bermain sangat hati-hati dan menghindari risiko kehilangan poin.",
         layering500: "Layer 400 (Relegation Fear Factor & Low Risk Play). Profil gol rendah.",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Lorient 0" }
+      },
+
+      // --- 3 MATCH BARU DITAMBAHKAN SESUAI REQUEST ---
+      {
+        id: 25, league: "Liga Brazil (Serie A)", home: "Xavier Lindsay", away: "Criciúma", odds: { m1: 2.15, x: 3.25, m2: 3.40 },
+        intensitas: "Sengit", isSafe: false, safePickOption: "",
+        logikaBaru: "Laga fisik khas Liga Brazil jam 06.00 WIB. Tuan rumah unggul motivasi, Criciúma main bertahan low-block rapat.",
+        layering500: "Layer 115 (South American Home Momentum) & Layer 88 (Low-Block Resilience). Cenderung skor tipis.",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Xavier Lindsay -0.25" }
+      },
+      {
+        id: 26, league: "Liga Brazil (Serie A)", home: "Cuiabá", away: "Esporte Clube Juventude", odds: { m1: 2.05, x: 3.20, m2: 3.75 },
+        intensitas: "Sengit", isSafe: false, safePickOption: "",
+        logikaBaru: "Cuiabá di kandang cukup ulet. Juventude kesulitan di laga tandang namun rajin memanfaatkan serangan balik cepat.",
+        layering500: "Layer 210 (Chaos Creation) & Layer 140 (Physical Duels). Adu ketahanan fisik lini tengah.",
+        fiturLama: { btts: "Ya", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Over 10.0", handicap: "Cuiabá -0.5" }
+      },
+      {
+        id: 27, league: "Liga Venezuela", home: "Caracas", away: "Academia Puerto Cabello", odds: { m1: 1.85, x: 3.30, m2: 4.10 },
+        intensitas: "Biasa", isSafe: false, safePickOption: "",
+        logikaBaru: "Caracas dominan secara sejarah dan materi pemain di kandang sendiri (06.00 WIB). Puerto Cabello lebih defensif.",
+        layering500: "Layer 74 (Flank Superiority) & Layer 301 (Early Goal Pressure). Caracas pegang kendali tempo.",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Caracas -0.5" }
       }
     ];
 
@@ -264,7 +288,7 @@
               </div>
 
               ${m.isSafe ? `
-                <div class="mb-3 bg-purple-950/50 p-2 rounded border border-purple-800/80 text-xs text-purple-2.00">
+                <div class="mb-3 bg-purple-950/50 p-2 rounded border border-purple-800/80 text-xs text-purple-200">
                   <span class="font-bold block">🎯 Opsi Safe Pick Parlay:</span>
                   <span class="text-purple-300 font-bold">${m.safePickOption}</span>
                 </div>
@@ -323,7 +347,6 @@
       let totalOdds = 1.0;
       selectedParlay.forEach(id => {
         const m = matchesData.find(item => item.id === id);
-        // Ambil odds menang (m2 buat away unggulan, m1 buat home unggulan)
         const pickOdds = m.odds.m2 < m.odds.m1 ? m.odds.m2 : m.odds.m1;
         totalOdds *= pickOdds;
       });
