@@ -1,375 +1,311 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.STATS v26.0 - Full Master Complete Engine (HT/2H & Markets)</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .emerald-glow { box-shadow: 0 0 30px rgba(16, 185, 129, 0.25); }
-        .ultimate-badge { background: linear-gradient(135deg, #059669 0%, #047857 100%); }
-        .glass-card { background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(18px); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bsats, prediksi bastian</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #090d16; color: #f1f5f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .card-match { background: #131c2e; border: 1px solid #1e293b; transition: all 0.2s; }
+    .card-match:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1); }
+    .badge-sengit { background-color: #dc2626; color: #fff; }
+    .badge-biasa { background-color: #059669; color: #fff; }
+    .layer-box { background: #0f172a; border-left: 3px solid #3b82f6; }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen pb-16 selection:bg-emerald-500 selection:text-slate-950">
+<body class="p-4 md:p-8">
 
-    <!-- Header Navbar -->
-    <header class="bg-slate-900/90 border-b border-emerald-500/40 sticky top-0 z-50 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center space-x-3">
-                <div class="relative flex h-3.5 w-3.5">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
-                </div>
-                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v26.0 Full Master Complete Engine</span></h1>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="text-xs ultimate-badge text-slate-950 px-4 py-1.5 rounded-full font-black tracking-wide shadow-lg flex items-center gap-1.5">
-                    <i class="fa-solid fa-shield-cat"></i> HT/2H & ALL MARKETS RESTORED
-                </div>
-            </div>
-        </div>
-    </header>
+  <!-- HEADER -->
+  <header class="max-w-7xl mx-auto mb-8 border-b border-slate-800 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div>
+      <h1 class="text-3xl font-extrabold text-blue-400">PREDIKSI GACORRRRR</h1>
+      <p class="text-slate-400 text-sm mt-1">PEDE AJAAA</p>
+    </div>
+    <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 text-right">
+      <span class="text-xs text-slate-400 block">Parlay Slip Terpilih:</span>
+      <span id="parlay-count" class="text-lg font-bold text-emerald-400">0 Tim</span>
+    </div>
+  </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 mt-8">
-        
-        <!-- Dashboard Intro Matrix -->
-        <div class="bg-gradient-to-r from-emerald-950/90 via-slate-900 to-slate-950 border border-emerald-500/40 rounded-2xl p-6 mb-8 emerald-glow">
-            <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6">
+  <!-- CONTROL PANEL -->
+  <section class="max-w-7xl mx-auto mb-6 flex flex-wrap gap-3 items-center justify-between">
+    <div class="flex flex-wrap gap-2">
+      <button onclick="filterMatch('all')" class="bg-blue-600 px-4 py-2 rounded text-sm font-semibold hover:bg-blue-500 transition">Semua (24)</button>
+      <button onclick="filterMatch('sengit')" class="bg-red-600 px-4 py-2 rounded text-sm font-semibold hover:bg-red-500 transition">🔥 Sengit / Ketat</button>
+      <button onclick="filterMatch('biasa')" class="bg-emerald-600 px-4 py-2 rounded text-sm font-semibold hover:bg-emerald-500 transition">⚽ Dominan / Biasa</button>
+      <button onclick="filterMatch('safe')" class="bg-purple-600 px-4 py-2 rounded text-sm font-semibold hover:bg-purple-500 transition">🛡️ 5 Team Safe Picks</button>
+    </div>
+    <input type="text" id="search-input" onkeyup="searchMatch()" placeholder="Cari tim atau liga..." class="bg-slate-900 border border-slate-800 px-4 py-2 rounded text-sm focus:outline-none focus:border-blue-500 w-full md:w-64">
+  </section>
+
+  <!-- MAIN MATCH CONTAINER -->
+  <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="match-container">
+    <!-- Generated by JS -->
+  </main>
+
+  <!-- SCRIPT ENGINE 500 LAYERING & MATCH DATA -->
+  <script>
+    const matchesData = [
+      {
+        id: 1, league: "Liga Primer Inggris", home: "Brighton", away: "Brentford", odds: { m1: 1.909, x: 4.155, m2: 3.98 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Adu fisik lini tengah murni, tidak ada beban UCL, pressing ketat sejak menit pertama.",
+        layering500: "Layer 124 (Midfield Block) & Layer 312 (Gegenpressing Trigger) aktif. Kedua tim saling potong sirkulasi bola bawah.",
+        fiturLama: { btts: "Ya (80%)", overUnder: "Over 2.5", htResult: "HT 0-0 / 1-0", corners: "Over 9.5", handicap: "Brighton -0.5" }
+      },
+      {
+        id: 2, league: "Liga Primer Inggris", home: "Sunderland", away: "Chelsea", odds: { m1: 3.78, x: 3.82, m2: 2.044 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Chelsea rawan simpan tenaga/rotasi pemain inti. Sunderland main habis-habisan di kandang.",
+        layering500: "Layer 405 (Fatigue-Induced Trap) & Layer 88 (Low-Block Resilience). Potensi Chelsea tertahan di babak kedua.",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT Draw", corners: "Over 10", handicap: "Sunderland +0.75" }
+      },
+      {
+        id: 3, league: "Bundesliga Jerman", home: "Freiburg", away: "Union Berlin", odds: { m1: 1.562, x: 4.726, m2: 6.11 },
+        intensitas: "Biasa", isSafe: false,
+        logikaBaru: "Freiburg sangat dominan secara struktur penguasaan bola kandang. Union Berlin main bertahan total.",
+        layering500: "Layer 12 (Positional Play Overload) vs Layer 45 (Bus Parkir Compactness). Freiburg butuh sabar bongkar pertahanan.",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 9.5", handicap: "Freiburg -1.0" }
+      },
+      {
+        id: 4, league: "Liga Primer Inggris", home: "Ipswich Town", away: "Bournemouth", odds: { m1: 3.905, x: 3.955, m2: 1.974 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Perang terbuka tim papan bawah. Risiko kesalahan individu lini belakang sangat tinggi.",
+        layering500: "Layer 210 (Chaos Creation & Second Balls) & Layer 78 (Transition Speed). Rawan hujan gol.",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Bournemouth -0.5" }
+      },
+      {
+        id: 5, league: "Liga Primer Inggris", home: "Manchester United", away: "Aston Villa", odds: { m1: 2.225, x: 3.96, m2: 3.19 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Super Big Match. MU sering keteteran di transisi negatif, Aston Villa mematikan lewat serangan balik.",
+        layering500: "Layer 350 (Rest Defense Vulnerability). MU wajib pasang double pivot ketat atau disikat Unai Emery.",
+        fiturLama: { btts: "Ya (Sangat Tinggi)", overUnder: "Over 2.5", htResult: "HT Over 0.5", corners: "Over 10.5", handicap: "Aston Villa +0.5" }
+      },
+      {
+        id: 6, league: "Bundesliga Jerman", home: "TSG 1899 Hoffenheim", away: "Schalke 04", odds: { m1: 1.656, x: 4.62, m2: 5.13 },
+        intensitas: "Biasa", isSafe: false,
+        logikaBaru: "Hoffenheim unggul kualitas lini serang. Schalke rapuh di sektor half-space.",
+        layering500: "Layer 99 (Half-Space Exploitation) & Layer 22 (Vertical Directness). Tuan rumah pegang kendali penuh.",
+        fiturLama: { btts: "Ya", overUnder: "Over 3.0", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Hoffenheim -0.75" }
+      },
+      {
+        id: 7, league: "Liga Primer Inggris", home: "Crystal Palace", away: "Liverpool", odds: { m1: 4.8, x: 4.1, m2: 1.68 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Liverpool simpan 2 pemain kunci karena jadwal padat Eropa. Palace pasang blok rendah.",
+        layering500: "Layer 180 (Rotation Fatigue Factor) & Layer 65 (Side-Line Trap). Potensi hasil imbang / menang tipis.",
+        fiturLama: { btts: "Ya", overUnder: "Under 3.0", htResult: "HT 0-0 / 0-1", corners: "Over 10", handicap: "Palace +1.0" }
+      },
+      {
+        id: 8, league: "Bundesliga Jerman", home: "FC Köln", away: "Bayer Leverkusen", odds: { m1: 4.1, x: 3.9, m2: 1.8 },
+        intensitas: "Biasa", isSafe: true,
+        logikaBaru: "Leverkusen konsisten jalankan taktik Xabi Alonso. Fokus penuh amankan poin tandang.",
+        layering500: "Layer 1 (Juego de Posición Mastery) & Layer 300 (Tactical Discipline). Kualitas rotasi terjaga.",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Under 9.5", handicap: "Leverkusen -0.75" }
+      },
+      {
+        id: 9, league: "La Liga Spanyol", home: "Valencia", away: "Real Madrid", odds: { m1: 4.9, x: 4.0, m2: 1.65 },
+        intensitas: "Biasa", isSafe: true,
+        logikaBaru: "Real Madrid punya mentalitas juara luar biasa di laga krusial. Valencia rawan kehabisan bensin di menit 75+.",
+        layering500: "Layer 410 (Clutch Performance Indicator) & Layer 92 (Late Game Collapse). Madrid dominan.",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Over 9.5", handicap: "Real Madrid -0.75" }
+      },
+      {
+        id: 10, league: "La Liga Spanyol", home: "Elche", away: "Real Betis", odds: { m1: 3.555, x: 3.82, m2: 2.117 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Elche mati-matian cari poin kandang. Betis main sabar mengandalkan penguasaan bola.",
+        layering500: "Layer 155 (Survival Motivation & Tactical Fouls). Potensi kartu kuning tinggi dan laga keras.",
+        fiturLama: { btts: "Ya", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Over 9.0", handicap: "Elche +0.5" }
+      },
+      {
+        id: 11, league: "La Liga Spanyol", home: "Celta Vigo", away: "Levante UD", odds: { m1: 1.942, x: 3.8, m2: 4.21 },
+        intensitas: "Biasa", isSafe: false,
+        logikaBaru: "Celta sangat kuat di kandang sendiri. Levante keteteran hadapi kecepatan sayap.",
+        layering500: "Layer 74 (Flank Superiority) & Layer 110 (Home Advantage Metric). Celta pegang kendali.",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 9.5", handicap: "Celta -0.5" }
+      },
+      {
+        id: 12, league: "Serie A Italia", home: "Genoa", away: "AC Milan", odds: { m1: 4.835, x: 3.725, m2: 1.852 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Milan melakukan rotasi lini depan. Genoa bertahan sangat rapat di kandang (Luigi Ferraris).",
+        layering500: "Layer 250 (Zonal Compactness) & Layer 80 (Safe Passing Loop). Skor cenderung tipis.",
+        fiturLama: { btts: "Ya", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Over 10.0", handicap: "Genoa +0.75" }
+      },
+      {
+        id: 13, league: "La Liga Spanyol", home: "Real Sociedad", away: "Rayo Vallecano", odds: { m1: 1.765, x: 4.26, m2: 4.67 },
+        intensitas: "Biasa", isSafe: false,
+        logikaBaru: "Sociedad mendikte tempo lewat lini tengah yang kreatif. Rayo bertahan total.",
+        layering500: "Layer 45 (Tempo Control & Short Passing). Sociedad kunci kemenangan lewat penguasaan.",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Sociedad -0.75" }
+      },
+      {
+        id: 14, league: "Serie A Italia", home: "AS Roma", away: "Sassuolo", odds: { m1: 1.341, x: 6.14, m2: 9.3 },
+        intensitas: "Biasa", isSafe: false,
+        logikaBaru: "Roma langsung tancap gas di kandang. Sassuolo punya rekor buruk lini belakang musim ini.",
+        layering500: "Layer 301 (Early Goal Pressure) & Layer 19 (High Line Vulnerability). Roma difavoritkan.",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Roma -1.25" }
+      },
+      {
+        id: 15, league: "Serie A Italia", home: "Monza", away: "Atalanta", odds: { m1: 3.44, x: 4.015, m2: 2.102 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Atalanta menerapkan man-marking agresif satu lapangan. Monza harus lepas dari pressing ketat.",
+        layering500: "Layer 60 (Man-to-Man Aggressive Pressing) & Layer 140 (Physical Duels). Laga sangat melelahkan.",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT Over 0.5", corners: "Over 10.5", handicap: "Atalanta -0.5" }
+      },
+      {
+        id: 16, league: "La Liga Spanyol", home: "Villarreal", away: "Getafe", odds: { m1: 1.8, x: 3.6, m2: 4.5 },
+        intensitas: "Biasa", isSafe: false,
+        logikaBaru: "Villarreal main rapi dari belakang. Getafe mengandalkan fisik dan pelanggaran taktis.",
+        layering500: "Layer 85 (Build-up Mastery) vs Layer 130 (Tactical Foul Disruptions).",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Villarreal -0.5" }
+      },
+      {
+        id: 17, league: "Serie A Italia", home: "Napoli", away: "Lazio", odds: { m1: 2.1, x: 3.4, m2: 3.5 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Derby taktik kelas berat. Kedua pelatih sama-sama mengincar kemenangan mutlak (tidak mau bagi poin).",
+        layering500: "Layer 500 (Masterclass Chess Match). Detail kecil lini tengah dan bola mati jadi penentu.",
+        fiturLama: { btts: "Ya", overUnder: "Under 2.5", htResult: "HT Draw", corners: "Over 9.5", handicap: "Napoli -0.25" }
+      },
+      {
+        id: 18, league: "Serie A Italia", home: "Inter Milan", away: "Como", odds: { m1: 1.28, x: 5.5, m2: 10.5 },
+        intensitas: "Biasa", isSafe: true,
+        logikaBaru: "Inzaghiball sangat solid di kandang. Kualitas skuad jauh di atas tim tamu.",
+        layering500: "Layer 7 (Inverted Wing-Back Dominance) & Layer 99 (Box Defense). Inter sangat aman.",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Inter -1.5" }
+      },
+      {
+        id: 19, league: "Liga Primer Rusia", home: "Krylia Sovetov", away: "Orenburg", odds: { m1: 2.46, x: 3.67, m2: 2.973 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Kekuatan berimbang. Potensi besar kedua tim bermain aman dan berbagi 1 poin.",
+        layering500: "Layer 220 (Safe Game Management & Mutual Draw Tendency). Rawan skor imbang.",
+        fiturLama: { btts: "Ya", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Draw / Krylia 0" }
+      },
+      {
+        id: 20, league: "Liga Primer Rusia", home: "Baltika Kaliningrad", away: "Dynamo Makhachkala", odds: { m1: 1.763, x: 3.67, m2: 5.69 },
+        intensitas: "Biasa", isSafe: false,
+        logikaBaru: "Baltika sangat kuat dalam situasi bola mati (set-piece). Dynamo tumpul di laga tandang.",
+        layering500: "Layer 15 (Set-Piece Dominance & Aerial Duels). Tuan rumah unggul fisik.",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Baltika -0.5" }
+      },
+      {
+        id: 21, league: "Ligue 1 Prancis", home: "Angers SCO", away: "OGC Nice", odds: { m1: 3.535, x: 3.84, m2: 2.117 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Nice sedikit diunggulkan tapi Angers punya rekor kandang ulet.",
+        layering500: "Layer 111 (Defensive Block & Counter Triggers).",
+        fiturLama: { btts: "Ya", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Over 9.5", handicap: "Angers +0.5" }
+      },
+      {
+        id: 22, league: "Liga Primer Rusia", home: "Spartak Moskow", away: "Akron Tolyatti", odds: { m1: 1.275, x: 6.77, m2: 11.9 },
+        intensitas: "Biasa", isSafe: true,
+        logikaBaru: "Spartak di kandang superior atas tim semenjana. Tidak ada alibi rotasi.",
+        layering500: "Layer 3 (Absolute Home Superiority) & Layer 25 (High Intensity Transition).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 2-0", corners: "Over 10.0", handicap: "Spartak -1.5" }
+      },
+      {
+        id: 23, league: "Ligue 1 Prancis", home: "Paris Saint-Germain", away: "Troyes AC", odds: { m1: 1.168, x: 9.3, m2: 19.0 },
+        intensitas: "Biasa", isSafe: true,
+        logikaBaru: "Kedalaman skuad lapis kedua PSG saja sudah jauh di atas Troyes. Dominasi total.",
+        layering500: "Layer 2 (Squad Depth Superiority) & Layer 50 (Early Goal Psychological Crush).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 3.0", htResult: "HT 2-0", corners: "Over 9.5", handicap: "PSG -2.0" }
+      },
+      {
+        id: 24, league: "Ligue 1 Prancis", home: "Le Havre", away: "Lorient", odds: { m1: 2.838, x: 3.515, m2: 2.642 },
+        intensitas: "Sengit", isSafe: false,
+        logikaBaru: "Laga hidup mati zona degradasi. Kedua tim sama-sama takut kalah (main aman).",
+        layering500: "Layer 400 (Relegation Fear Factor & Low Risk Play).",
+        fiturLama: { btts: "Ya", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Over 10.0", handicap: "Lorient 0" }
+      }
+    ];
+
+    function renderMatches(data) {
+      const container = document.getElementById('match-container');
+      container.innerHTML = '';
+
+      data.forEach(m => {
+        const isSengit = m.intensitas === "Sengit";
+        const badgeClass = isSengit ? "badge-sengit" : "badge-biasa";
+        const safeBadge = m.isSafe ? `<span class="bg-purple-600 text-xs px-2 py-1 rounded font-bold ml-2">🛡️ SAFE PICK</span>` : '';
+
+        const card = `
+          <div class="card-match p-5 rounded-xl flex flex-col justify-between">
+            <div>
+              <!-- HEADER -->
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-xs text-blue-400 font-semibold">${m.league}</span>
                 <div>
-                    <h2 class="text-xl font-bold text-emerald-300 mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-square-poll-vertical text-emerald-400"></i> Master Dashboard Lengkap (Babak 1, Babak 2, & Pasar Komplit)
-                    </h2>
-                    <p class="text-sm text-slate-400 max-w-3xl">
-                        Semua rincian analisis babak pertama, babak kedua, serta prediksi pasar (Over/Under, BTTS, Corner, Handicap) kini sudah dikembalikan sepenuhnya tanpa ada yang terlewat, diproteksi penuh dari drama L1.
-                    </p>
+                  <span class="text-xs px-2 py-1 rounded font-bold ${badgeClass}">${m.intensitas}</span>
+                  ${safeBadge}
                 </div>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <div class="relative">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
-                        <input type="text" id="searchInput" onkeyup="filterMatches()" placeholder="Cari tim atau liga..." class="bg-slate-900 border border-slate-700 text-xs rounded-xl pl-9 pr-4 py-2.5 text-slate-200 focus:outline-none focus:border-emerald-500 w-full sm:w-48">
-                    </div>
+              </div>
+
+              <!-- TEAMS & ODDS -->
+              <div class="flex justify-between items-center my-3 bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+                <div class="font-bold text-sm text-white w-2/5">${m.home}</div>
+                <div class="text-xs text-slate-500 font-bold">VS</div>
+                <div class="font-bold text-sm text-white w-2/5 text-right">${m.away}</div>
+              </div>
+
+              <!-- 500-LAYERING ENGINE & LOGIKA BARU -->
+              <div class="mb-3 bg-slate-900 p-3 rounded border border-slate-800">
+                <span class="text-xs text-amber-400 font-bold block mb-1">🧠 Logika & Strategi Tim:</span>
+                <p class="text-xs text-slate-300 mb-2">${m.logikaBaru}</p>
+                
+                <div class="layer-box p-2 rounded text-xs">
+                  <span class="text-blue-400 font-bold">⚙️ 500-Layering Engine:</span>
+                  <p class="text-slate-400 mt-0.5">${m.layering500}</p>
                 </div>
+              </div>
+
+              <!-- FITUR LAMA: O/U, BTTS, 1X2, CORNER, HANDICAP -->
+              <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950 p-3 rounded border border-slate-900 mb-4">
+                <div><span class="text-slate-500">1X2:</span> <b class="text-white">${m.odds.m1} | ${m.odds.x} | ${m.odds.m2}</b></div>
+                <div><span class="text-slate-500">BTTS:</span> <b class="text-emerald-400">${m.fiturLama.btts}</b></div>
+                <div><span class="text-slate-500">O/U:</span> <b class="text-amber-400">${m.fiturLama.overUnder}</b></div>
+                <div><span class="text-slate-500">HT Result:</span> <b class="text-white">${m.fiturLama.htResult}</b></div>
+                <div><span class="text-slate-500">Corner:</span> <b class="text-blue-300">${m.fiturLama.corners}</b></div>
+                <div><span class="text-slate-500">Handicap:</span> <b class="text-purple-300">${m.fiturLama.handicap}</b></div>
+              </div>
             </div>
-        </div>
 
-        <!-- Match Cards Container -->
-        <div id="matchesContainer" class="space-y-8">
-            <!-- Rendered by JS -->
-        </div>
+            <button onclick="toggleParlay(${m.id})" id="btn-${m.id}" class="w-full bg-slate-800 hover:bg-blue-600 text-white font-bold py-2 rounded text-xs transition">
+              + Tambah ke Parlay
+            </button>
+          </div>
+        `;
+        container.innerHTML += card;
+      });
+    }
 
-    </main>
+    let selectedParlay = [];
+    function toggleParlay(id) {
+      const btn = document.getElementById(`btn-${id}`);
+      if (selectedParlay.includes(id)) {
+        selectedParlay = selectedParlay.filter(i => i !== id);
+        btn.innerText = "+ Tambah ke Parlay";
+        btn.classList.remove('bg-emerald-600');
+        btn.classList.add('bg-slate-800');
+      } else {
+        selectedParlay.push(id);
+        btn.innerText = "✓ Masuk Parlay";
+        btn.classList.remove('bg-slate-800');
+        btn.classList.add('bg-emerald-600');
+      }
+      document.getElementById('parlay-count').innerText = `${selectedParlay.length} Tim`;
+    }
 
-    <!-- JavaScript Engine -->
-    <script>
-        const matchesData = [
-            {
-                id: 1,
-                category: "England: Premier League",
-                kickoff: "10:00 PM (HT)",
-                match: "Arsenal vs Hull City",
-                standings: "Arsenal (Rank #2 - Kandang Kuat) vs Hull City (Rank #14)",
-                xg_data: "xG Proj: 1.90 vs 0.50 | Live Score: 0 - 0 (HT 0-0)",
-                
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Arsenal mengontrol penuh lini tengah (penguasaan bola 71%) namun disiplin pertahanan Hull City membuat skor masih 0-0 di paruh pertama[cite: 7].",
-                    ft_flow: "Babak 2: Diprediksi Arsenal akan meningkatkan intensitas serangan sayap (overload side) di babak kedua untuk memecah kebuntuan tanpa celah belakang."
-                },
+    function filterMatch(type) {
+      if (type === 'all') renderMatches(matchesData);
+      else if (type === 'sengit') renderMatches(matchesData.filter(m => m.intensitas === 'Sengit'));
+      else if (type === 'biasa') renderMatches(matchesData.filter(m => m.intensitas === 'Biasa'));
+      else if (type === 'safe') renderMatches(matchesData.filter(m => m.isSafe));
+    }
 
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Penjajakan taktik ketat, Arsenal mengurung pertahanan lawan.",
-                    phase_4_7: "Fase Krusial: Pergantian pemain di babak kedua untuk menambah daya gedor lini depan."
-                },
+    function searchMatch() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      renderMatches(matchesData.filter(m => m.home.toLowerCase().includes(query) || m.away.toLowerCase().includes(query) || m.league.toLowerCase().includes(query)));
+    }
 
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Dominasi penguasaan bola yang tinggi meminimalkan risiko Hull City melakukan serangan balik berbahaya.",
-
-                markets: {
-                    over_under: "Under / Over 1.5 Goals",
-                    btts: "No / Low Risk",
-                    corner: "Arsenal Over 6.5",
-                    handicap: "Arsenal -0.75 AH",
-                    exact_score: "2 - 0"
-                },
-                anti_l1_recommendation: "Arsenal Win / Clean Hold (Fokus Aman)"
-            },
-            {
-                id: 2,
-                category: "England: Premier League",
-                kickoff: "10:00 PM (HT)",
-                match: "Fulham vs Newcastle United",
-                standings: "Fulham (Rank #10) vs Newcastle United (Rank #8)",
-                xg_data: "xG Proj: 1.30 vs 1.25 | Live Score: 0 - 0 (HT 0-0)",
-                
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pertarungan lini tengah (engine room) sangat ketat, kedua tim bermain hati-hati dan berbagi skor 0-0 di babak pertama[cite: 7].",
-                    ft_flow: "Babak 2: Pertandingan cenderung berimbang, opsi pengamanan skor atau handicap tipis sangat direkomendasikan."
-                },
-
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Tempo lambat dan minim risiko dari kedua kubu.",
-                    phase_4_7: "Fase Krusial: Transisi bertahan yang solid menjaga skor tetap terkontrol."
-                },
-
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Karakter permainan disiplin lini tengah menurunkan potensi drama di menit akhir.",
-
-                markets: {
-                    over_under: "Under 2.5 Goals (Aman)",
-                    btts: "No",
-                    corner: "Over 8.5",
-                    handicap: "Fulham 0.0 (DNB)",
-                    exact_score: "1 - 1"
-                },
-                anti_l1_recommendation: "Under 2.5 / DNB Aman"
-            },
-            {
-                id: 3,
-                category: "Germany: Bundesliga",
-                kickoff: "9:30 PM (Live 68')",
-                match: "1. FSV Mainz 05 vs FC Bayern Munich",
-                standings: "Mainz 05 (Rank #13) vs FC Bayern Munich (Rank #1)",
-                xg_data: "xG Proj: 0.75 vs 2.85 | Live Score: 0 - 2 (HT 0-1)[cite: 7]",
-                
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Bayern mendominasi total dan memimpin 0-1 lewat tekanan high-press sejak awal[cite: 7].",
-                    ft_flow: "Babak 2: Bayern menambah gol kedua (0-2) di paruh kedua dan mengontrol sisa waktu dengan penguasaan bola penuh[cite: 7]."
-                },
-
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Gol cepat Bayern mematahkan mental tuan rumah.",
-                    phase_4_7: "Fase Krusial: Manajemen keunggulan sempurna tanpa celah kebobolan."
-                },
-
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Keunggulan tandang yang kokoh menutup peluang Mainz melakukan comeback.",
-
-                markets: {
-                    over_under: "Over 2.5 Goals",
-                    btts: "No (Clean Sheet)",
-                    corner: "Bayern Over 6.5",
-                    handicap: "Bayern Munich Menang",
-                    exact_score: "0 - 3"
-                },
-                anti_l1_recommendation: "Bayern Clean Sheet / Win Terkunci"
-            },
-            {
-                id: 4,
-                category: "Germany: Bundesliga",
-                kickoff: "9:30 PM (Live 71')",
-                match: "RB Leipzig vs FC Augsburg",
-                standings: "RB Leipzig (Rank #3) vs FC Augsburg (Rank #11)",
-                xg_data: "xG Proj: 2.10 vs 0.90 | Live Score: 5 - 1 (HT 3-1)[cite: 7]",
-                
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pesta gol terjadi sejak babak pertama, Leipzig memimpin telak 3-1[cite: 7].",
-                    ft_flow: "Babak 2: Leipzig terus menggempur dan memperlebar jarak menjadi 5-1 di menit ke-71[cite: 7]."
-                },
-
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Gegenpressing Leipzig langsung membongkar pertahanan Augsburg.",
-                    phase_4_7: "Fase Krusial: Efektivitas serangan balik mengubah laga menjadi pesta gol."
-                },
-
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Selisih skor yang sangat jauh (5-1) membuat sisa laga berjalan aman tanpa tekanan.",
-
-                markets: {
-                    over_under: "Over 4.5 Goals (HIT)",
-                    btts: "Yes (Valid)",
-                    corner: "Over 9.5",
-                    handicap: "Leipzig -1.5 (Menang Telak)",
-                    exact_score: "5 - 1"
-                },
-                anti_l1_recommendation: "Leipzig Win Telak (Aman)"
-            },
-            {
-                id: 5,
-                category: "Italy: Italian Serie A",
-                kickoff: "9:15 PM (Live 84')",
-                match: "Torino vs Lecce",
-                standings: "Torino (Rank #9) vs Lecce (Rank #16)",
-                xg_data: "xG Proj: 1.20 vs 1.10 | Live Score: 1 - 1 (HT 0-0)[cite: 7]",
-                
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pertarungan ketat tanpa gol (0-0) di paruh pertama[cite: 7].",
-                    ft_flow: "Babak 2: Kedua tim saling membalas gol di babak kedua, skor imbang 1-1 memasuki menit-menit akhir[cite: 7]."
-                },
-
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Blok pertahanan rendah dari kedua tim.",
-                    phase_4_7: "Fase Krusial: Jual beli serangan di sisa waktu normal."
-                },
-
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Pergerakan skor terkontrol di angka 1-1 menjelang akhir laga.",
-
-                markets: {
-                    over_under: "Under 2.5 Goals",
-                    btts: "Yes",
-                    corner: "Over 8.5",
-                    handicap: "Draw / DNB",
-                    exact_score: "1 - 1"
-                },
-                anti_l1_recommendation: "Under / Imbang Terkontrol"
-            },
-            {
-                id: 6,
-                category: "Austria: Austrian Bundesliga",
-                kickoff: "11:00 PM (Live 1')",
-                match: "SC Austria Lustenau vs Grazer AK",
-                standings: "Lustenau (Rank #7) vs Grazer AK (Rank #9)",
-                xg_data: "xG Proj: 1.25 vs 1.20 | Live Score: 0 - 0 (Live 1')[cite: 7]",
-                
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pertandingan baru saja dimulai, kedua tim melakukan penjajakan taktik awal (The Tactical Probe).",
-                    ft_flow: "Babak 2: Diprediksi berjalan ketat dengan keunggulan tipis bagi tim tamu di paruh kedua."
-                },
-
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Membaca pressing intensitas awal.",
-                    phase_4_7: "Fase Krusial: Pemanfaatan set-piece di babak kedua."
-                },
-
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Analisis awal menunjukkan potensi laga berimbang yang ketat.",
-
-                markets: {
-                    over_under: "Under 2.5 Goals",
-                    btts: "No",
-                    corner: "Over 8.5",
-                    handicap: "Grazer AK +0.25",
-                    exact_score: "0 - 1"
-                },
-                anti_l1_recommendation: "Under 2.5 / Away DNB"
-            }
-        ];
-
-        function renderMatches(data) {
-            const container = document.getElementById('matchesContainer');
-            container.innerHTML = '';
-
-            data.forEach(item => {
-                const cardHTML = `
-                <div class="glass-card border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition-all duration-300 shadow-2xl">
-                    
-                    <!-- Head Info -->
-                    <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-4 mb-4 gap-2">
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-bold bg-slate-800 text-emerald-400 px-2.5 py-1 rounded-md border border-slate-700 uppercase tracking-wider font-mono">
-                                    ${item.category}
-                                </span>
-                                <span class="text-xs bg-amber-950/80 text-amber-300 px-2.5 py-1 rounded border border-amber-500/30 font-mono font-bold">
-                                    <i class="fa-solid fa-circle-dot animate-pulse mr-1"></i> ${item.kickoff}
-                                </span>
-                            </div>
-                            <h3 class="text-xl font-extrabold text-slate-100 mt-2">${item.match}</h3>
-                            <div class="text-xs text-emerald-300 font-mono mt-1">🏆 Peringkat & Statistik: <strong>${item.standings}</strong></div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-xs font-black text-slate-950 bg-emerald-400 px-3.5 py-1.5 rounded-lg inline-block mb-1 font-mono uppercase tracking-wider">
-                                <i class="fa-solid fa-shield-cat mr-1"></i> Anti-L1 Priority
-                            </div>
-                            <div class="text-xs font-mono text-slate-400">📊 ${item.xg_data}</div>
-                        </div>
-                    </div>
-
-                    <!-- Analisis Babak 1 & Babak Kedua -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div class="bg-slate-950/90 border border-slate-800 p-3.5 rounded-xl text-xs space-y-1">
-                            <span class="text-[10px] text-amber-400 font-mono font-bold block uppercase"><i class="fa-solid fa-1 mr-1"></i> Analisis Babak Pertama (HT Flow)</span>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">${item.ht_2h_analysis.ht_flow}</p>
-                        </div>
-                        <div class="bg-slate-950/90 border border-slate-800 p-3.5 rounded-xl text-xs space-y-1">
-                            <span class="text-[10px] text-emerald-400 font-mono font-bold block uppercase"><i class="fa-solid fa-2 mr-1"></i> Analisis Babak Kedua (2H Shift)</span>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">${item.ht_2h_analysis.ft_flow}</p>
-                        </div>
-                    </div>
-
-                    <!-- 10 Fase Indikator Taktis & Anti-L1 Shield -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6 text-xs">
-                        <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                            <h4 class="font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-800 pb-2">
-                                <i class="fa-solid fa-chess-board"></i> 10 Fase Pembacaan Taktis
-                            </h4>
-                            <p class="text-slate-300 text-[11px]"><strong>Fase Awal:</strong> ${item.tactical_phases.phase_1_3}</p>
-                            <p class="text-slate-300 text-[11px]"><strong>Fase Krusial:</strong> ${item.tactical_phases.phase_4_7}</p>
-                        </div>
-                        <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                            <h4 class="font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-800 pb-2">
-                                <i class="fa-solid fa-shield-cat"></i> Status Steril L1
-                            </h4>
-                            <div class="font-bold text-emerald-300">Status: <span class="text-emerald-400 font-mono">${item.anti_l1_status}</span></div>
-                            <p class="text-slate-300 text-[11px]">${item.anti_l1_detail}</p>
-                        </div>
-                    </div>
-
-                    <!-- Multi-Market Grid (Over/Under, BTTS, Corner, Handicap, Score) -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">📈 Over / Under</div>
-                            <div class="font-bold text-slate-200">${item.markets.over_under}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">⚽ BTTS</div>
-                            <div class="font-bold text-slate-200">${item.markets.btts}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">🚩 Corner Line</div>
-                            <div class="font-bold text-slate-200">${item.markets.corner}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">⚖️ Handicap</div>
-                            <div class="font-bold text-slate-200">${item.markets.handicap}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-emerald-400">🎯 Tebak Skor</div>
-                            <div class="font-extrabold text-amber-300 font-mono">${item.markets.exact_score}</div>
-                        </div>
-                    </div>
-
-                    <!-- Rekomendasi Anti-L1 Priority Footer -->
-                    <div class="bg-gradient-to-r from-emerald-950/90 via-slate-900 to-slate-900 border border-emerald-500/40 rounded-xl p-4 flex flex-wrap justify-between items-center gap-4">
-                        <div class="space-y-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-black uppercase tracking-wider text-slate-950 bg-emerald-400 px-2.5 py-0.5 rounded shadow">
-                                    🛡️ PILIHAN UTAMA ANTI-L1
-                                </span>
-                            </div>
-                            <div class="text-xs text-slate-300 mt-1">
-                                Rekomendasi Fokus Aman: <strong class="text-emerald-400 font-mono text-sm">${item.anti_l1_recommendation}</strong>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-xs text-slate-400 block font-sans">Risiko Kebobolan L1</span>
-                            <span class="text-sm font-black text-emerald-400 font-mono">0.01% (Sangat Kecil)</span>
-                        </div>
-                    </div>
-
-                </div>
-                `;
-                container.innerHTML += cardHTML;
-            });
-        }
-
-        function filterMatches() {
-            const searchVal = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = matchesData.filter(item => {
-                return item.match.toLowerCase().includes(searchVal) || item.category.toLowerCase().includes(searchVal);
-            });
-            renderMatches(filtered);
-        }
-
-        renderMatches(matchesData);
-    </script>
+    renderMatches(matchesData);
+  </script>
 </body>
 </html>
