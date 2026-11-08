@@ -61,12 +61,11 @@
   </main>
 
   <script>
-    // DATA LENGKAP 27 MATCH DENGAN REKOMENDASI SAFE PICK SPESIFIK TIAP PERTANDINGAN
     const matchesData = [
       {
         id: 1, league: "Liga Primer Inggris", home: "Brighton", away: "Brentford", odds: { m1: 1.909, x: 4.155, m2: 3.98 },
         intensitas: "Sengit", isSafe: false,
-        safeRecommendation: "Brightor / Draw (1X) atau Over 2.5",
+        safeRecommendation: "Brighton / Draw (1X) atau Over 2.5",
         logikaBaru: "Brighton tampil terbuka di kandang, Brentford berbahaya lewat set-piece dan counter kilat.",
         layering500: "Layer 124 (Midfield Block) & Layer 312 (Gegenpressing Trigger). Kedua tim rajin serang sayap.",
         fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Brighton -0.5" }
@@ -272,4 +271,129 @@
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Cuiaba +0.25" }
       },
       {
-        id: 27, league: "Liga Venezuela - 06:
+        id: 27, league: "Liga Venezuela - 06:00 WIB", home: "Caracas", away: "Academia Puerto Cabello", odds: { m1: 1.85, x: 3.30, m2: 4.10 },
+        intensitas: "Biasa", isSafe: false,
+        safeRecommendation: "Caracas -0.25 / DNB atau Under 2.5",
+        logikaBaru: "Liga Venezuela terkenal dengan lini serang tumpul dan kandang angker. Caracas biasa menang tipis 1-0 tanpa kebobolan.",
+        layering500: "Layer 301 (Home Clean Sheet Focus) & Layer 111 (Defensive Block). Amankan Under 2.5.",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0 / 0-0", corners: "Under 8.5", handicap: "Caracas -0.25 / DNB" }
+      }
+    ];
+
+    function renderMatches(data) {
+      const container = document.getElementById('match-container');
+      container.innerHTML = '';
+
+      data.forEach(m => {
+        const isSengit = m.intensitas === "Sengit";
+        const badgeClass = isSengit ? "badge-sengit" : "badge-biasa";
+        const safeBadge = m.isSafe ? `<span class="bg-purple-600 text-xs px-2 py-1 rounded font-bold ml-2">🛡️ TOP SAFE PICK</span>` : '';
+        const isSelected = selectedParlay.includes(m.id);
+        const btnClass = isSelected ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-slate-800 hover:bg-blue-600';
+        const btnText = isSelected ? '✓ Dimasukkan ke Parlay' : '+ Tambah ke Parlay';
+
+        const card = `
+          <div class="card-match p-5 rounded-xl flex flex-col justify-between">
+            <div>
+              <!-- HEADER -->
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-xs text-blue-400 font-semibold">${m.league}</span>
+                <div>
+                  <span class="text-xs px-2 py-1 rounded font-bold ${badgeClass}">${m.intensitas}</span>
+                  ${safeBadge}
+                </div>
+              </div>
+
+              <!-- TEAMS & ODDS -->
+              <div class="flex justify-between items-center my-3 bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+                <div class="font-bold text-sm text-white w-2/5">${m.home}</div>
+                <div class="text-xs text-slate-500 font-bold">VS</div>
+                <div class="font-bold text-sm text-white w-2/5 text-right">${m.away}</div>
+              </div>
+
+              <!-- REKOMENDASI SAFE PICK ANTI-L1 DI SETIAP MATCH -->
+              <div class="mb-3 safe-pick-box p-2.5 rounded text-xs">
+                <span class="text-emerald-300 font-bold block mb-0.5">🎯 Rekomendasi Safe Pick Anti-L1:</span>
+                <span class="text-white font-extrabold text-sm">${m.safeRecommendation}</span>
+              </div>
+
+              <!-- 500-LAYERING ENGINE & LOGIKA BARU -->
+              <div class="mb-3 bg-slate-900 p-3 rounded border border-slate-800">
+                <span class="text-xs text-amber-400 font-bold block mb-1">🧠 Logika & Strategi Tim:</span>
+                <p class="text-xs text-slate-300 mb-2">${m.logikaBaru}</p>
+                
+                <div class="layer-box p-2 rounded text-xs">
+                  <span class="text-blue-400 font-bold">⚙️ 500-Layering Engine:</span>
+                  <p class="text-slate-400 mt-0.5">${m.layering500}</p>
+                </div>
+              </div>
+
+              <!-- FITUR LAMA: O/U, BTTS, 1X2, CORNER, HANDICAP -->
+              <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950 p-3 rounded border border-slate-900 mb-4">
+                <div><span class="text-slate-500">1X2:</span> <b class="text-white">${m.odds.m1} | ${m.odds.x} | ${m.odds.m2}</b></div>
+                <div><span class="text-slate-500">BTTS:</span> <b class="${m.fiturLama.btts === 'Ya' ? 'text-emerald-400' : 'text-red-400'}">${m.fiturLama.btts}</b></div>
+                <div><span class="text-slate-500">O/U:</span> <b class="${m.fiturLama.overUnder.includes('Over') ? 'text-amber-400' : 'text-cyan-400'}">${m.fiturLama.overUnder}</b></div>
+                <div><span class="text-slate-500">HT Result:</span> <b class="text-white">${m.fiturLama.htResult}</b></div>
+                <div><span class="text-slate-500">Corner:</span> <b class="text-blue-300">${m.fiturLama.corners}</b></div>
+                <div><span class="text-slate-500">Handicap:</span> <b class="text-purple-300">${m.fiturLama.handicap}</b></div>
+              </div>
+            </div>
+
+            <button onclick="toggleParlay(${m.id})" id="btn-${m.id}" class="w-full ${btnClass} text-white font-bold py-2.5 rounded text-xs transition">
+              ${btnText}
+            </button>
+          </div>
+        `;
+        container.innerHTML += card;
+      });
+    }
+
+    let selectedParlay = [];
+
+    function toggleParlay(id) {
+      const btn = document.getElementById(`btn-${id}`);
+      if (selectedParlay.includes(id)) {
+        selectedParlay = selectedParlay.filter(i => i !== id);
+        btn.innerText = "+ Tambah ke Parlay";
+        btn.className = "w-full bg-slate-800 hover:bg-blue-600 text-white font-bold py-2.5 rounded text-xs transition";
+      } else {
+        selectedParlay.push(id);
+        btn.innerText = "✓ Dimasukkan ke Parlay";
+        btn.className = "w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded text-xs transition";
+      }
+      updateParlaySummary();
+    }
+
+    function updateParlaySummary() {
+      document.getElementById('parlay-count').innerText = `${selectedParlay.length} Tim`;
+      
+      let totalOdds = 1.0;
+      selectedParlay.forEach(id => {
+        const m = matchesData.find(item => item.id === id);
+        const pickOdds = m.odds.m2 < m.odds.m1 ? m.odds.m2 : m.odds.m1;
+        totalOdds *= pickOdds;
+      });
+
+      document.getElementById('total-odds').innerText = `Total Odds Est: ${selectedParlay.length > 0 ? totalOdds.toFixed(2) : '1.00'}`;
+    }
+
+    function filterMatch(type) {
+      if (type === 'all') renderMatches(matchesData);
+      else if (type === 'sengit') renderMatches(matchesData.filter(m => m.intensitas === 'Sengit'));
+      else if (type === 'biasa') renderMatches(matchesData.filter(m => m.intensitas === 'Biasa'));
+      else if (type === 'safe') renderMatches(matchesData.filter(m => m.isSafe));
+    }
+
+    function searchMatch() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      renderMatches(matchesData.filter(m => 
+        m.home.toLowerCase().includes(query) || 
+        m.away.toLowerCase().includes(query) || 
+        m.league.toLowerCase().includes(query)
+      ));
+    }
+
+    renderMatches(matchesData);
+  </script>
+</body>
+</html>
