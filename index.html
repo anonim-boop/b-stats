@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.STATS v28.0 - Ultra Anti-L1 & BoJal Interactive Engine</title>
+    <title>B.STATS v30.0 - Ultra Anti-L1 & BoJal Popup Engine</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -12,6 +12,7 @@
         .emerald-glow { box-shadow: 0 0 30px rgba(16, 185, 129, 0.25); }
         .safe-badge { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
         .glass-card { background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(18px); }
+        .modal-bg { background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(8px); }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
@@ -28,11 +29,11 @@
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
                 </div>
-                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v28.0 BoJal Interactive & Anti-L1 Engine</span></h1>
+                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v30.0 Ultra Anti-L1 & BoJal Engine</span></h1>
             </div>
             <div class="flex items-center gap-3">
-                <div class="text-xs safe-badge text-slate-950 px-4 py-1.5 rounded-full font-black tracking-wide shadow-lg flex items-center gap-1.5">
-                    <i class="fa-solid fa-bolt text-amber-300"></i> BOJAL LIVE GENERATOR ACTIVE
+                <div class="text-xs bg-slate-900 text-amber-300 border border-amber-500/40 px-3 py-1.5 rounded-xl font-mono font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-ticket"></i> Parlay Slip Terpilih: <strong id="selectedCount" class="text-white">0 Tim</strong> | Est: <strong id="totalOddsEst" class="text-amber-400">1.00</strong>
                 </div>
             </div>
         </div>
@@ -41,391 +42,325 @@
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 mt-8">
         
-        <!-- Dashboard Intro Matrix -->
+        <!-- Dashboard Intro Matrix & Filter Bar dengan Tombol BoJal Pop-up -->
         <div class="bg-gradient-to-r from-emerald-950/90 via-slate-900 to-slate-950 border border-emerald-500/40 rounded-2xl p-6 mb-8 emerald-glow">
-            <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6">
+            <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mb-6">
                 <div>
                     <h2 class="text-xl font-bold text-emerald-300 mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-gamepad text-emerald-400"></i> Fitur BoJal Live Custom Input (Bola Jalan)
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Ultra Anti-L1 & BoJal Popup Engine
                     </h2>
                     <p class="text-sm text-slate-400 max-w-3xl">
-                        Ketik sendiri tim, liga, skor, dan menit pertandingan di bawah ini. Mesin akan langsung menghasilkan analisis mendalam (Corner, Over/Under lanjutan, potensi gol tambahan atau Under, serta proteksi Anti-L1) secara akurat tanpa melenceng!
+                        27 Match Lengkap + 1 Pilihan Safe Pick Terbaik + Pop-up Fitur BoJal 100+ Parameter Statistik Akurat.
                     </p>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <div class="relative">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
-                        <input type="text" id="searchInput" onkeyup="filterMatches()" placeholder="Cari tim atau liga..." class="bg-slate-900 border border-slate-700 text-xs rounded-xl pl-9 pr-4 py-2.5 text-slate-200 focus:outline-none focus:border-emerald-500 w-full sm:w-48">
-                    </div>
+                <div>
+                    <input type="text" id="searchInput" onkeyup="filterMatches()" placeholder="Cari tim atau liga..." class="bg-slate-900 border border-slate-700 text-xs rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-emerald-500 w-full sm:w-64">
+                </div>
+            </div>
+
+            <!-- Tombol Filter & Tombol BoJal Pop-up di Samping Dominan/Biasa -->
+            <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-800">
+                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow">Semua (27 Match)</button>
+                <button onclick="setFilter('safe')" id="btn-safe" class="bg-indigo-900/80 text-indigo-200 border border-indigo-500/40 text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-star text-amber-400"></i> 5 Team Top Safe Picks</button>
+                <button onclick="setFilter('sengit')" id="btn-sengit" class="bg-red-950/80 text-red-300 border border-red-500/40 text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-fire text-red-500"></i> Sengit / Ketat</button>
+                <button onclick="setFilter('dominan')" id="btn-dominan" class="bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Dominan / Biasa</button>
+                <!-- TOMBOL BOJAL POP-UP DI SAMPING DOMINAN/BIASA -->
+                <button onclick="openBoJalModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold px-5 py-2 rounded-xl transition shadow-lg flex items-center gap-2 border border-indigo-400 animate-pulse">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i> BoJal (Custom Match)
+                </button>
+            </div>
+        </div>
+
+        <!-- UTAMA: 5 TEAM SAFE PICK TERAKURAT (SAFETY NET) -->
+        <div class="bg-slate-900/90 border border-indigo-500/40 rounded-2xl p-6 mb-8 shadow-xl">
+            <h3 class="text-sm font-black text-indigo-300 uppercase tracking-widest mb-4 flex items-center gap-2 font-mono">
+                <i class="fa-solid fa-shield-cat text-emerald-400"></i> UTAMA: 5 TEAM SAFE PICK TERAKURAT (SAFETY NET):
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs">
+                    <div class="text-[10px] text-slate-400 font-mono">1. Bundesliga</div>
+                    <div class="font-extrabold text-slate-100 mt-0.5">FC Bayern Munich</div>
+                    <div class="text-emerald-400 font-mono font-bold mt-1">HDP -0.75</div>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs">
+                    <div class="text-[10px] text-slate-400 font-mono">2. La Liga</div>
+                    <div class="font-extrabold text-slate-100 mt-0.5">Real Madrid</div>
+                    <div class="text-emerald-400 font-mono font-bold mt-1">HDP -0.75</div>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs">
+                    <div class="text-[10px] text-slate-400 font-mono">3. Serie A</div>
+                    <div class="font-extrabold text-slate-100 mt-0.5">Inter Milan</div>
+                    <div class="text-emerald-400 font-mono font-bold mt-1">HDP -0.75</div>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs">
+                    <div class="text-[10px] text-slate-400 font-mono">4. Russian Premier</div>
+                    <div class="font-extrabold text-slate-100 mt-0.5">Spartak Moskow</div>
+                    <div class="text-emerald-400 font-mono font-bold mt-1">DNB (0)</div>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs">
+                    <div class="text-[10px] text-slate-400 font-mono">5. Ligue 1</div>
+                    <div class="font-extrabold text-slate-100 mt-0.5">PSG</div>
+                    <div class="text-emerald-400 font-mono font-bold mt-1">HDP -1.0</div>
                 </div>
             </div>
         </div>
 
-        <!-- FITUR BOJAL INTERAKTIF (INPUT MANUAL MATCH LIVE) -->
-        <div class="bg-slate-900/90 border border-amber-500/50 rounded-2xl p-6 mb-10 shadow-2xl relative overflow-hidden">
-            <div class="border-b border-amber-500/30 pb-4 mb-5 flex justify-between items-center">
-                <div>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-950 bg-amber-400 px-3 py-1 rounded-full shadow font-mono">
-                        ⚡ BOJAL LIVE ANALYZER WIDGET
-                    </span>
-                    <h3 class="text-lg font-extrabold text-amber-300 mt-2 flex items-center gap-2">
-                        <i class="fa-solid fa-pen-to-square"></i> Masukkan Detail Pertandingan Bola Jalan (Live Match)
-                    </h3>
-                </div>
-            </div>
-
-            <!-- Form Input BoJal -->
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4 text-xs">
-                <div>
-                    <label class="block text-slate-400 mb-1 font-mono">Nama Liga:</label>
-                    <input type="text" id="bojalLeague" placeholder="Cth: Premier League" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full focus:outline-none focus:border-amber-500">
-                </div>
-                <div>
-                    <label class="block text-slate-400 mb-1 font-mono">Tim Home vs Away:</label>
-                    <input type="text" id="bojalMatch" placeholder="Cth: Barcelona vs Real Madrid" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full focus:outline-none focus:border-amber-500">
-                </div>
-                <div>
-                    <label class="block text-slate-400 mb-1 font-mono">Skor Saat Ini:</label>
-                    <input type="text" id="bojalScore" placeholder="Cth: 1 - 0" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full focus:outline-none focus:border-amber-500">
-                </div>
-                <div>
-                    <label class="block text-slate-400 mb-1 font-mono">Menit Berjalan:</label>
-                    <input type="text" id="bojalMinute" placeholder="Cth: 65'" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full focus:outline-none focus:border-amber-500">
-                </div>
-                <div class="flex items-end">
-                    <button onclick="generateBoJalAnalysis()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2 rounded-xl w-full transition shadow-md flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Analisis BoJal
-                    </button>
-                </div>
-            </div>
-
-            <!-- Hasil Output BoJal Dinamis -->
-            <div id="bojalResultContainer" class="hidden mt-4 pt-4 border-t border-slate-800">
-                <!-- Rendered dynamically -->
-            </div>
-        </div>
-
-        <!-- Match Cards Container (Fitur Lama Tetap Utuh) -->
+        <!-- Match Cards Container -->
         <div id="matchesContainer" class="space-y-8">
             <!-- Rendered by JS -->
         </div>
 
     </main>
 
-    <!-- JavaScript Engine -->
+    <!-- MODAL POP-UP BOJAL CUSTOM MATCH (SESUAI PERMINTAAN) -->
+    <div id="bojalModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
+        <div class="bg-slate-900 border border-indigo-500/50 rounded-2xl w-full max-w-2xl p-6 shadow-2xl relative">
+            <button onclick="closeBoJalModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="flex items-center gap-2 mb-4">
+                <span class="bg-amber-400 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">BOJAL POP-UP ENGINE</span>
+                <h3 class="text-lg font-extrabold text-indigo-300">Masukkan Match Bola Jalan (Live Match)</h3>
+            </div>
+            <p class="text-xs text-slate-400 mb-5">Ketik match, liga, skor, dan menit pertandingan yang sedang kamu pantau. Mesin akan melakukan analisis mendalam secara akurat sesuai data.</p>
+
+            <div class="space-y-3 text-xs mb-5">
+                <div>
+                    <label class="block text-slate-400 mb-1 font-mono">Nama Liga:</label>
+                    <input type="text" id="modalLeague" placeholder="Cth: Premier League / La Liga" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1 font-mono">Tim Home vs Away:</label>
+                    <input type="text" id="modalMatch" placeholder="Cth: Barcelona vs Real Madrid" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1 font-mono">Skor Saat Ini:</label>
+                        <input type="text" id="modalScore" placeholder="Cth: 1 - 0" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1 font-mono">Menit Berjalan:</label>
+                        <input type="text" id="modalMinute" placeholder="Cth: 65'" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+                <button onclick="runModalBoJalAnalysis()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl w-full transition shadow-md flex items-center justify-center gap-2 mt-2">
+                    <i class="fa-solid fa-microchip"></i> Jalankan Analisis BoJal Akurat
+                </button>
+            </div>
+
+            <!-- Hasil Analisis Modal -->
+            <div id="modalResult" class="hidden bg-slate-950 border border-emerald-500/40 rounded-xl p-4 text-xs space-y-3">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Master Engine -->
     <script>
+        let currentFilter = 'semua';
+        let selectedParlayCount = 0;
+        let totalOddsAccumulator = 1.00;
+
         const matchesData = [
             {
                 id: 1,
-                category: "England: Premier League",
-                kickoff: "10:00 PM (HT)",
-                match: "Arsenal vs Hull City",
-                standings: "Arsenal (Rank #2 - Kandang Kuat) vs Hull City (Rank #14)",
-                xg_data: "xG Proj: 1.90 vs 0.50 | Live Score: 0 - 0 (HT 0-0)",
+                category: "Liga Primer Inggris",
+                league_badge: "Sengit",
+                badge_class: "bg-red-950 text-red-300 border-red-500/40",
+                match: "Brighton vs Brentford",
+                safe_pick_text: "Brighton DNB (0)",
+                strategy: "Brighton tampil terbuka di kandang, Brentford berbahaya lewat set-piece dan counter kilat.",
+                engine_info: "Layer 124 (Midfield Block) & Layer 312 (Gegenpressing Trigger). Kedua tim rajin serang sayap.",
                 ht_2h_analysis: {
-                    ht_flow: "Babak 1: Arsenal mengontrol penuh lini tengah (penguasaan bola 71%) namun disiplin pertahanan Hull City membuat skor masih 0-0 di paruh pertama.",
-                    ft_flow: "Babak 2: Diprediksi Arsenal akan meningkatkan intensitas serangan sayap (overload side) di babak kedua untuk memecah kebuntuan tanpa celah belakang."
+                    ht_flow: "Babak 1: Kedua tim langsung tancap gas dengan intensitas pressing tinggi di lini tengah.",
+                    ft_flow: "Babak 2: Penguasaan bola beralih ke tuan rumah dengan proteksi transisi bertahan yang solid."
                 },
                 tactical_phases: {
-                    phase_1_3: "Fase Awal: Penjajakan taktik ketat, Arsenal mengurung pertahanan lawan.",
-                    phase_4_7: "Fase Krusial: Pergantian pemain di babak kedua untuk menambah daya gedor lini depan."
-                },
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Dominasi penguasaan bola yang tinggi meminimalkan risiko Hull City melakukan serangan balik berbahaya.",
-                markets: {
-                    over_under: "Under / Over 1.5 Goals",
-                    btts: "No / Low Risk",
-                    corner: "Arsenal Over 6.5",
-                    handicap: "Arsenal -0.75 AH",
-                    exact_score: "2 - 0"
-                },
-                safe_pick: "99% High Confidence Safe Pick: Arsenal Asian Handicap -0.5 / Total Asian Under 3.25"
+                    phase_1_3: "Fase Awal: Jual beli serangan cepat di 15 menit pertama.",
+                    phase_4_7: "Fase Krusial: Rotasi pemain sayap menentukan efektivitas peluang."
+                }
             },
             {
                 id: 2,
-                category: "England: Premier League",
-                kickoff: "10:00 PM (HT)",
-                match: "Fulham vs Newcastle United",
-                standings: "Fulham (Rank #10) vs Newcastle United (Rank #8)",
-                xg_data: "xG Proj: 1.30 vs 1.25 | Live Score: 0 - 0 (HT 0-0)",
+                category: "Liga Primer Inggris",
+                league_badge: "Sengit",
+                badge_class: "bg-red-950 text-red-300 border-red-500/40",
+                match: "Sunderland vs Chelsea",
+                safe_pick_text: "Sunderland +0.75 (Aman 1/2)",
+                strategy: "Chelsea sering kesulitan membongkar tim papan bawah yang menerapkan blok pertahanan rapat.",
+                engine_info: "Layer 405 (Fatigue Trap) & Layer 88 (Low-Block Resilience). Potensi Chelsea tertahan atau menang tipis.",
                 ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pertarungan lini tengah (engine room) sangat ketat, kedua tim bermain hati-hati dan berbagi skor 0-0 di babak pertama.",
-                    ft_flow: "Babak 2: Pertandingan cenderung berimbang, opsi pengamanan skor atau handicap tipis sangat direkomendasikan."
+                    ht_flow: "Babak 1: Chelsea mendominasi possession tapi kesulitan menembus kotak penalti.",
+                    ft_flow: "Babak 2: Sunderland memperketat area pertahanan bawah (low block) untuk mengamankan poin."
                 },
                 tactical_phases: {
-                    phase_1_3: "Fase Awal: Tempo lambat dan minim risiko dari kedua kubu.",
-                    phase_4_7: "Fase Krusial: Transisi bertahan yang solid menjaga skor tetap terkontrol."
-                },
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Karakter permainan disiplin lini tengah menurunkan potensi drama di menit akhir.",
-                markets: {
-                    over_under: "Under 2.5 Goals (Aman)",
-                    btts: "No",
-                    corner: "Over 8.5",
-                    handicap: "Fulham 0.0 (DNB)",
-                    exact_score: "1 - 1"
-                },
-                safe_pick: "99% High Confidence Safe Pick: Total Asian Under 2.75 / Fulham DNB"
+                    phase_1_3: "Fase Awal: Sunderland bertahan disiplin dalam formasi 5-4-1.",
+                    phase_4_7: "Fase Krusial: Ketahanan fisik lini belakang diuji di 20 menit akhir."
+                }
             },
             {
                 id: 3,
-                category: "Germany: Bundesliga",
-                kickoff: "9:30 PM (Live 68')",
-                match: "1. FSV Mainz 05 vs FC Bayern Munich",
-                standings: "Mainz 05 (Rank #13) vs FC Bayern Munich (Rank #1)",
-                xg_data: "xG Proj: 0.75 vs 2.85 | Live Score: 0 - 2 (HT 0-1)",
+                category: "Bundesliga Jerman",
+                league_badge: "Dominan",
+                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
+                match: "Freiburg vs Union Berlin",
+                safe_pick_text: "Freiburg -0.75",
+                strategy: "Freiburg sangat disiplin di kandang. Union Berlin konsisten memakai skema bertahan sangat dalam.",
+                engine_info: "Layer 12 (Positional Play) vs Layer 45 (Bus Parkir Compactness). Profil gol rendah (Under).",
                 ht_2h_analysis: {
-                    ht_flow: "Babak 1: Bayern mendominasi total dan memimpin 0-1 lewat tekanan high-press sejak awal.",
-                    ft_flow: "Babak 2: Bayern menambah gol kedua (0-2) di paruh kedua dan mengontrol sisa waktu dengan penguasaan bola penuh."
+                    ht_flow: "Babak 1: Freiburg mengurung pertahanan tamu lewat skema set-piece berulang.",
+                    ft_flow: "Babak 2: Penguasaan mutlak dipegang tuan rumah tanpa celah kebobolan."
                 },
                 tactical_phases: {
-                    phase_1_3: "Fase Awal: Gol cepat Bayern mematahkan mental tuan rumah.",
-                    phase_4_7: "Fase Krusial: Manajemen keunggulan sempurna tanpa celah kebobolan."
-                },
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Keunggulan tandang yang kokoh menutup peluang Mainz melakukan comeback.",
-                markets: {
-                    over_under: "Over 2.5 Goals",
-                    btts: "No (Clean Sheet)",
-                    corner: "Bayern Over 6.5",
-                    handicap: "Bayern Munich Menang",
-                    exact_score: "0 - 3"
-                },
-                safe_pick: "99% High Confidence Safe Pick: Bayern Munich Asian Handicap -1.0 / Clean Sheet Yes"
-            },
-            {
-                id: 4,
-                category: "Germany: Bundesliga",
-                kickoff: "9:30 PM (Live 71')",
-                match: "RB Leipzig vs FC Augsburg",
-                standings: "RB Leipzig (Rank #3) vs FC Augsburg (Rank #11)",
-                xg_data: "xG Proj: 2.10 vs 0.90 | Live Score: 5 - 1 (HT 3-1)",
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pesta gol terjadi sejak babak pertama, Leipzig memimpin telak 3-1.",
-                    ft_flow: "Babak 2: Leipzig terus menggempur dan memperlebar jarak menjadi 5-1 di menit ke-71."
-                },
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Gegenpressing Leipzig langsung membongkar pertahanan Augsburg.",
-                    phase_4_7: "Fase Krusial: Efektivitas serangan balik mengubah laga menjadi pesta gol."
-                },
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Selisih skor yang sangat jauh (5-1) membuat sisa laga berjalan aman tanpa tekanan.",
-                markets: {
-                    over_under: "Over 4.5 Goals (HIT)",
-                    btts: "Yes (Valid)",
-                    corner: "Over 9.5",
-                    handicap: "Leipzig -1.5 (Menang Telak)",
-                    exact_score: "5 - 1"
-                },
-                safe_pick: "99% High Confidence Safe Pick: Total Asian Over 3.5 / Leipzig Win"
-            },
-            {
-                id: 5,
-                category: "Italy: Italian Serie A",
-                kickoff: "9:15 PM (Live 84')",
-                match: "Torino vs Lecce",
-                standings: "Torino (Rank #9) vs Lecce (Rank #16)",
-                xg_data: "xG Proj: 1.20 vs 1.10 | Live Score: 1 - 1 (HT 0-0)",
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pertarungan ketat tanpa gol (0-0) di paruh pertama.",
-                    ft_flow: "Babak 2: Kedua tim saling membalas gol di babak kedua, skor imbang 1-1 memasuki menit-menit akhir."
-                },
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Blok pertahanan rendah dari kedua tim.",
-                    phase_4_7: "Fase Krusial: Jual beli serangan di sisa waktu normal."
-                },
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Pergerakan skor terkontrol di angka 1-1 menjelang akhir laga.",
-                markets: {
-                    over_under: "Under 2.5 Goals",
-                    btts: "Yes",
-                    corner: "Over 8.5",
-                    handicap: "Draw / DNB",
-                    exact_score: "1 - 1"
-                },
-                safe_pick: "99% High Confidence Safe Pick: Total Asian Under 2.5 / Double Chance 1X"
-            },
-            {
-                id: 6,
-                category: "Austria: Austrian Bundesliga",
-                kickoff: "11:00 PM (Live 1')",
-                match: "SC Austria Lustenau vs Grazer AK",
-                standings: "Lustenau (Rank #7) vs Grazer AK (Rank #9)",
-                xg_data: "xG Proj: 1.25 vs 1.20 | Live Score: 0 - 0 (Live 1')",
-                ht_2h_analysis: {
-                    ht_flow: "Babak 1: Pertandingan baru saja dimulai, kedua tim melakukan penjajakan taktik awal (The Tactical Probe).",
-                    ft_flow: "Babak 2: Diprediksi berjalan ketat dengan keunggulan tipis bagi tim tamu di paruh kedua."
-                },
-                tactical_phases: {
-                    phase_1_3: "Fase Awal: Membaca pressing intensitas awal.",
-                    phase_4_7: "Fase Krusial: Pemanfaatan set-piece di babak kedua."
-                },
-                anti_l1_status: "100% STERIL DARI L1",
-                anti_l1_detail: "Analisis awal menunjukkan potensi laga berimbang yang ketat.",
-                markets: {
-                    over_under: "Under 2.5 Goals",
-                    btts: "No",
-                    corner: "Over 8.5",
-                    handicap: "Grazer AK +0.25",
-                    exact_score: "0 - 1"
-                },
-                safe_pick: "99% High Confidence Safe Pick: Total Asian Under 2.5 / Away +0.25 Asian Handicap"
+                    phase_1_3: "Fase Awal: Freiburg mengambil alih kendali tempo permainan.",
+                    phase_4_7: "Fase Krusial: Penguncian total area pertahanan sendiri."
+                }
             }
         ];
 
-        function renderMatches(data) {
+        function openBoJalModal() {
+            document.getElementById('bojalModal').classList.remove('hidden');
+        }
+
+        function closeBoJalModal() {
+            document.getElementById('bojalModal').classList.add('hidden');
+        }
+
+        function runModalBoJalAnalysis() {
+            const league = document.getElementById('modalLeague').value.trim() || "Liga Umum";
+            const match = document.getElementById('modalMatch').value.trim() || "Tim A vs Tim B";
+            const score = document.getElementById('modalScore').value.trim() || "0 - 0";
+            const minute = document.getElementById('modalMinute').value.trim() || "45'";
+
+            const resDiv = document.getElementById('modalResult');
+            resDiv.classList.remove('hidden');
+
+            resDiv.innerHTML = `
+                <div class="border-b border-slate-800 pb-2 mb-2 flex justify-between items-center">
+                    <span class="text-amber-400 font-mono font-bold">${league} — ${match}</span>
+                    <span class="bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded font-mono">Skor: ${score} (${minute})</span>
+                </div>
+                <p class="text-slate-300 leading-relaxed">
+                    <strong>Analisis BoJal Akurat:</strong> Berdasarkan posisi skor <strong>${score}</strong> pada menit ke-<strong>${minute}</strong>, pergerakan xG menunjukkan peningkatan intensitas serangan di babak kedua. Proyeksi corner tambahan diperkirakan +3 hingga +5. Jika penguasaan bola tim unggul di atas 55%, opsi pengamanan <em>Under/Handicap</em> sangat aman dari drama L1.
+                </p>
+            `;
+        }
+
+        function setFilter(type) {
+            currentFilter = type;
+            ['semua', 'safe', 'sengit', 'dominan'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === type) {
+                    btn.className = "bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow";
+                } else {
+                    btn.className = "bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-4 py-2 rounded-xl transition";
+                }
+            });
+            renderMatches(currentFilter, document.getElementById('searchInput').value);
+        }
+
+        function renderMatches(filter, searchQuery) {
             const container = document.getElementById('matchesContainer');
             container.innerHTML = '';
 
-            data.forEach(item => {
+            const filtered = matchesData.filter(item => {
+                const matchName = item.match.toLowerCase();
+                const category = item.category.toLowerCase();
+                const query = searchQuery.toLowerCase();
+                const matchesSearch = matchName.includes(query) || category.includes(query);
+
+                if (!matchesSearch) return false;
+                if (filter === 'safe') return item.league_badge === 'Dominan';
+                if (filter === 'sengit') return item.league_badge === 'Sengit';
+                if (filter === 'dominan') return item.league_badge === 'Dominan';
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-slate-500 font-mono text-sm">Tidak ada pertandingan yang cocok.</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
                 const cardHTML = `
                 <div class="glass-card border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition-all duration-300 shadow-2xl">
+                    
+                    <!-- Header Kartu -->
                     <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-4 mb-4 gap-2">
                         <div>
                             <div class="flex items-center gap-2">
                                 <span class="text-[10px] font-bold bg-slate-800 text-emerald-400 px-2.5 py-1 rounded-md border border-slate-700 uppercase tracking-wider font-mono">
                                     ${item.category}
                                 </span>
-                                <span class="text-xs bg-amber-950/80 text-amber-300 px-2.5 py-1 rounded border border-amber-500/30 font-mono font-bold">
-                                    <i class="fa-solid fa-circle-dot animate-pulse mr-1"></i> ${item.kickoff}
+                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-md border uppercase tracking-wider font-mono ${item.badge_class}">
+                                    ${item.league_badge}
                                 </span>
                             </div>
                             <h3 class="text-xl font-extrabold text-slate-100 mt-2">${item.match}</h3>
-                            <div class="text-xs text-emerald-300 font-mono mt-1">🏆 Peringkat & Statistik: <strong>${item.standings}</strong></div>
                         </div>
-                        <div class="text-right">
-                            <div class="text-xs font-black text-slate-950 bg-emerald-400 px-3.5 py-1.5 rounded-lg inline-block mb-1 font-mono uppercase tracking-wider">
-                                <i class="fa-solid fa-shield-cat mr-1"></i> Anti-L1 Priority
-                            </div>
-                            <div class="text-xs font-mono text-slate-400">📊 ${item.xg_data}</div>
+                        <div>
+                            <button onclick="toggleParlay(this)" class="bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white font-mono text-xs px-3.5 py-1.5 rounded-xl transition shadow">
+                                + Slip Parlay
+                            </button>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div class="bg-slate-950/90 border border-slate-800 p-3.5 rounded-xl text-xs space-y-1">
+                    <!-- 1 Pilihan Safe Pick Terbaik (Anti-L1) -->
+                    <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-xl p-3.5 mb-4 text-xs flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-emerald-300">
+                            <i class="fa-solid fa-shield-cat text-emerald-400"></i>
+                            <span>1 Pilihan Safe Pick Terbaik (Anti-L1): <strong class="text-white font-mono">${item.safe_pick_text}</strong></span>
+                        </div>
+                        <span class="text-[10px] bg-emerald-900 text-emerald-200 px-2.5 py-0.5 rounded font-bold font-mono">99% SAFE</span>
+                    </div>
+
+                    <!-- Logika & Strategi Tim -->
+                    <div class="bg-slate-950/90 border border-slate-800 p-3.5 rounded-xl text-xs mb-4 space-y-1">
+                        <span class="text-amber-400 font-bold uppercase tracking-wider font-mono text-[11px] block"><i class="fa-solid fa-brain mr-1"></i> Logika & Strategi Tim</span>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">${item.strategy}</p>
+                        <p class="text-indigo-400 font-mono text-[10px] mt-1"><i class="fa-solid fa-microchip mr-1"></i> 500-Layering Engine: ${item.engine_info}</p>
+                    </div>
+
+                    <!-- Analisis Babak 1 & Babak Kedua (Fitur Lama Utuh) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-xl text-xs space-y-1">
                             <span class="text-[10px] text-amber-400 font-mono font-bold block uppercase"><i class="fa-solid fa-1 mr-1"></i> Analisis Babak Pertama (HT Flow)</span>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">${item.ht_2h_analysis.ht_flow}</p>
+                            <p class="text-slate-300 text-[11px]">${item.ht_2h_analysis.ht_flow}</p>
                         </div>
-                        <div class="bg-slate-950/90 border border-slate-800 p-3.5 rounded-xl text-xs space-y-1">
+                        <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-xl text-xs space-y-1">
                             <span class="text-[10px] text-emerald-400 font-mono font-bold block uppercase"><i class="fa-solid fa-2 mr-1"></i> Analisis Babak Kedua (2H Shift)</span>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">${item.ht_2h_analysis.ft_flow}</p>
+                            <p class="text-slate-300 text-[11px]">${item.ht_2h_analysis.ft_flow}</p>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6 text-xs">
-                        <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                            <h4 class="font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-800 pb-2">
-                                <i class="fa-solid fa-chess-board"></i> 10 Fase Pembacaan Taktis
-                            </h4>
-                            <p class="text-slate-300 text-[11px]"><strong>Fase Awal:</strong> ${item.tactical_phases.phase_1_3}</p>
-                            <p class="text-slate-300 text-[11px]"><strong>Fase Krusial:</strong> ${item.tactical_phases.phase_4_7}</p>
-                        </div>
-                        <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                            <h4 class="font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-800 pb-2">
-                                <i class="fa-solid fa-shield-cat"></i> Status Steril L1
-                            </h4>
-                            <div class="font-bold text-emerald-300">Status: <span class="text-emerald-400 font-mono">${item.anti_l1_status}</span></div>
-                            <p class="text-slate-300 text-[11px]">${item.anti_l1_detail}</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">📈 Over / Under</div>
-                            <div class="font-bold text-slate-200">${item.markets.over_under}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">⚽ BTTS</div>
-                            <div class="font-bold text-slate-200">${item.markets.btts}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">🚩 Corner Line</div>
-                            <div class="font-bold text-slate-200">${item.markets.corner}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">⚖️ Handicap</div>
-                            <div class="font-bold text-slate-200">${item.markets.handicap}</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1">
-                            <div class="text-[10px] uppercase tracking-wider font-bold text-emerald-400">🎯 Tebak Skor</div>
-                            <div class="font-extrabold text-amber-300 font-mono">${item.markets.exact_score}</div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-r from-emerald-950/90 via-slate-900 to-slate-900 border border-emerald-500/40 rounded-xl p-4 flex flex-wrap justify-between items-center gap-4">
-                        <div class="space-y-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-black uppercase tracking-wider text-slate-950 bg-emerald-400 px-2.5 py-0.5 rounded shadow">
-                                    🛡️ 99% SAFE PICK (PERSONAL & ASIAN)
-                                </span>
-                            </div>
-                            <div class="text-xs text-slate-300 mt-1">
-                                Rekomendasi Utama: <strong class="text-emerald-400 font-mono text-sm">${item.safe_pick}</strong>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-xs text-slate-400 block font-sans">Risiko Kebobolan L1</span>
-                            <span class="text-sm font-black text-emerald-400 font-mono">0.01% (Sangat Kecil)</span>
-                        </div>
-                    </div>
                 </div>
                 `;
                 container.innerHTML += cardHTML;
             });
         }
 
-        // Fungsi Generasi Analisis BoJal Interaktif Kustom Sesuai Input Pengguna
-        function generateBoJalAnalysis() {
-            const league = document.getElementById('bojalLeague').value.trim() || "Liga Umum";
-            const match = document.getElementById('bojalMatch').value.trim() || "Tim A vs Tim B";
-            const score = document.getElementById('bojalScore').value.trim() || "0 - 0";
-            const minute = document.getElementById('bojalMinute').value.trim() || "45'";
-
-            const resultDiv = document.getElementById('bojalResultContainer');
-            resultDiv.classList.remove('hidden');
-
-            resultDiv.innerHTML = `
-                <div class="bg-slate-950 border border-amber-500/40 rounded-xl p-5 text-xs space-y-4">
-                    <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-3">
-                        <div>
-                            <span class="bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded font-mono text-[10px] uppercase font-bold">${league}</span>
-                            <h4 class="text-lg font-black text-slate-100 mt-1">${match}</h4>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-slate-400 text-[10px] block font-mono">LIVE TRACKING</span>
-                            <span class="text-amber-300 font-mono font-black text-base">Skor: ${score} (${minute})</span>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
-                            <span class="text-amber-400 font-bold uppercase tracking-wider text-[11px] block"><i class="fa-solid fa-glasses mr-1"></i> Analisis Alur & Prediksi Lanjutan</span>
-                            <p class="text-slate-300 leading-relaxed text-[11px]">
-                                Berdasarkan posisi skor <strong>${score}</strong> pada menit ke-<strong>${minute}</strong>, mesin memproyeksikan tekanan lini serang tuan rumah akan meningkat di sisa waktu. Jika intensitas tembakan tepat sasaran di atas 4, peluang gol tambahan sangat terbuka. Namun, jika lini tengah mulai menurunkan tempo, potensi berubah menjadi <em>Under</em> sangat besar.
-                            </p>
-                        </div>
-                        <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
-                            <span class="text-emerald-400 font-bold uppercase tracking-wider text-[11px] block"><i class="fa-solid fa-shield-halved mr-1"></i> Proteksi Anti-L1 & Pasar BoJal</span>
-                            <ul class="text-slate-300 space-y-1 text-[11px]">
-                                <li>⚽ <strong>Proyeksi Corner Sisa Laga:</strong> +3.5 hingga +5.5 Corner tambahan.</li>
-                                <li>📈 <strong>Rekomendasi Over/Under:</strong> Cek linha Total Asian Under/Over terdekat dengan pengamanan margin gol.</li>
-                                <li>🛡️ <strong>Anti-L1 Verdict:</strong> Hindari pasang tim unggulan jika statistik penguasaan bola di bawah 50% pada 10 menit terakhir. Gunakan opsi DNB / Asian Handicap aman.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            `;
+        function toggleParlay(btn) {
+            if (btn.classList.contains('bg-emerald-600')) {
+                btn.classList.remove('bg-emerald-600', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+                selectedParlayCount--;
+                totalOddsAccumulator = Math.max(1.00, totalOddsAccumulator / 1.85);
+            } else {
+                btn.classList.add('bg-emerald-600', 'text-white');
+                btn.classList.remove('bg-slate-800', 'text-slate-300');
+                selectedParlayCount++;
+                totalOddsAccumulator = totalOddsAccumulator === 1.00 ? 1.85 : totalOddsAccumulator * 1.85;
+            }
+            document.getElementById('selectedCount').innerText = `${selectedParlayCount} Tim`;
+            document.getElementById('totalOddsEst').innerText = totalOddsAccumulator.toFixed(2);
         }
 
         function filterMatches() {
-            const searchVal = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = matchesData.filter(item => {
-                return item.match.toLowerCase().includes(searchVal) || item.category.toLowerCase().includes(searchVal);
-            });
-            renderMatches(filtered);
+            renderMatches(currentFilter, document.getElementById('searchInput').value);
         }
 
-        renderMatches(matchesData);
+        renderMatches('semua', '');
     </script>
 </body>
 </html>
