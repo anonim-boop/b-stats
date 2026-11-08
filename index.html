@@ -21,7 +21,7 @@
   <header class="max-w-7xl mx-auto mb-8 border-b border-slate-800 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
     <div>
       <h1 class="text-3xl font-extrabold text-blue-400">🛡️ Universal Anti-L1 & Safe Pick Engine</h1>
-      <p class="text-slate-400 text-sm mt-1">27 Match Lengkap (Setiap Match Dilengkapi Rekomendasi Safe Pick & Analisis Anti-L1 Realistis)</p>
+      <p class="text-slate-400 text-sm mt-1">27 Match Lengkap (Safety Net Adjusted: HDP Kuarter -0.75 / DNB / Under Akurat)</p>
     </div>
     <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 text-right min-w-[200px]">
       <span class="text-xs text-slate-400 block">Parlay Slip Terpilih:</span>
@@ -41,17 +41,17 @@
     <input type="text" id="search-input" onkeyup="searchMatch()" placeholder="Cari tim atau liga..." class="bg-slate-900 border border-slate-800 px-4 py-2 rounded text-sm focus:outline-none focus:border-blue-500 w-full md:w-64">
   </section>
 
-  <!-- PANEL INFORMASI 5 SAFE PICKS UTAMA -->
+  <!-- PANEL INFORMASI 5 SAFE PICKS UTAMA (SAFETY NET UPDATED) -->
   <section id="safe-summary" class="max-w-7xl mx-auto mb-6 bg-purple-950/40 border border-purple-800/60 p-4 rounded-xl">
     <h3 class="text-purple-300 font-bold text-sm mb-2 flex items-center gap-2">
-      <span>🛡️ UTAMA: 5 TEAM SAFE PICK TERAKURAT:</span>
+      <span>🛡️ UTAMA: 5 TEAM SAFE PICK (ANTI-L1 SAFETY NET):</span>
     </h3>
     <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-xs">
-      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>1. Leverkusen</b> <span class="text-purple-300 block">HDP -0.75</span></div>
-      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>2. Real Madrid</b> <span class="text-purple-300 block">HDP -0.75</span></div>
-      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>3. Inter Milan</b> <span class="text-purple-300 block">HDP -1.5</span></div>
-      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>4. Spartak Moskow</b> <span class="text-purple-300 block">HDP -1.5</span></div>
-      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>5. PSG</b> <span class="text-purple-300 block">HDP -2.0</span></div>
+      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>1. Leverkusen</b> <span class="text-purple-300 block">HDP -0.75 (Aman)</span></div>
+      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>2. Real Madrid</b> <span class="text-purple-300 block">HDP -0.75 (Aman)</span></div>
+      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>3. Inter Milan</b> <span class="text-purple-300 block">HDP -0.75 / Win</span></div>
+      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>4. Spartak Moskow</b> <span class="text-purple-300 block">HDP -0.75 / DNB</span></div>
+      <div class="bg-slate-900/90 p-2 rounded border border-purple-900/50"><b>5. PSG</b> <span class="text-purple-300 block">HDP -1.0 / Win</span></div>
     </div>
   </section>
 
@@ -61,11 +61,12 @@
   </main>
 
   <script>
+    // DATA LENGKAP 27 MATCH DENGAN LOGIKA SAFETY NET REKOMENDASI (DNB & HDP KUARTER)
     const matchesData = [
       {
         id: 1, league: "Liga Primer Inggris", home: "Brighton", away: "Brentford", odds: { m1: 1.909, x: 4.155, m2: 3.98 },
         intensitas: "Sengit", isSafe: false,
-        safeRecommendation: "Brighton / Draw (1X) atau Over 2.5",
+        safeRecommendation: "Brighton DNB (0) atau Over 2.25",
         logikaBaru: "Brighton tampil terbuka di kandang, Brentford berbahaya lewat set-piece dan counter kilat.",
         layering500: "Layer 124 (Midfield Block) & Layer 312 (Gegenpressing Trigger). Kedua tim rajin serang sayap.",
         fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Brighton -0.5" }
@@ -73,7 +74,7 @@
       {
         id: 2, league: "Liga Primer Inggris", home: "Sunderland", away: "Chelsea", odds: { m1: 3.78, x: 3.82, m2: 2.044 },
         intensitas: "Sengit", isSafe: false,
-        safeRecommendation: "Sunderland +0.75 atau Under 3.5 (Aman dari L1)",
+        safeRecommendation: "Sunderland +0.75 (Aman 1/2) atau Under 3.0",
         logikaBaru: "Chelsea sering kesulitan membongkar tim papan bawah yang menerapkan blok pertahanan rapat.",
         layering500: "Layer 405 (Fatigue Trap) & Layer 88 (Low-Block Resilience). Potensi Chelsea tertahan atau menang tipis.",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Sunderland +0.75" }
@@ -81,7 +82,7 @@
       {
         id: 3, league: "Bundesliga Jerman", home: "Freiburg", away: "Union Berlin", odds: { m1: 1.562, x: 4.726, m2: 6.11 },
         intensitas: "Biasa", isSafe: false,
-        safeRecommendation: "Freiburg -0.5 atau Under 2.5",
+        safeRecommendation: "Freiburg -0.75 atau Under 2.5",
         logikaBaru: "Freiburg sangat disiplin di kandang. Union Berlin konsisten memakai skema bertahan sangat dalam.",
         layering500: "Layer 12 (Positional Play) vs Layer 45 (Bus Parkir Compactness). Profil gol rendah (Under).",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 8.5", handicap: "Freiburg -1.0" }
@@ -113,7 +114,7 @@
       {
         id: 7, league: "Liga Primer Inggris", home: "Crystal Palace", away: "Liverpool", odds: { m1: 4.8, x: 4.1, m2: 1.68 },
         intensitas: "Sengit", isSafe: false,
-        safeRecommendation: "Palace +1.0 atau Under 3.0",
+        safeRecommendation: "Crystal Palace +1.0 (Safety) atau Under 3.0",
         logikaBaru: "Liverpool diprediksi main aman/mengontrol tempo, Crystal Palace memasang blok rapat.",
         layering500: "Layer 180 (Rotation Fatigue Factor) & Layer 65 (Side-Line Trap). Karakteristik skor ketat.",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Palace +1.0" }
@@ -121,7 +122,7 @@
       {
         id: 8, league: "Bundesliga Jerman", home: "FC Köln", away: "Bayer Leverkusen", odds: { m1: 4.1, x: 3.9, m2: 1.8 },
         intensitas: "Biasa", isSafe: true,
-        safeRecommendation: "Bayer Leverkusen -0.75 (Top Safe Pick)",
+        safeRecommendation: "Bayer Leverkusen -0.75 (Menang 1 Gol = Win 1/2)",
         logikaBaru: "Leverkusen mengontrol penguasaan bola secara total dan disiplin mematikan sumber serangan Köln.",
         layering500: "Layer 1 (Juego de Posición Mastery). Leverkusen biasa menang efektif 0-2 atau 1-2.",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-1", corners: "Under 9.0", handicap: "Leverkusen -0.75" }
@@ -129,7 +130,7 @@
       {
         id: 9, league: "La Liga Spanyol", home: "Valencia", away: "Real Madrid", odds: { m1: 4.9, x: 4.0, m2: 1.65 },
         intensitas: "Biasa", isSafe: true,
-        safeRecommendation: "Real Madrid -0.75 (Top Safe Pick)",
+        safeRecommendation: "Real Madrid -0.75 (Menang 1 Gol = Win 1/2)",
         logikaBaru: "Real Madrid efisien dalam mencetak gol dan terbiasa mengunci kemenangan di babak kedua.",
         layering500: "Layer 410 (Clutch Performance) & Layer 92 (Late Collapse Valencia).",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Over 9.5", handicap: "Real Madrid -0.75" }
@@ -145,7 +146,7 @@
       {
         id: 11, league: "La Liga Spanyol", home: "Celta Vigo", away: "Levante UD", odds: { m1: 1.942, x: 3.8, m2: 4.21 },
         intensitas: "Biasa", isSafe: false,
-        safeRecommendation: "Celta Vigo -0.25 / DNB",
+        safeRecommendation: "Celta Vigo DNB (0) / -0.25",
         logikaBaru: "Celta mendominasi lini serang kandang, Levante kerap kesulitan keluar dari tekanan.",
         layering500: "Layer 74 (Flank Superiority) & Layer 110 (Home Advantage Metric).",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Celta -0.5" }
@@ -161,7 +162,7 @@
       {
         id: 13, league: "La Liga Spanyol", home: "Real Sociedad", away: "Rayo Vallecano", odds: { m1: 1.765, x: 4.26, m2: 4.67 },
         intensitas: "Biasa", isSafe: false,
-        safeRecommendation: "Real Sociedad -0.5 atau Under 2.5",
+        safeRecommendation: "Real Sociedad DNB (0) / -0.5 atau Under 2.5",
         logikaBaru: "Sociedad mengontrol tempo penguasaan bola secara sabar, Rayo bertahan dengan garis blok medium.",
         layering500: "Layer 45 (Tempo Control & Short Passing). Cenderung nirgol dari tim tamu.",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Sociedad -0.75" }
@@ -169,15 +170,15 @@
       {
         id: 14, league: "Serie A Italia", home: "AS Roma", away: "Sassuolo", odds: { m1: 1.341, x: 6.14, m2: 9.3 },
         intensitas: "Biasa", isSafe: false,
-        safeRecommendation: "AS Roma -1.0 atau Over 2.5",
+        safeRecommendation: "AS Roma -0.75 / -1.0 (Hindari -1.5)",
         logikaBaru: "Roma tampil menekan sejak menit awal di Olimpico, Sassuolo memiliki rekor pertahanan terburuk di laga tandang.",
-        layering500: "Layer 301 (Early Goal Pressure). Potensi Roma menang meyakinkan.",
+        layering500: "Layer 301 (Early Goal Pressure). Potensi Roma menang murni.",
         fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Roma -1.25" }
       },
       {
         id: 15, league: "Serie A Italia", home: "Monza", away: "Atalanta", odds: { m1: 3.44, x: 4.015, m2: 2.102 },
         intensitas: "Sengit", isSafe: false,
-        safeRecommendation: "Atalanta 0 / DNB atau Over 2.25",
+        safeRecommendation: "Atalanta DNB (0) atau Over 2.25",
         logikaBaru: "Atalanta menerapkan tekanan agresif man-to-man yang memancing laga terbuka dan berbalas gol.",
         layering500: "Layer 60 (Man-to-Man Aggressive Pressing) & Layer 140 (Physical Duels).",
         fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Atalanta -0.5" }
@@ -185,7 +186,7 @@
       {
         id: 16, league: "La Liga Spanyol", home: "Villarreal", away: "Getafe", odds: { m1: 1.8, x: 3.6, m2: 4.5 },
         intensitas: "Biasa", isSafe: false,
-        safeRecommendation: "Villarreal -0.25 atau Under 2.5",
+        safeRecommendation: "Villarreal DNB (0) atau Under 2.5",
         logikaBaru: "Villarreal mengandalkan sirkulasi bola pendek rapi, Getafe merusak ritme dengan pelanggaran taktis.",
         layering500: "Layer 85 (Build-up Mastery) vs Layer 130 (Tactical Fouls). Alot dan minim gol.",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Villarreal -0.5" }
@@ -201,7 +202,7 @@
       {
         id: 18, league: "Serie A Italia", home: "Inter Milan", away: "Como", odds: { m1: 1.28, x: 5.5, m2: 10.5 },
         intensitas: "Biasa", isSafe: true,
-        safeRecommendation: "Inter Milan -1.5 (Top Safe Pick)",
+        safeRecommendation: "Inter Milan -0.75 / -1.0 (Safety Net Anti-L1)",
         logikaBaru: "Inzaghiball sangat kokoh di San Siro. Inter dominan mengontrol jalannya laga tanpa banyak membuang tenaga.",
         layering500: "Layer 7 (Inverted Wing-Back Dominance) & Layer 99 (Box Defense). Inter biasa menang clean sheet.",
         fiturLama: { btts: "Tidak", overUnder: "Under 3.0", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Inter -1.5" }
@@ -217,7 +218,7 @@
       {
         id: 20, league: "Liga Primer Rusia", home: "Baltika Kaliningrad", away: "Dynamo Makhachkala", odds: { m1: 1.763, x: 3.67, m2: 5.69 },
         intensitas: "Biasa", isSafe: false,
-        safeRecommendation: "Baltika -0.25 atau Under 2.25",
+        safeRecommendation: "Baltika DNB (0) atau Under 2.25",
         logikaBaru: "Baltika mengandalkan fisik kandang dan situasi bola mati (set-piece), Dynamo tumpul di laga tandang.",
         layering500: "Layer 15 (Set-Piece Dominance & Aerial Duels).",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Baltika -0.5" }
@@ -233,15 +234,15 @@
       {
         id: 22, league: "Liga Primer Rusia", home: "Spartak Moskow", away: "Akron Tolyatti", odds: { m1: 1.275, x: 6.77, m2: 11.9 },
         intensitas: "Biasa", isSafe: true,
-        safeRecommendation: "Spartak Moskow -1.5 (Top Safe Pick)",
-        logikaBaru: "Spartak di kandang superior atas tim semenjana dan langsung menekan sejak menit awal.",
+        safeRecommendation: "Spartak Moskow -0.75 / DNB (Aman dari Skor 2-1)",
+        logikaBaru: "Spartak di kandang unggul materi pemain, tapi sering menang tipis 1 gol (seperti 2-1). Hindari HDP -1.5!",
         layering500: "Layer 3 (Absolute Home Superiority) & Layer 25 (High Intensity Transition).",
         fiturLama: { btts: "Tidak", overUnder: "Under 3.0", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Spartak -1.5" }
       },
       {
         id: 23, league: "Kejuaraan Prancis: Ligue 1", home: "Paris Saint-Germain", away: "Troyes AC", odds: { m1: 1.168, x: 9.3, m2: 19.0 },
         intensitas: "Biasa", isSafe: true,
-        safeRecommendation: "PSG -1.5 / -2.0 (Top Safe Pick)",
+        safeRecommendation: "PSG -1.0 / Win Only (Hindari -2.0)",
         logikaBaru: "Kedalaman skuad PSG sangat dominan menghadapi Troyes yang bertahan total sepanjang laga.",
         layering500: "Layer 2 (Squad Depth Superiority) & Layer 50 (Early Goal Psychological Crush).",
         fiturLama: { btts: "Tidak", overUnder: "Over 3.0", htResult: "HT 2-0", corners: "Over 9.5", handicap: "PSG -2.0" }
@@ -249,7 +250,7 @@
       {
         id: 24, league: "Kejuaraan Prancis: Ligue 1", home: "Le Havre", away: "Lorient", odds: { m1: 2.838, x: 3.515, m2: 2.642 },
         intensitas: "Sengit", isSafe: false,
-        safeRecommendation: "Lorient 0 / DNB atau Under 2.25",
+        safeRecommendation: "Lorient DNB (0) atau Under 2.25",
         logikaBaru: "Laga degradasi krusial; kedua tim bermain sangat hati-hati dan menghindari risiko kehilangan poin.",
         layering500: "Layer 400 (Relegation Fear Factor & Low Risk Play). Profil gol rendah.",
         fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Lorient 0" }
@@ -268,132 +269,4 @@
         safeRecommendation: "Cuiaba +0.25 atau Under 2.5 (Wajib Under)",
         logikaBaru: "Cuiabá dan Juventude sama-sama tumpul di lini depan jika bertarung ketat. Statistik memperlihatkan dominasi skor 0-0 atau 1-0 tipis.",
         layering500: "Layer 220 (Mutual Exhaustion & Defensive Pragmatism). 100% Rekomendasi Under.",
-        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Cuiaba +0.25" }
-      },
-      {
-        id: 27, league: "Liga Venezuela - 06:00 WIB", home: "Caracas", away: "Academia Puerto Cabello", odds: { m1: 1.85, x: 3.30, m2: 4.10 },
-        intensitas: "Biasa", isSafe: false,
-        safeRecommendation: "Caracas -0.25 / DNB atau Under 2.5",
-        logikaBaru: "Liga Venezuela terkenal dengan lini serang tumpul dan kandang angker. Caracas biasa menang tipis 1-0 tanpa kebobolan.",
-        layering500: "Layer 301 (Home Clean Sheet Focus) & Layer 111 (Defensive Block). Amankan Under 2.5.",
-        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0 / 0-0", corners: "Under 8.5", handicap: "Caracas -0.25 / DNB" }
-      }
-    ];
-
-    function renderMatches(data) {
-      const container = document.getElementById('match-container');
-      container.innerHTML = '';
-
-      data.forEach(m => {
-        const isSengit = m.intensitas === "Sengit";
-        const badgeClass = isSengit ? "badge-sengit" : "badge-biasa";
-        const safeBadge = m.isSafe ? `<span class="bg-purple-600 text-xs px-2 py-1 rounded font-bold ml-2">🛡️ TOP SAFE PICK</span>` : '';
-        const isSelected = selectedParlay.includes(m.id);
-        const btnClass = isSelected ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-slate-800 hover:bg-blue-600';
-        const btnText = isSelected ? '✓ Dimasukkan ke Parlay' : '+ Tambah ke Parlay';
-
-        const card = `
-          <div class="card-match p-5 rounded-xl flex flex-col justify-between">
-            <div>
-              <!-- HEADER -->
-              <div class="flex justify-between items-center mb-3">
-                <span class="text-xs text-blue-400 font-semibold">${m.league}</span>
-                <div>
-                  <span class="text-xs px-2 py-1 rounded font-bold ${badgeClass}">${m.intensitas}</span>
-                  ${safeBadge}
-                </div>
-              </div>
-
-              <!-- TEAMS & ODDS -->
-              <div class="flex justify-between items-center my-3 bg-slate-900/80 p-3 rounded-lg border border-slate-800">
-                <div class="font-bold text-sm text-white w-2/5">${m.home}</div>
-                <div class="text-xs text-slate-500 font-bold">VS</div>
-                <div class="font-bold text-sm text-white w-2/5 text-right">${m.away}</div>
-              </div>
-
-              <!-- REKOMENDASI SAFE PICK ANTI-L1 DI SETIAP MATCH -->
-              <div class="mb-3 safe-pick-box p-2.5 rounded text-xs">
-                <span class="text-emerald-300 font-bold block mb-0.5">🎯 Rekomendasi Safe Pick Anti-L1:</span>
-                <span class="text-white font-extrabold text-sm">${m.safeRecommendation}</span>
-              </div>
-
-              <!-- 500-LAYERING ENGINE & LOGIKA BARU -->
-              <div class="mb-3 bg-slate-900 p-3 rounded border border-slate-800">
-                <span class="text-xs text-amber-400 font-bold block mb-1">🧠 Logika & Strategi Tim:</span>
-                <p class="text-xs text-slate-300 mb-2">${m.logikaBaru}</p>
-                
-                <div class="layer-box p-2 rounded text-xs">
-                  <span class="text-blue-400 font-bold">⚙️ 500-Layering Engine:</span>
-                  <p class="text-slate-400 mt-0.5">${m.layering500}</p>
-                </div>
-              </div>
-
-              <!-- FITUR LAMA: O/U, BTTS, 1X2, CORNER, HANDICAP -->
-              <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950 p-3 rounded border border-slate-900 mb-4">
-                <div><span class="text-slate-500">1X2:</span> <b class="text-white">${m.odds.m1} | ${m.odds.x} | ${m.odds.m2}</b></div>
-                <div><span class="text-slate-500">BTTS:</span> <b class="${m.fiturLama.btts === 'Ya' ? 'text-emerald-400' : 'text-red-400'}">${m.fiturLama.btts}</b></div>
-                <div><span class="text-slate-500">O/U:</span> <b class="${m.fiturLama.overUnder.includes('Over') ? 'text-amber-400' : 'text-cyan-400'}">${m.fiturLama.overUnder}</b></div>
-                <div><span class="text-slate-500">HT Result:</span> <b class="text-white">${m.fiturLama.htResult}</b></div>
-                <div><span class="text-slate-500">Corner:</span> <b class="text-blue-300">${m.fiturLama.corners}</b></div>
-                <div><span class="text-slate-500">Handicap:</span> <b class="text-purple-300">${m.fiturLama.handicap}</b></div>
-              </div>
-            </div>
-
-            <button onclick="toggleParlay(${m.id})" id="btn-${m.id}" class="w-full ${btnClass} text-white font-bold py-2.5 rounded text-xs transition">
-              ${btnText}
-            </button>
-          </div>
-        `;
-        container.innerHTML += card;
-      });
-    }
-
-    let selectedParlay = [];
-
-    function toggleParlay(id) {
-      const btn = document.getElementById(`btn-${id}`);
-      if (selectedParlay.includes(id)) {
-        selectedParlay = selectedParlay.filter(i => i !== id);
-        btn.innerText = "+ Tambah ke Parlay";
-        btn.className = "w-full bg-slate-800 hover:bg-blue-600 text-white font-bold py-2.5 rounded text-xs transition";
-      } else {
-        selectedParlay.push(id);
-        btn.innerText = "✓ Dimasukkan ke Parlay";
-        btn.className = "w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded text-xs transition";
-      }
-      updateParlaySummary();
-    }
-
-    function updateParlaySummary() {
-      document.getElementById('parlay-count').innerText = `${selectedParlay.length} Tim`;
-      
-      let totalOdds = 1.0;
-      selectedParlay.forEach(id => {
-        const m = matchesData.find(item => item.id === id);
-        const pickOdds = m.odds.m2 < m.odds.m1 ? m.odds.m2 : m.odds.m1;
-        totalOdds *= pickOdds;
-      });
-
-      document.getElementById('total-odds').innerText = `Total Odds Est: ${selectedParlay.length > 0 ? totalOdds.toFixed(2) : '1.00'}`;
-    }
-
-    function filterMatch(type) {
-      if (type === 'all') renderMatches(matchesData);
-      else if (type === 'sengit') renderMatches(matchesData.filter(m => m.intensitas === 'Sengit'));
-      else if (type === 'biasa') renderMatches(matchesData.filter(m => m.intensitas === 'Biasa'));
-      else if (type === 'safe') renderMatches(matchesData.filter(m => m.isSafe));
-    }
-
-    function searchMatch() {
-      const query = document.getElementById('search-input').value.toLowerCase();
-      renderMatches(matchesData.filter(m => 
-        m.home.toLowerCase().includes(query) || 
-        m.away.toLowerCase().includes(query) || 
-        m.league.toLowerCase().includes(query)
-      ));
-    }
-
-    renderMatches(matchesData);
-  </script>
-</body>
-</html>
+        fiturLama: { btts: "Tidak", overU
