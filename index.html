@@ -1,379 +1,680 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.STATS v38.0 - Updated Massive Match Engine</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .emerald-glow { box-shadow: 0 0 50px rgba(16, 185, 129, 0.45); }
-        .amber-glow { box-shadow: 0 0 50px rgba(245, 158, 11, 0.45); }
-        .indigo-glow { box-shadow: 0 0 50px rgba(99, 102, 241, 0.45); }
-        .safe-badge { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
-        .glass-card { background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(32px); }
-        .modal-bg { background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(20px); }
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 6px; }
-        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B.STATS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #090d16; color: #f1f5f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .card-match { background: #131c2e; border: 1px solid #1e293b; transition: all 0.2s; }
+    .card-match:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1); }
+    .badge-sengit { background-color: #dc2626; color: #fff; }
+    .badge-biasa { background-color: #059669; color: #fff; }
+    .badge-bojal { background-color: #6366f1; color: #fff; cursor: pointer; }
+    .badge-bojal:hover { background-color: #4f46e5; }
+    .layer-box { background: #0f172a; border-left: 3px solid #3b82f6; }
+    .safe-pick-box { background: #064e3b; border-left: 3px solid #10b981; }
+    .modal-overlay { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(4px); }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen pb-36 selection:bg-emerald-500 selection:text-slate-950">
+<body class="p-4 md:p-8">
 
-    <!-- Header Navbar God-Tier Engine -->
-    <header class="bg-slate-900/98 border-b border-emerald-500/40 sticky top-0 z-50 backdrop-blur-md shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center space-x-3">
-                <div class="relative flex h-4 w-4">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
-                </div>
-                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v38.0 Updated Match Database Engine</span></h1>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="text-xs bg-slate-900 text-amber-300 border border-amber-500/40 px-4 py-2.5 rounded-xl font-mono font-bold flex items-center gap-2 shadow-xl">
-                    <i class="fa-solid fa-ticket text-amber-400"></i> Parlay Slip: <strong id="selectedCount" class="text-white">0 Tim</strong> | Est Odds: <strong id="totalOddsEst" class="text-amber-400">1.00</strong>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 mt-8">
-        
-        <!-- Dashboard Intro & Master Control Panel -->
-        <div class="bg-gradient-to-r from-emerald-950/98 via-slate-900 to-slate-950 border border-emerald-500/50 rounded-2xl p-6 mb-8 emerald-glow">
-            <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mb-6">
-                <div>
-                    <h2 class="text-xl font-bold text-emerald-300 mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-brain text-emerald-400"></i> Master Neural Analytics & Updated Match Database
-                    </h2>
-                    <p class="text-sm text-slate-400 max-w-3xl">
-                        Memuat daftar pertandingan baru pilihan secara lengkap, pencegahan mutlak drama L1, pemetaan 10 fase alur taktis mendalam, serta Mesin BoJal Pop-up Real-Time.
-                    </p>
-                </div>
-                <div>
-                    <input type="text" id="searchInput" onkeyup="filterMatches()" placeholder="Cari tim atau liga..." class="bg-slate-900 border border-slate-700 text-xs rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-emerald-500 w-full sm:w-72 shadow-inner">
-                </div>
-            </div>
-
-            <!-- Tombol Filter & Tombol BoJal Pop-up Utama -->
-            <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-800">
-                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow">Semua (Match Baru)</button>
-                <button onclick="setFilter('sengit')" id="btn-sengit" class="bg-red-950/80 text-red-300 border border-red-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-fire text-red-500"></i> Sengit / Ketat</button>
-                <button onclick="setFilter('dominan')" id="btn-dominan" class="bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Dominan / Biasa</button>
-                <button onclick="openBoJalModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold px-5 py-2.5 rounded-xl transition shadow-lg flex items-center gap-2 border border-indigo-400 animate-pulse">
-                    <i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i> BoJal (Custom Match)
-                </button>
-            </div>
-        </div>
-
-        <!-- Match Cards Container (Match Baru Sesuai Permintaan) -->
-        <div id="matchesContainer" class="space-y-8">
-            <!-- Rendered via JS Engine -->
-        </div>
-
-    </main>
-
-    <!-- MODAL POP-UP BOJAL CUSTOM MATCH DENGAN LOGIKA MULTI-PARAMETER & SARAN DINAMIS -->
-    <div id="bojalModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
-        <div class="bg-slate-900 border border-indigo-500/50 rounded-2xl w-full max-w-3xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeBoJalModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <div class="flex items-center gap-2 mb-4">
-                <span class="bg-amber-400 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">BOJAL REAL-TIME ENGINE</span>
-                <h3 class="text-lg font-extrabold text-indigo-300">Generator Analisis Bola Jalan (Live Match Analyzer)</h3>
-            </div>
-            <p class="text-xs text-slate-400 mb-5">Ketik liga, nama kedua tim, skor saat ini, serta menit berjalan. Sistem akan menghitung indeks xG, perubahan tempo, potensi corner, serta saran taruhan spesifik beserta alasannya.</p>
-
-            <div class="space-y-3 text-xs mb-5">
-                <div>
-                    <label class="block text-slate-400 mb-1 font-mono">Nama Liga:</label>
-                    <input type="text" id="modalLeague" placeholder="Cth: Spanyol - Primera División" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
-                </div>
-                <div>
-                    <label class="block text-slate-400 mb-1 font-mono">Tim Home vs Away:</label>
-                    <input type="text" id="modalMatch" placeholder="Cth: Barcelona vs Atletico Madrid" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-slate-400 mb-1 font-mono">Skor Saat Ini:</label>
-                        <input type="text" id="modalScore" placeholder="Cth: 1-0 / 0-0" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1 font-mono">Menit Berjalan:</label>
-                        <input type="text" id="modalMinute" placeholder="Cth: 45 / 70" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
-                    </div>
-                </div>
-                <button onclick="runModalBoJalAnalysis()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl w-full transition shadow-md flex items-center justify-center gap-2 mt-2">
-                    <i class="fa-solid fa-microchip"></i> Kembangkan Analisis BoJal Akurat
-                </button>
-            </div>
-
-            <!-- Hasil Output Analisis BoJal Dinamis -->
-            <div id="modalResult" class="hidden bg-slate-950 border border-emerald-500/40 rounded-xl p-5 text-xs space-y-4">
-                <!-- Rendered dynamically -->
-            </div>
-        </div>
+  <!-- HEADER -->
+  <header class="max-w-7xl mx-auto mb-8 border-b border-slate-800 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div>
+      <h1 class="text-3xl font-extrabold text-blue-400">B.STATS</h1>
+      <p class="text-slate-400 text-sm mt-1">ANTI L1</p>
     </div>
+    <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 text-right min-w-[200px]">
+      <span class="text-xs text-slate-400 block">Parlay Slip Terpilih:</span>
+      <span id="parlay-count" class="text-lg font-bold text-emerald-400">0 Tim</span>
+      <span id="total-odds" class="text-xs text-blue-300 block mt-1">Total Odds Est: 1.00</span>
+    </div>
+  </header>
 
-    <!-- JavaScript Expanded God-Tier Engine (Daftar Match Baru) -->
-    <script>
-        let currentFilter = 'semua';
-        let selectedParlayCount = 0;
-        let totalOddsAccumulator = 1.00;
+  <!-- CONTROL PANEL (FILTER) -->
+  <section class="max-w-7xl mx-auto mb-6 flex flex-wrap gap-3 items-center justify-between">
+    <div class="flex flex-wrap gap-2">
+      <button onclick="filterMatch('all')" class="bg-blue-600 px-4 py-2 rounded text-sm font-semibold hover:bg-blue-500 transition">Semua Match</button>
+      <button onclick="filterMatch('safe')" class="bg-purple-600 px-4 py-2 rounded text-sm font-semibold hover:bg-purple-500 transition">🛡️ Top Safe Picks</button>
+      <button onclick="filterMatch('sengit')" class="bg-red-600 px-4 py-2 rounded text-sm font-semibold hover:bg-red-500 transition">🔥 Sengit / Ketat</button>
+      <button onclick="filterMatch('biasa')" class="bg-emerald-600 px-4 py-2 rounded text-sm font-semibold hover:bg-emerald-500 transition">⚽ Dominan / Biasa</button>
+    </div>
+    <input type="text" id="search-input" onkeyup="searchMatch()" placeholder="Cari tim atau liga..." class="bg-slate-900 border border-slate-800 px-4 py-2 rounded text-sm focus:outline-none focus:border-blue-500 w-full md:w-64">
+  </section>
 
-        // Database Match Baru Sesuai Permintaan Pengguna
-        const matchesData = [
-            { id: 1, category: "Spanyol - Primera División (03.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "Barcelona vs Atletico Madrid", safe_pick_text: "Barcelona -0.75", strategy: "Duel papan atas La Liga di Camp Nou dengan penguasaan bola dominan.", ht_2h_analysis: { ht_flow: "Barcelona menekan total lini tengah Atletico sejak menit awal.", ft_flow: "Atletico merespons lewat serangan balik cepat di babak kedua." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 2, category: "Ukraina - Persha Liga (09.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Viktoriya Mykolaivka vs Ahrobiznes Volochysk", safe_pick_text: "Viktoriya DNB", strategy: "Pertarungan ketat lini tengah dengan intensitas fisik tinggi.", ht_2h_analysis: { ht_flow: "Banyak duel udara dan perebutan bola di lini tengah.", ft_flow: "Peluang bola mati jadi penentu kemenangan tipis." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Under 2.25 Goals" },
-            { id: 3, category: "Rumania - Liga II (12.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "ACS Știința Politehnica Timișoara vs CSM Reşiţa", safe_pick_text: "Politehnica Timișoara -0.25", strategy: "Tuan rumah mengandalkan dukungan suporter untuk menekan.", ht_2h_analysis: { ht_flow: "Saling berbalas serangan di awal laga.", ft_flow: "Faktor kebugaran fisik menentukan di 20 menit akhir." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 4, category: "Bulgaria - Second League (12.30 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "FC Chernomorets 1919 Burgas vs FK Yantra Gabrovo", safe_pick_text: "Chernomorets Burgas -0.5", strategy: "Burgas superior dalam penguasaan bola kandang.", ht_2h_analysis: { ht_flow: "Burgas mengurung pertahanan tamu.", ft_flow: "Mempertahankan keunggulan possession." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Under 2.5 Goals" },
-            { id: 5, category: "Bulgaria - Second League (12.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "FK CSKA 1948 Sofia II vs FC Rilski Sportist", safe_pick_text: "CSKA 1948 Sofia II -0.75", strategy: "Tim muda CSKA tampil agresif menekan.", ht_2h_analysis: { ht_flow: "Dominasi penuh di lini tengah oleh tuan rumah.", ft_flow: "Gol tambahan tercipta di babak kedua." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.75 Goals" },
-            { id: 6, category: "Inggris - FA Cup (14.30 / 19.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Plymouth Parkway vs Berkhamsted Town", safe_pick_text: "Plymouth Parkway DNB", strategy: "Piala FA bernuansa tensi tinggi dan permainan terbuka.", ht_2h_analysis: { ht_flow: "Saling serang dengan tempo cepat.", ft_flow: "Drama gol penentu di pengujung laga." }, corner_prediction: "Over 10.5 Corner", over_under_flow: "Over 2.75 Goals" },
-            { id: 7, category: "Serbia - Prva Liga (15.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "FK Napredak Kruševac vs OFK Bor 1919", safe_pick_text: "Napredak Kruševac -0.75", strategy: "Kualitas teknik tuan rumah jauh di atas tamu.", ht_2h_analysis: { ht_flow: "Napredak memegang kendali penuh bola.", ft_flow: "Mengamankan kemenangan margin 2 gol." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 8, category: "Rumania - Liga II (15.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "CS Dinamo București vs CSM Ramnicu Valcea", safe_pick_text: "Dinamo București -0.5", strategy: "Derbi penuh gengsi dengan tensi keras.", ht_2h_analysis: { ht_flow: "Banyak pelanggaran di lini tengah.", ft_flow: "Gol penentu lahir dari set-piece." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Under 2.5 Goals" },
-            { id: 9, category: "Bulgaria - Second League (15.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "FK Etar Veliko Tarnovo vs PFK Montana 1921", safe_pick_text: "Etar Veliko DNB", strategy: "Etar tampil solid di hadapan pendukung sendiri.", ht_2h_analysis: { ht_flow: "Etar menguasai jalannya babak pertama.", ft_flow: "Menjaga ritme dan mengunci poin." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Under 2.25 Goals" },
-            { id: 10, category: "Bulgaria - Second League (15.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "FC Fratria Varna vs FK Sportist Svoge", safe_pick_text: "Fratria Varna -0.25", strategy: "Permainan terbuka saling jual beli serangan.", ht_2h_analysis: { ht_flow: "Kedua tim langsung mencetak peluang emas.", ft_flow: "Gol balasan tercipta di paruh kedua." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 11, category: "Slovakia - 2. liga (16.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "MFK Tatran Liptovský Mikuláš vs MFK Bytča", safe_pick_text: "Tatran Liptovský -1.0", strategy: "Tatran superior dalam penyelesaian akhir.", ht_2h_analysis: { ht_flow: "Tuan rumah mengurung total pertahanan tamu.", ft_flow: "Menang meyakinkan selisih gol." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 3.0 Goals" },
-            { id: 12, category: "Georgia - Erovnuli Liga (16.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "FC Iberia 1999 vs FC Gagra", safe_pick_text: "Iberia 1999 -0.5", strategy: "Adu taktik ketat klub papan atas Georgia.", ht_2h_analysis: { ht_flow: "Ketat dan minim ruang tembak bersih.", ft_flow: "Pembeda hadir lewat aksi individual penyerang." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Under 2.5 Goals" },
-            { id: 13, category: "Rusia - First League (16.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Veles vs KAMAZ", safe_pick_text: "Veles DNB", strategy: "Pertarungan fisik khas liga kasta kedua Rusia.", ht_2h_analysis: { ht_flow: "Banyak duel keras di area tengah lapangan.", ft_flow: "Gol tercipta lewat skema serangan balik." }, corner_prediction: "Under 9.5 Corner", over_under_flow: "Under 2.25 Goals" },
-            { id: 14, category: "Jerman - Frauen Bundesliga (17.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "FC Köln W vs RB Leipzig W", safe_pick_text: "RB Leipzig W DNB", strategy: "Leipzig W tampil tajam dalam transisi menyerang.", ht_2h_analysis: { ht_flow: "Jual beli serangan cepat sejak menit awal.", ft_flow: "Leipzig unggul stamina di babak kedua." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.75 Goals" },
-            { id: 15, category: "Israel - Liga Leumit (17.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Hapoel Kfar Saba vs Maccabi Bnei Raina", safe_pick_text: "Kfar Saba -0.25", strategy: "Kfar Saba mengandalkan keunggulan kandang.", ht_2h_analysis: { ht_flow: "Tuan rumah menekan secara konstan.", ft_flow: "Pertahanan tamu kedodoran di akhir laga." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 16, category: "Israel - Liga Leumit (17.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Ironi Modi'in vs Hapoel Acre", safe_pick_text: "Hapoel Acre DNB", strategy: "Acre punya rekor tandang cukup baik.", ht_2h_analysis: { ht_flow: "Imbang dalam penguasaan bola.", ft_flow: "Gol penentu lahir dari kesalahan elementer." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Under 2.5 Goals" },
-            { id: 17, category: "Israel - Liga Leumit (17.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Kafr Qasim vs Hapoel Afula", safe_pick_text: "Kafr Qasim -0.5", strategy: "Kafr Qasim tampil agresif di kandang.", ht_2h_analysis: { ht_flow: "Kafr Qasim mengurung pertahanan Afula.", ft_flow: "Mengamankan skor kemenangan tipis." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 18, category: "Serbia - Prva Liga (17.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "FK Javor Ivanjica vs FK TSC Bačka Topola", safe_pick_text: "TSC Bačka Topola -0.5", strategy: "Bačka Topola unggul kualitas skuad.", ht_2h_analysis: { ht_flow: "Tim tamu mendikte jalannya pertandingan.", ft_flow: "Menang meyakinkan atas tuan rumah." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.75 Goals" },
-            { id: 19, category: "Norwegia - Eliteserien (18.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Kristiansund vs Vålerenga", safe_pick_text: "Vålerenga DNB", strategy: "Laga terbuka khas Liga Norwegia.", ht_2h_analysis: { ht_flow: "Banyak peluang tercipta dari kedua sisi.", ft_flow: "Saling berbalas gol di paruh kedua." }, corner_prediction: "Over 10.5 Corner", over_under_flow: "Over 3.0 Goals" },
-            { id: 20, category: "Rumania - Liga I (18.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "FC Botoșani vs SC Oțelul Galați", safe_pick_text: "Botoșani DNB", strategy: "Kedua tim bermain hati-hati di lini belakang.", ht_2h_analysis: { ht_flow: "Alot dan minim peluang bersih di babak 1.", ft_flow: "Gol tunggal penentu di menit akhir." }, corner_prediction: "Under 9.5 Corner", over_under_flow: "Under 2.25 Goals" },
-            { id: 21, category: "Spanyol - Primera División Femenina (18.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "Atlético Madrid W vs FC Badalona W", safe_pick_text: "Atlético Madrid W -1.25", strategy: "Madrid W sangat superior dalam penguasaan bola.", ht_2h_analysis: { ht_flow: "Madrid W menekan total sejak menit awal.", ft_flow: "Pesta gol kemenangan kandang." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 3.0 Goals" },
-            { id: 22, category: "Denmark - 1. Division (18.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Hvidovre vs Aarhus Fremad", safe_pick_text: "Hvidovre -0.25", strategy: "Hvidovre diunggulkan lewat agresivitas kandang.", ht_2h_analysis: { ht_flow: "Saling serang dengan tempo sedang.", ft_flow: "Tuan rumah cetak gol krusial di babak 2." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 23, category: "Inggris - Premier League 2 (19.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "Middlesbrough U21 vs Derby County U21", safe_pick_text: "Middlesbrough U21 -0.5", strategy: "Sepak bola akademi yang sangat ofensif.", ht_2h_analysis: { ht_flow: "Banyak peluang terbuka tercipta cepat.", ft_flow: "Banjir gol di babak kedua." }, corner_prediction: "Over 10.5 Corner", over_under_flow: "Over 3.25 Goals" },
-            { id: 24, category: "Italia - Serie C (Girone B) (19.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Pineto vs Vis Pesaro", safe_pick_text: "Pineto DNB", strategy: "Laga ketat khas Serie C Italia yang keras.", ht_2h_analysis: { ht_flow: "Banyak pelanggaran dan duel fisik.", ft_flow: "Skor tipis bertahan hingga bubaran." }, corner_prediction: "Under 9.5 Corner", over_under_flow: "Under 2.25 Goals" },
-            { id: 25, category: "Italia - Serie C (Girone C) (19.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Team Altamura vs Cavese", safe_pick_text: "Team Altamura DNB", strategy: "Altamura kuat saat bermain di kandang.", ht_2h_analysis: { ht_flow: "Saling berbalas serangan ketat.", ft_flow: "Gol penentu di menit-menit akhir." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Under 2.5 Goals" },
-            { id: 26, category: "Italia - Serie C (Girone C) (19.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Foggia vs Barletta", safe_pick_text: "Foggia -0.5", strategy: "Foggia mendikte permainan lewat dukungan suporter.", ht_2h_analysis: { ht_flow: "Foggia menekan konstan pertahanan Barletta.", ft_flow: "Memastikan kemenangan kandang." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 27, category: "Spanyol - Segunda División (19.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "CE Sabadell vs Real Sociedad B", safe_pick_text: "Real Sociedad B DNB", strategy: "Tim muda Sociedad B punya teknik sangat rapi.", ht_2h_analysis: { ht_flow: "Jual beli penguasaan bola berimbang.", ft_flow: "Sociedad B unggul kreativitas di akhir." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 28, category: "Inggris - National League South (19.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Chelmsford City vs Ebbsfleet United", safe_pick_text: "Chelmsford DNB", strategy: "Sepak bola non-liga Inggris yang mengandalkan fisik.", ht_2h_analysis: { ht_flow: "Banyak umpan lambung dan duel udara.", ft_flow: "Gol tercipta dari kemelut set-piece." }, corner_prediction: "Over 10.5 Corner", over_under_flow: "Over 2.75 Goals" },
-            { id: 29, category: "Italia - Serie C (Girone C) (19.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "AZ Picerno vs Bari", safe_pick_text: "Bari -0.5", strategy: "Bari miliki pengalaman lebih baik di kompetisi ini.", ht_2h_analysis: { ht_flow: "Bari mengendalikan tempo permainan.", ft_flow: "Menang tipis penguasaan skor." }, corner_prediction: "Over 8.5 Corner", over_under_flow: "Under 2.5 Goals" },
-            { id: 30, category: "Spanyol - Primera División Femenina (20.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", match: "Deportivo La Coruña W vs Valencia W", safe_pick_text: "Deportivo La Coruña W DNB", strategy: "Deportivo W solid dalam skema menyerang kandang.", ht_2h_analysis: { ht_flow: "Tuan rumah mendominasi babak pertama.", ft_flow: "Mengunci poin penuh di paruh kedua." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 31, category: "Portugal - Segunda Liga (20.15 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Torreense vs União de Leiria", safe_pick_text: "Torreense DNB", strategy: "Pertarungan ketat papan tengah Segunda Liga.", ht_2h_analysis: { ht_flow: "Ketat dan minim ruang tembak.", ft_flow: "Satu gol penentu di babak kedua." }, corner_prediction: "Under 9.5 Corner", over_under_flow: "Under 2.25 Goals" },
-            { id: 32, category: "CONCACAF Nations League (21.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Curaçao vs Panama", safe_pick_text: "Panama -0.75", strategy: "Panama superior secara kualitas teknik dan fisik.", ht_2h_analysis: { ht_flow: "Panama menekan lini pertahanan Curaçao.", ft_flow: "Panama mencetak gol kemenangan di babak 2." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.5 Goals" },
-            { id: 33, category: "CONCACAF Nations League (21.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", match: "Jamaica vs Mexico", safe_pick_text: "Mexico -0.5", strategy: "Meksiko dominan penguasaan bola atas Jamaika.", ht_2h_analysis: { ht_flow: "Meksiko mengurung pertahanan Jamaika.", ft_flow: "Gol kelas dunia dari lini serang Meksiko." }, corner_prediction: "Over 9.5 Corner", over_under_flow: "Over 2.75 Goals" }
-        ];
+  <!-- MAIN MATCH CONTAINER -->
+  <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="match-container">
+    <!-- Generated by JS -->
+  </main>
 
-        // Modul Manajemen Modal BoJal
-        function openBoJalModal() {
-            const modalEl = document.getElementById('bojalModal');
-            if (modalEl) modalEl.classList.remove('hidden');
-        }
+  <!-- MODAL POPUP FITUR BOJAL LENGKAP -->
+  <div id="bojal-modal" class="fixed inset-0 modal-overlay z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-indigo-500 max-w-2xl w-full rounded-2xl p-6 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeBojalModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold bg-slate-800 px-3 py-1 rounded-lg">✕</button>
+      <div id="bojal-modal-content">
+        <!-- Content injected dynamically -->
+      </div>
+    </div>
+  </div>
 
-        function closeBoJalModal() {
-            const modalEl = document.getElementById('bojalModal');
-            if (modalEl) modalEl.classList.add('hidden');
-        }
+  <script>
+    const matchesData = [
+      // --- MATCH LAMA 1 - 46 TERJAGA UTUH ---
+      {
+        id: 1, league: "Liga Primer Inggris", home: "Brighton", away: "Brentford", odds: { m1: 1.909, x: 4.155, m2: 3.98 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Brighton DNB (0)",
+        logikaBaru: "Brighton tampil terbuka di kandang, Brentford berbahaya lewat set-piece.",
+        layering500: "Layer 124 (Midfield Block) & Layer 312 (Gegenpressing Trigger).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Brighton -0.5" },
+        bojal: { ht: "Saling serang sejak menit awal. HT Over 0.5.", cornerHt: "Estimasi 4-5 Corner Babak 1.", xg: "xG Brighton 1.85 vs Brentford 1.42.", goals: "Over 2.5 Goals", overPersonal: "Over 1.5 Tim Brighton.", score: "2 - 1" }
+      },
+      {
+        id: 2, league: "Liga Primer Inggris", home: "Sunderland", away: "Chelsea", odds: { m1: 3.78, x: 3.82, m2: 2.044 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Sunderland +0.75 (Aman)",
+        logikaBaru: "Chelsea sering kesulitan membongkar tim papan bawah yang menerapkan blok rapat.",
+        layering500: "Layer 405 (Fatigue Trap) & Layer 88 (Low-Block Resilience).",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Sunderland +0.75" },
+        bojal: { ht: "Sunderland parkir bus total. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Sunderland 0.65 vs Chelsea 1.15.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Chelsea.", score: "0 - 1" }
+      },
+      {
+        id: 3, league: "Bundesliga Jerman", home: "Freiburg", away: "Union Berlin", odds: { m1: 1.562, x: 4.726, m2: 6.11 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Freiburg -0.75",
+        logikaBaru: "Freiburg sangat disiplin di kandang. Union Berlin bertahan sangat dalam.",
+        layering500: "Layer 12 (Positional Play) vs Layer 45 (Bus Parkir Compactness).",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 8.5", handicap: "Freiburg -1.0" },
+        bojal: { ht: "Freiburg pegang tempo. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Freiburg 1.70 vs Union 0.50.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Freiburg.", score: "2 - 0" }
+      },
+      {
+        id: 4, league: "Liga Primer Inggris", home: "Ipswich Town", away: "Bournemouth", odds: { m1: 3.905, x: 3.955, m2: 1.974 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Bournemouth DNB (0)",
+        logikaBaru: "Perang terbuka dua tim dengan pertahanan yang sama-sama rentan.",
+        layering500: "Layer 210 (Chaos Creation & Second Balls).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Bournemouth -0.5" },
+        bojal: { ht: "Jual beli serangan cepat. HT Over 0.5.", cornerHt: "Estimasi 5-6 Corner Babak 1.", xg: "xG Ipswich 1.40 vs Bournemouth 1.75.", goals: "Over 2.5 Goals", overPersonal: "Over 1.5 Tim Bournemouth.", score: "1 - 2" }
+      },
+      {
+        id: 5, league: "Liga Primer Inggris", home: "Manchester United", away: "Aston Villa", odds: { m1: 2.225, x: 3.96, m2: 3.19 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Aston Villa +0.5",
+        logikaBaru: "MU labil di lini belakang, Aston Villa tajam di transisi menyerang.",
+        layering500: "Layer 350 (Rest Defense Vulnerability).",
+        fiturLama: { btts: "Ya", overUnder: "Over 3.0", htResult: "HT 1-1", corners: "Over 11.0", handicap: "Aston Villa +0.5" },
+        bojal: { ht: "Berbalas gol cepat di paruh pertama. HT 1-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG MU 1.80 vs Villa 1.80.", goals: "Over 2.5 Goals", overPersonal: "Over 1.5 Tim Villa.", score: "2 - 2" }
+      },
+      {
+        id: 6, league: "Bundesliga Jerman", home: "TSG 1899 Hoffenheim", away: "Schalke 04", odds: { m1: 1.656, x: 4.62, m2: 5.13 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Hoffenheim -0.5",
+        logikaBaru: "Hoffenheim agresif di lini serang kandang, Schalke rapuh di half-space.",
+        layering500: "Layer 99 (Half-Space Exploitation).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Hoffenheim -0.75" },
+        bojal: { ht: "Hoffenheim menekan konstan. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Hoffenheim 1.90 vs Schalke 0.90.", goals: "Over 2.5 Goals", overPersonal: "Over 1.5 Tim Hoffenheim.", score: "2 - 1" }
+      },
+      {
+        id: 7, league: "Liga Primer Inggris", home: "Crystal Palace", away: "Liverpool", odds: { m1: 4.8, x: 4.1, m2: 1.68 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Crystal Palace +1.0",
+        logikaBaru: "Liverpool main aman/mengontrol tempo, Palace pasang blok rapat.",
+        layering500: "Layer 180 (Rotation Fatigue Factor) & Layer 65 (Side-Line Trap).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Palace +1.0" },
+        bojal: { ht: "Liverpool kuasai bola, Palace solid. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Palace 0.70 vs Liverpool 1.60.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Liverpool.", score: "0 - 2" }
+      },
+      {
+        id: 8, league: "Bundesliga Jerman", home: "FC Köln", away: "Bayer Leverkusen", odds: { m1: 4.1, x: 3.9, m2: 1.8 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Bayer Leverkusen -0.75",
+        logikaBaru: "Leverkusen kontrol penguasaan bola total dan disiplin.",
+        layering500: "Layer 1 (Juego de Posición Mastery).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Under 9.0", handicap: "Leverkusen -0.75" },
+        bojal: { ht: "Leverkusen cetak gol di babak pertama. HT 0-1.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Köln 0.60 vs Leverkusen 1.80.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Leverkusen.", score: "0 - 2" }
+      },
+      {
+        id: 9, league: "La Liga Spanyol", home: "Valencia", away: "Real Madrid", odds: { m1: 4.9, x: 4.0, m2: 1.65 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Real Madrid -0.75",
+        logikaBaru: "Real Madrid efisien cetak gol dan terbiasa kunci kemenangan babak kedua.",
+        layering500: "Layer 410 (Clutch Performance).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Over 9.5", handicap: "Real Madrid -0.75" },
+        bojal: { ht: "Valencia ketat menahan Madrid. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Valencia 0.80 vs Madrid 1.65.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Madrid.", score: "0 - 2" }
+      },
+      {
+        id: 10, league: "La Liga Spanyol", home: "Elche", away: "Real Betis", odds: { m1: 3.555, x: 3.82, m2: 2.117 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Elche +0.5",
+        logikaBaru: "Elche hati-hati amankan poin, Betis tempo lambat.",
+        layering500: "Layer 155 (Survival Motivation & Tactical Fouls).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 8.5", handicap: "Elche +0.5" },
+        bojal: { ht: "Tempo sangat lambat. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Elche 0.90 vs Betis 1.00.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Betis.", score: "0 - 0" }
+      },
+      {
+        id: 11, league: "La Liga Spanyol", home: "Celta Vigo", away: "Levante UD", odds: { m1: 1.942, x: 3.8, m2: 4.21 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Celta Vigo DNB (0)",
+        logikaBaru: "Celta dominasi lini serang kandang.",
+        layering500: "Layer 74 (Flank Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Celta -0.5" },
+        bojal: { ht: "Celta dominan kandang. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Celta 1.60 vs Levante 0.70.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Celta.", score: "2 - 0" }
+      },
+      {
+        id: 12, league: "Serie A Italia", home: "Genoa", away: "AC Milan", odds: { m1: 4.835, x: 3.725, m2: 1.852 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Genoa +0.75",
+        logikaBaru: "Genoa di kandang sangat alot dengan pertahanan berlapis.",
+        layering500: "Layer 250 (Zonal Compactness).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Genoa +0.75" },
+        bojal: { ht: "Genoa matikan lini tengah Milan. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Genoa 0.70 vs Milan 1.20.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Milan.", score: "0 - 1" }
+      },
+      {
+        id: 13, league: "La Liga Spanyol", home: "Real Sociedad", away: "Rayo Vallecano", odds: { m1: 1.765, x: 4.26, m2: 4.67 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Real Sociedad DNB (0)",
+        logikaBaru: "Sociedad kontrol tempo sabar.",
+        layering500: "Layer 45 (Tempo Control & Short Passing).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Sociedad -0.75" },
+        bojal: { ht: "Sociedad unggul penguasaan bola. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Sociedad 1.55 vs Rayo 0.60.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Sociedad.", score: "1 - 0" }
+      },
+      {
+        id: 14, league: "Serie A Italia", home: "AS Roma", away: "Sassuolo", odds: { m1: 1.341, x: 6.14, m2: 9.3 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "AS Roma -0.75",
+        logikaBaru: "Roma menekan sejak awal di Olimpico.",
+        layering500: "Layer 301 (Early Goal Pressure).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Roma -1.25" },
+        bojal: { ht: "Roma beringas di kandang. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Roma 2.10 vs Sassuolo 0.90.", goals: "Over 2.5 Goals", overPersonal: "Over 2.0 Tim Roma.", score: "3 - 1" }
+      },
+      {
+        id: 15, league: "Serie A Italia", home: "Monza", away: "Atalanta", odds: { m1: 3.44, x: 4.015, m2: 2.102 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Atalanta DNB (0)",
+        logikaBaru: "Atalanta terapkan tekanan agresif man-to-man.",
+        layering500: "Layer 60 (Man-to-Man Aggressive Pressing).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Atalanta -0.5" },
+        bojal: { ht: "Atalanta menekan habis, Monza balas counter. HT 1-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Monza 1.30 vs Atalanta 1.85.", goals: "Over 2.5 Goals", overPersonal: "Over 1.5 Tim Atalanta.", score: "1 - 2" }
+      },
+      {
+        id: 16, league: "La Liga Spanyol", home: "Villarreal", away: "Getafe", odds: { m1: 1.8, x: 3.6, m2: 4.5 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Villarreal DNB (0)",
+        logikaBaru: "Villarreal andalkan sirkulasi bola pendek rapi.",
+        layering500: "Layer 85 (Build-up Mastery) vs Layer 130 (Tactical Fouls).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Villarreal -0.5" },
+        bojal: { ht: "Getafe bikin laga kotor. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Villarreal 1.10 vs Getafe 0.50.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Villarreal.", score: "1 - 0" }
+      },
+      {
+        id: 17, league: "Serie A Italia", home: "Napoli", away: "Lazio", odds: { m1: 2.1, x: 3.4, m2: 3.5 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Napoli DNB (0)",
+        logikaBaru: "Derby taktik papan atas Serie A. Utamakan lini belakang.",
+        layering500: "Layer 500 (Masterclass Chess Match).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Over 9.5", handicap: "Napoli -0.25" },
+        bojal: { ht: "Pertarungan lini tengah ketat. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Napoli 1.15 vs Lazio 0.95.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Napoli.", score: "1 - 0" }
+      },
+      {
+        id: 18, league: "Serie A Italia", home: "Inter Milan", away: "Como", odds: { m1: 1.28, x: 5.5, m2: 10.5 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Inter Milan -0.75",
+        logikaBaru: "Inzaghiball sangat kokoh di San Siro.",
+        layering500: "Layer 7 (Inverted Wing-Back Dominance).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 3.0", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Inter -1.5" },
+        bojal: { ht: "Inter dominan mutlak. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Inter 2.20 vs Como 0.40.", goals: "Under 3.0 Goals", overPersonal: "Over 1.5 Tim Inter.", score: "2 - 0" }
+      },
+      {
+        id: 19, league: "Liga Primer Rusia", home: "Krylia Sovetov", away: "Orenburg", odds: { m1: 2.46, x: 3.67, m2: 2.973 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Krylia DNB (0)",
+        logikaBaru: "Kekuatan setara; puas berbagi 1 poin.",
+        layering500: "Layer 220 (Safe Game Management).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 8.5", handicap: "Draw / Krylia 0" },
+        bojal: { ht: "Laga seimbang minim peluang. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Krylia 0.90 vs Orenburg 0.85.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Kedua Tim.", score: "1 - 1" }
+      },
+      {
+        id: 20, league: "Liga Primer Rusia", home: "Baltika Kaliningrad", away: "Dynamo Makhachkala", odds: { m1: 1.763, x: 3.67, m2: 5.69 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Baltika DNB (0)",
+        logikaBaru: "Baltika andalkan fisik kandang dan bola mati.",
+        layering500: "Layer 15 (Set-Piece Dominance & Aerial Duels).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Baltika -0.5" },
+        bojal: { ht: "Baltika dominan fisik kandang. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Baltika 1.25 vs Dynamo 0.50.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Baltika.", score: "1 - 0" }
+      },
+      {
+        id: 21, league: "Kejuaraan Prancis: Ligue 1", home: "Angers SCO", away: "OGC Nice", odds: { m1: 3.535, x: 3.84, m2: 2.117 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Angers +0.5",
+        logikaBaru: "Nice disiplin bertahan tandang.",
+        layering500: "Layer 111 (Defensive Block).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Over 9.5", handicap: "Angers +0.5" },
+        bojal: { ht: "Ligue 1 bertahan solid. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Angers 0.80 vs Nice 1.10.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Nice.", score: "0 - 1" }
+      },
+      {
+        id: 22, league: "Liga Primer Rusia", home: "Spartak Moskow", away: "Akron Tolyatti", odds: { m1: 1.275, x: 6.77, m2: 11.9 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Spartak Moskow DNB (0)",
+        logikaBaru: "Spartak unggul materi, sering menang tipis 1 gol.",
+        layering500: "Layer 3 (Absolute Home Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 3.0", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Spartak -1.5" },
+        bojal: { ht: "Spartak cetak 1 gol di babak pertama. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Spartak 2.00 vs Akron 0.80.", goals: "Over 2.5 Goals", overPersonal: "Over 1.5 Tim Spartak.", score: "2 - 1" }
+      },
+      {
+        id: 23, league: "Kejuaraan Prancis: Ligue 1", home: "Paris Saint-Germain", away: "Troyes AC", odds: { m1: 1.168, x: 9.3, m2: 19.0 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "PSG -1.0",
+        logikaBaru: "Kedalaman skuad PSG sangat dominan.",
+        layering500: "Layer 2 (Squad Depth Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 3.0", htResult: "HT 2-0", corners: "Over 9.5", handicap: "PSG -2.0" },
+        bojal: { ht: "PSG bantai babak pertama. HT 2-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG PSG 2.70 vs Troyes 0.30.", goals: "Over 3.0 Goals", overPersonal: "Over 2.5 Tim PSG.", score: "3 - 0" }
+      },
+      {
+        id: 24, league: "Kejuaraan Prancis: Ligue 1", home: "Le Havre", away: "Lorient", odds: { m1: 2.838, x: 3.515, m2: 2.642 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Lorient DNB (0)",
+        logikaBaru: "Laga degradasi krusial; hindari risiko.",
+        layering500: "Layer 400 (Relegation Fear Factor).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Lorient 0" },
+        bojal: { ht: "Main hati-hati zona bawah. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Le Havre 0.80 vs Lorient 0.95.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Kedua Tim.", score: "0 - 0" }
+      },
+      {
+        id: 25, league: "Liga Brazil (Serie A)", home: "Xavier Lindsay", away: "Criciúma", odds: { m1: 2.15, x: 3.25, m2: 3.40 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Xavier Lindsay DNB (0)",
+        logikaBaru: "Karakter Liga Brazil keras, tempo lambat.",
+        layering500: "Layer 450 (Latam Early Morning Low Tempo).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Xavier Lindsay DNB (0)" },
+        bojal: { ht: "Tempo lambat. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Xavier 1.10 vs Criciúma 0.90.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Kedua Tim.", score: "1 - 0" }
+      },
+      {
+        id: 26, league: "Liga Brazil (Serie A)", home: "Cuiaba", away: "Esporte Clube Juventude", odds: { m1: 2.05, x: 3.20, m2: 3.75 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Cuiaba +0.25",
+        logikaBaru: "Cuiabá dan Juventude tumpul di lini depan.",
+        layering500: "Layer 220 (Mutual Exhaustion).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Cuiaba +0.25" },
+        bojal: { ht: "Sama-sama tumpul. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Cuiaba 0.95 vs Juventude 0.85.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Kedua Tim.", score: "1 - 0" }
+      },
+      {
+        id: 27, league: "Liga Venezuela", home: "Caracas", away: "Academia Puerto Cabello", odds: { m1: 1.85, x: 3.30, m2: 4.10 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Caracas DNB (0)",
+        logikaBaru: "Liga Venezuela tumpul, kandang Caracas angker.",
+        layering500: "Layer 301 (Home Clean Sheet Focus).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0 / 0-0", corners: "Under 8.5", handicap: "Caracas -0.25 / DNB" },
+        bojal: { ht: "Caracas kandang angker. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Caracas 1.40 vs Puerto 0.60.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Caracas.", score: "1 - 0" }
+      },
 
-        // Fungsi Kalkulasi Analisis BoJal Real-Time Komprehensif
-        function runModalBoJalAnalysis() {
-            const leagueInput = document.getElementById('modalLeague');
-            const matchInput = document.getElementById('modalMatch');
-            const scoreInput = document.getElementById('modalScore');
-            const minuteInput = document.getElementById('modalMinute');
-            const resDiv = document.getElementById('modalResult');
+      // --- MATCH BARU DITAMBAHKAN ---
+      {
+        id: 28, league: "Club Friendlies - 19:00", home: "Paderborn 07", away: "Eintracht Braunschweig", odds: { m1: 1.80, x: 3.80, m2: 3.60 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Paderborn DNB (0)",
+        logikaBaru: "Laga persahabatan Jerman; eksperimen taktik terbuka dan rotasi.",
+        layering500: "Layer 12 (Friendly Open Play).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 9.5", handicap: "Paderborn -0.25" },
+        bojal: { ht: "Laga santai terbuka. HT Over 0.5.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Paderborn 1.70 vs Braunschweig 1.30.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Paderborn.", score: "2 - 1" }
+      },
+      {
+        id: 29, league: "EFL Trophy - 02:00", home: "Barnet", away: "Leyton Orient", odds: { m1: 2.45, x: 3.40, m2: 2.60 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Barnet +0.25",
+        logikaBaru: "Piala Liga Bawah Inggris; Barnet ngotot di kandang.",
+        layering500: "Layer 155 (Cup Underdog Motivation).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Barnet +0.25" },
+        bojal: { ht: "Barnet inisiatif tekan duluan. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Barnet 1.45 vs Leyton 1.40.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Barnet.", score: "2 - 1" }
+      },
+      {
+        id: 30, league: "EFL Trophy - 02:00", home: "Burton Albion", away: "Notts County", odds: { m1: 2.30, x: 3.50, m2: 2.75 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Notts County +0.25",
+        logikaBaru: "Notts County punya gaya main menyerang tajam.",
+        layering500: "Layer 74 (Flank Superiority).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Notts County +0.25" },
+        bojal: { ht: "Jual beli serangan terbuka. HT 1-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Burton 1.35 vs Notts 1.65.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Notts County.", score: "1 - 2" }
+      },
+      {
+        id: 31, league: "EFL Trophy - 02:00", home: "Bristol Rovers", away: "Reading", odds: { m1: 2.60, x: 3.40, m2: 2.45 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Reading DNB (0)",
+        logikaBaru: "Reading unggul kualitas kedalaman skuad.",
+        layering500: "Layer 2 (Squad Depth Superiority).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Over 9.5", handicap: "Reading 0" },
+        bojal: { ht: "Reading ambil kendali babak 1. HT 0-1.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Bristol 1.10 vs Reading 1.50.", goals: "Over 2.5 Goals", overPersonal: "Over 1.5 Tim Reading.", score: "1 - 2" }
+      },
+      {
+        id: 32, league: "EFL Trophy - 02:00", home: "Crewe Alexandra", away: "Wigan Athletic", odds: { m1: 3.10, x: 3.40, m2: 2.15 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Wigan Athletic DNB (0)",
+        logikaBaru: "Wigan punya pengalaman taktik lebih matang.",
+        layering500: "Layer 45 (Tempo Control).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Under 9.5", handicap: "Wigan -0.25" },
+        bojal: { ht: "Wigan cetak gol telat babak 1. HT 0-1.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Crewe 0.90 vs Wigan 1.40.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Crewe.", score: "0 - 1" }
+      },
+      {
+        id: 33, league: "EFL Trophy - 02:00", home: "Leicester City", away: "Walsall", odds: { m1: 1.35, x: 5.00, m2: 7.50 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Leicester City -1.0",
+        logikaBaru: "Leicester level skuad jauh di atas Walsall.",
+        layering500: "Layer 3 (Absolute Home Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 3.0", htResult: "HT 2-0", corners: "Over 10.0", handicap: "Leicester -1.5" },
+        bojal: { ht: "Leicester bantai sejak awal. HT 2-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Leicester 2.60 vs Walsall 0.50.", goals: "Over 3.0 Goals", overPersonal: "Over 2.5 Tim Leicester.", score: "3 - 0" }
+      },
+      {
+        id: 34, league: "EFL Trophy - 02:00", home: "Mansfield Town", away: "Chesterfield", odds: { m1: 2.05, x: 3.50, m2: 3.25 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Mansfield Town DNB (0)",
+        logikaBaru: "Mansfield kuat di kandang.",
+        layering500: "Layer 110 (Home Advantage Metric).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Mansfield -0.25" },
+        bojal: { ht: "Mansfield menekan kandang. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Mansfield 1.60 vs Chesterfield 1.10.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Mansfield.", score: "2 - 1" }
+      },
+      {
+        id: 35, league: "EFL Trophy - 02:00", home: "Northampton Town", away: "Gillingham", odds: { m1: 2.10, x: 3.40, m2: 3.20 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Northampton DNB (0)",
+        logikaBaru: "Northampton main disiplin kandang.",
+        layering500: "Layer 124 (Midfield Block).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.5", handicap: "Northampton -0.25" },
+        bojal: { ht: "Alot di lini tengah. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Northampton 1.20 vs Gillingham 0.85.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Gillingham.", score: "1 - 0" }
+      },
+      {
+        id: 36, league: "EFL Trophy - 02:00", home: "Oxford United", away: "Cheltenham Town", odds: { m1: 1.65, x: 3.80, m2: 4.80 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Oxford United -0.5",
+        logikaBaru: "Oxford United superior taktik.",
+        layering500: "Layer 74 (Flank Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Oxford -0.75" },
+        bojal: { ht: "Oxford pegang kendali babak 1. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Oxford 1.80 vs Cheltenham 0.75.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Oxford.", score: "2 - 0" }
+      },
+      {
+        id: 37, league: "EFL Trophy - 02:00", home: "Plymouth Argyle", away: "Swindon Town", odds: { m1: 1.70, x: 3.75, m2: 4.50 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Plymouth Argyle -0.5",
+        logikaBaru: "Plymouth punya kualitas lini serang prima.",
+        layering500: "Layer 1 (Juego de Posición).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Plymouth -0.75" },
+        bojal: { ht: "Plymouth tekan intensif. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Plymouth 1.90 vs Swindon 0.90.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Plymouth.", score: "2 - 1" }
+      },
+      {
+        id: 38, league: "EFL Trophy - 02:00", home: "Stockport County", away: "Tranmere Rovers", odds: { m1: 1.50, x: 4.20, m2: 6.00 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Stockport County -0.75",
+        logikaBaru: "Stockport sangat tangguh di kandang.",
+        layering500: "Layer 3 (Absolute Home Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Under 9.5", handicap: "Stockport -1.0" },
+        bojal: { ht: "Stockport cetak gol cepat. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Stockport 2.05 vs Tranmere 0.60.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Stockport.", score: "2 - 0" }
+      },
+      {
+        id: 39, league: "EFL Trophy - 02:30", home: "Bradford City", away: "York City", odds: { m1: 1.75, x: 3.70, m2: 4.20 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Bradford City -0.5",
+        logikaBaru: "Bradford City didukung suporter kandang militan.",
+        layering500: "Layer 110 (Home Advantage Metric).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Bradford -0.75" },
+        bojal: { ht: "Bradford tekan konstan. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Bradford 1.70 vs York 0.80.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Bradford.", score: "2 - 0" }
+      },
+      {
+        id: 40, league: "EFL Trophy - 02:30", home: "Bromley", away: "Milton Keynes Dons", odds: { m1: 3.20, x: 3.40, m2: 2.10 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "MK Dons DNB (0)",
+        logikaBaru: "MK Dons unggul kualitas penguasaan bola.",
+        layering500: "Layer 45 (Tempo Control & Short Passing).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Over 10.0", handicap: "MK Dons -0.25" },
+        bojal: { ht: "MK Dons kuasai bola. HT 0-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Bromley 1.10 vs MK Dons 1.60.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim MK Dons.", score: "1 - 2" }
+      },
+      {
+        id: 41, league: "Non-League Trophy - 02:45", home: "Erith Town", away: "Sheppey United", odds: { m1: 2.50, x: 3.40, m2: 2.50 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Erith Town DNB (0)",
+        logikaBaru: "Laga non-league ketat; bertarung fisik.",
+        layering500: "Layer 140 (Physical Duels).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Draw 0" },
+        bojal: { ht: "Saling balas gol cepat. HT 1-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Erith 1.40 vs Sheppey 1.40.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Kedua Tim.", score: "2 - 2" }
+      },
+      {
+        id: 42, league: "Copa del Rey - 01:00", home: "Anaitasuna", away: "Deportivo Alaves", odds: { m1: 9.00, x: 5.00, m2: 1.28 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Deportivo Alaves -1.0",
+        logikaBaru: "Alaves beda kasta jauh (La Liga).",
+        layering500: "Layer 3 (Absolute Class Difference).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Over 9.5", handicap: "Alaves -1.5" },
+        bojal: { ht: "Alaves dominan total. HT 0-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Anaitasuna 0.30 vs Alaves 2.40.", goals: "Over 2.5 Goals", overPersonal: "Over 2.0 Tim Alaves.", score: "0 - 3" }
+      },
+      {
+        id: 43, league: "Copa del Rey - 01:00", home: "Pamplona", away: "Eibar", odds: { m1: 7.00, x: 4.20, m2: 1.40 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Eibar -0.75",
+        logikaBaru: "Eibar punya pengalaman taktik profesional.",
+        layering500: "Layer 301 (Early Goal Pressure).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Over 9.0", handicap: "Eibar -1.0" },
+        bojal: { ht: "Eibar cetak gol cepat babak 1. HT 0-1.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Pamplona 0.50 vs Eibar 1.90.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Eibar.", score: "0 - 2" }
+      },
+      {
+        id: 44, league: "Copa del Rey - 02:00", home: "Amorebieta", away: "UD Logrones", odds: { m1: 2.10, x: 3.20, m2: 3.40 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Amorebieta DNB (0)",
+        logikaBaru: "Amorebieta kuat duel udara kandang.",
+        layering500: "Layer 15 (Set-Piece Dominance & Aerial Duels).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 9.0", handicap: "Amorebieta -0.25" },
+        bojal: { ht: "Adu fisik ketat. HT 0-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Amorebieta 1.20 vs Logrones 0.90.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Tim Logrones.", score: "1 - 0" }
+      },
+      {
+        id: 45, league: "Copa del Rey - 02:00", home: "Trival Valderas", away: "Leganes", odds: { m1: 8.50, x: 4.80, m2: 1.30 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Leganes -1.0",
+        logikaBaru: "Leganes kelas profesional Spanyol.",
+        layering500: "Layer 1 (Juego de Posición Mastery).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-1", corners: "Over 9.5", handicap: "Leganes -1.25" },
+        bojal: { ht: "Leganes kuasai bola. HT 0-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Trival 0.40 vs Leganes 2.20.", goals: "Over 2.5 Goals", overPersonal: "Over 2.0 Tim Leganes.", score: "0 - 3" }
+      },
+      {
+        id: 46, league: "Copa del Rey - 03:00", home: "UE Tavernes", away: "Valencia", odds: { m1: 15.0, x: 7.00, m2: 1.12 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Valencia -1.5",
+        logikaBaru: "Valencia raksasa La Liga mutlak unggul.",
+        layering500: "Layer 3 (Absolute Class Difference).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 3.0", htResult: "HT 0-2", corners: "Over 10.0", handicap: "Valencia -2.0" },
+        bojal: { ht: "Valencia langsung cetak 2 gol cepat. HT 0-2.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Tavernes 0.20 vs Valencia 2.80.", goals: "Over 3.0 Goals", overPersonal: "Over 2.5 Tim Valencia.", score: "0 - 4" }
+      },
 
-            if (!leagueInput || !matchInput || !scoreInput || !minuteInput || !resDiv) return;
+      // --- MATCH BARU ALJAZAIR, BOLIVIA, INDIA, MONGOLIA, KUBA ---
+      {
+        id: 47, league: "Aljazair Liga 2 - 21:00", home: "JS Djijel", away: "Chabab Riadhi Beni Thour", odds: { m1: 2.00, x: 3.20, m2: 3.60 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "JS Djijel DNB (0)",
+        logikaBaru: "Karakter Liga 2 Aljazair sangat ketat dan mengandalkan keangkeran kandang.",
+        layering500: "Layer 110 (Home Advantage Metric) & Layer 140 (Physical Duels).",
+        fiturLama: { btts: "Tidak", overUnder: "Under 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Djijel -0.25" },
+        bojal: { ht: "Tuan rumah inisiatif tekan. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Djijel 1.30 vs Beni Thour 0.70.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Djijel.", score: "1 - 0" }
+      },
+      {
+        id: 48, league: "Aljazair Liga 2 - 21:00", home: "WA Tlemcen", away: "RC Arba", odds: { m1: 2.10, x: 3.10, m2: 3.50 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "WA Tlemcen DNB (0)",
+        logikaBaru: "Tlemcen berupaya mengamankan poin penuh di kandang dengan pertahanan ketat.",
+        layering500: "Layer 250 (Zonal Compactness).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 0-0", corners: "Under 8.5", handicap: "Tlemcen -0.25" },
+        bojal: { ht: "Laga alot babak pertama. HT 0-0.", cornerHt: "Estimasi 3 Corner Babak 1.", xg: "xG Tlemcen 1.20 vs Arba 0.90.", goals: "Under 2.5 Goals", overPersonal: "Under 1.5 Kedua Tim.", score: "1 - 0" }
+      },
+      {
+        id: 49, league: "Aljazair Liga 2 - 21:00", home: "MO Bejaia", away: "Nezla", odds: { m1: 1.75, x: 3.30, m2: 4.50 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "MO Bejaia -0.5",
+        logikaBaru: "MO Bejaia punya sejarah kuat di kandang atas tim semenjana.",
+        layering500: "Layer 3 (Absolute Home Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Under 9.0", handicap: "Bejaia -0.75" },
+        bojal: { ht: "Bejaia tekan konstan. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Bejaia 1.60 vs Nezla 0.60.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Bejaia.", score: "2 - 0" }
+      },
+      {
+        id: 50, league: "Aljazair Liga 2 - 21:00", home: "Paradou AC", away: "JSM Skikda", odds: { m1: 1.65, x: 3.50, m2: 5.00 },
+        intensitas: "Biasa", isSafe: false, safeRecommendation: "Paradou AC -0.5",
+        logikaBaru: "Paradou akademi taktik bagus, dominan atasi Skikda.",
+        layering500: "Layer 12 (Positional Play).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Under 9.5", handicap: "Paradou -0.75" },
+        bojal: { ht: "Paradou unggul sirkulasi bola. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Paradou 1.75 vs Skikda 0.70.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Paradou.", score: "2 - 0" }
+      },
+      {
+        id: 51, league: "Bolivia Primera Division - 07:30", home: "Klub Aurora", away: "Universitario de Vinto", odds: { m1: 1.85, x: 3.50, m2: 3.80 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Klub Aurora DNB (0)",
+        logikaBaru: "Aurora kuat main di kandang dataran tinggi Bolivia.",
+        layering500: "Layer 110 (Home Altitude Advantage).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.0", handicap: "Aurora -0.5" },
+        bojal: { ht: "Jual beli serangan khas Bolivia. HT 1-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Aurora 1.80 vs Vinto 1.40.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Aurora.", score: "2 - 1" }
+      },
+      {
+        id: 52, league: "India Bangalore Super Division - 12:30", home: "Stride Sports", away: "Agniputhra", odds: { m1: 2.10, x: 3.30, m2: 3.10 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Stride Sports DNB (0)",
+        logikaBaru: "Liga lokal India tensi cepat, lini belakang kedua tim rentan.",
+        layering500: "Layer 210 (Chaos Creation & Second Balls).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.5", handicap: "Stride -0.25" },
+        bojal: { ht: "Laga terbuka banyak gol awal. HT 1-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Stride 1.60 vs Agniputhra 1.50.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Stride.", score: "2 - 2" }
+      },
+      {
+        id: 53, league: "India Bangalore Super Division - 15:00", home: "Bangalore Dream United", away: "Parikrama", odds: { m1: 2.20, x: 3.30, m2: 2.95 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Bangalore Dream DNB (0)",
+        logikaBaru: "Kedua tim bermain terbuka mengandalkan kecepatan sayap.",
+        layering500: "Layer 74 (Flank Superiority).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 10.0", handicap: "Dream United -0.25" },
+        bojal: { ht: "Dream United unggul tipis babak 1. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Dream 1.55 vs Parikrama 1.35.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Dream United.", score: "2 - 1" }
+      },
+      {
+        id: 54, league: "India Bangalore Super Division - 17:30", home: "Bengaluru United", away: "Real Bengaluru", odds: { m1: 1.55, x: 3.90, m2: 5.50 },
+        intensitas: "Biasa", isSafe: true, safeRecommendation: "Bengaluru United -0.75",
+        logikaBaru: "Bengaluru United tim unggulan dengan fasilitas dan taktik mapan.",
+        layering500: "Layer 3 (Absolute Superiority).",
+        fiturLama: { btts: "Tidak", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Bengaluru United -1.0" },
+        bojal: { ht: "Bengaluru kuasai laga. HT 1-0.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Bengaluru 2.10 vs Real 0.70.", goals: "Under 2.5 Goals", overPersonal: "Over 1.5 Tim Bengaluru United.", score: "2 - 0" }
+      },
+      {
+        id: 55, league: "Mongolia Liga Primer Nasional - 15:00", home: "Deren", away: "Ulaanbaatar", odds: { m1: 2.30, x: 3.50, m2: 2.70 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "Ulaanbaatar DNB (0)",
+        logikaBaru: "Ulaanbaatar punya lini serang tertajam di Liga Mongolia.",
+        layering500: "Layer 301 (Clinical Finishing).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-1", corners: "Over 10.0", handicap: "Ulaanbaatar +0.25" },
+        bojal: { ht: "Saling balas gol ketat. HT 1-1.", cornerHt: "Estimasi 5 Corner Babak 1.", xg: "xG Deren 1.50 vs Ulaanbaatar 1.80.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Ulaanbaatar.", score: "1 - 2" }
+      },
+      {
+        id: 56, league: "Cuba Liga de Barrios - 11:00", home: "UD Marianao FR", away: "Las Canas", odds: { m1: 1.90, x: 3.40, m2: 3.60 },
+        intensitas: "Sengit", isSafe: false, safeRecommendation: "UD Marianao DNB (0)",
+        logikaBaru: "Liga lokal Kuba bermain penuh semangat lokal di kandang.",
+        layering500: "Layer 110 (Home Advantage Metric).",
+        fiturLama: { btts: "Ya", overUnder: "Over 2.5", htResult: "HT 1-0", corners: "Over 9.5", handicap: "Marianao -0.25" },
+        bojal: { ht: "Marianao inisiatif cetak gol. HT 1-0.", cornerHt: "Estimasi 4 Corner Babak 1.", xg: "xG Marianao 1.60 vs Canas 1.10.", goals: "Over 2.5 Goals / BTTS: Ya", overPersonal: "Over 1.5 Tim Marianao.", score: "2 - 1" }
+      }
+    ];
 
-            const league = leagueInput.value.trim() || "Spanyol - Primera División";
-            const match = matchInput.value.trim() || "Barcelona vs Atletico Madrid";
-            const score = scoreInput.value.trim() || "1-0";
-            const minute = parseInt(minuteInput.value.trim()) || 45;
+    function renderMatches(data) {
+      const container = document.getElementById('match-container');
+      container.innerHTML = '';
 
-            resDiv.classList.remove('hidden');
+      data.forEach(m => {
+        const isSengit = m.intensitas === "Sengit";
+        const badgeClass = isSengit ? "badge-sengit" : "badge-biasa";
+        const safeBadge = m.isSafe ? `<span class="bg-purple-600 text-xs px-2 py-1 rounded font-bold ml-2">🛡️ TOP SAFE PICK</span>` : '';
+        const isSelected = selectedParlay.includes(m.id);
+        const btnClass = isSelected ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-slate-800 hover:bg-blue-600';
+        const btnText = isSelected ? '✓ Dimasukkan ke Parlay' : '+ Tambah ke Parlay';
 
-            let recType = "";
-            let recDetail = "";
-            let reasonText = "";
-            let cornerAnalysis = "";
-
-            if (score.includes("2-2") || score.includes("3-3") || score.includes("1-1")) {
-                recType = "🔥 SARAN UTAMA: OVER 2.5 / BTTS YES";
-                recDetail = `Kedudukan imbang (${score}) di menit ${minute}'. Pertandingan sangat terbuka.`;
-                reasonText = `Berdasarkan data xG live, kedua tim sama-sama bernafsu mencetak gol kemenangan. Lini pertahanan mulai longgar akibat kelelahan fisik gelandang jangkar.`;
-                cornerAnalysis = `Corner: Over +3.5 Corner Sisa Laga karena intensitas serangan sayap meningkat tajam.`;
-            } else {
-                recType = "🎯 SARAN UTAMA: ASIAN HANDICAP UTAMA / UNDER KONTROL";
-                recDetail = `Skor ${score} pada menit ${minute}'. Tim unggulan memegang kendali tempo.`;
-                reasonText = `Tim unggulan mengalirkan bola dengan persentase penguasaan di atas 60%, memperkecil peluang lawan untuk melakukan serangan balik berbahaya (Anti-L1 Protocol).`;
-                cornerAnalysis = `Corner: Stabil di kisaran Over 8.5 Total Laga.`;
-            }
-
-            resDiv.innerHTML = `
-                <div class="border-b border-slate-800 pb-2 mb-2 flex justify-between items-center">
-                    <span class="text-amber-400 font-mono font-bold">${league} — ${match}</span>
-                    <span class="bg-indigo-950 text-indigo-300 px-2.5 py-0.5 rounded font-mono font-bold">Skor: ${score} (${minute}')</span>
+        const card = `
+          <div class="card-match p-5 rounded-xl flex flex-col justify-between">
+            <div>
+              <!-- HEADER -->
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-xs text-blue-400 font-semibold">${m.league}</span>
+                <div class="flex items-center gap-1">
+                  <span class="text-xs px-2 py-1 rounded font-bold ${badgeClass}">${m.intensitas}</span>
+                  <span onclick="openBojalModal(${m.id})" class="text-xs px-2.5 py-1 rounded font-bold badge-bojal shadow">📈 Bojal</span>
+                  ${safeBadge}
                 </div>
-                <div class="space-y-2 text-slate-300 leading-relaxed text-[11px]">
-                    <div class="bg-indigo-950/60 border border-indigo-500/40 p-3.5 rounded-xl space-y-1">
-                        <strong class="text-emerald-400 block font-mono uppercase"><i class="fa-solid fa-circle-check mr-1"></i> ${recType}</strong>
-                        <div class="text-white font-bold text-xs">${recDetail}</div>
-                    </div>
-                    <div class="bg-slate-900 p-3.5 rounded-xl space-y-1">
-                        <strong class="text-amber-400 block font-mono uppercase"><i class="fa-solid fa-brain mr-1"></i> Alasan Kuat Berdasarkan Data Live:</strong>
-                        <p>${reasonText}</p>
-                    </div>
-                    <div class="bg-slate-900 p-3.5 rounded-xl space-y-1">
-                        <strong class="text-sky-400 block font-mono uppercase"><i class="fa-solid fa-flag mr-1"></i> Analisis Corner Spesifik:</strong>
-                        <p>${cornerAnalysis}</p>
-                    </div>
+              </div>
+
+              <!-- TEAMS & ODDS -->
+              <div class="flex justify-between items-center my-3 bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+                <div class="font-bold text-sm text-white w-2/5">${m.home}</div>
+                <div class="text-xs text-slate-500 font-bold">VS</div>
+                <div class="font-bold text-sm text-white w-2/5 text-right">${m.away}</div>
+              </div>
+
+              <!-- REKOMENDASI SAFE PICK ANTI-L1 (HANYA 1 PILIHAN TERBAIK) -->
+              <div class="mb-3 safe-pick-box p-2.5 rounded text-xs">
+                <span class="text-emerald-300 font-bold block mb-0.5">🎯 1 Pilihan Safe Pick Terbaik (Anti-L1):</span>
+                <span class="text-white font-extrabold text-sm">${m.safeRecommendation}</span>
+              </div>
+
+              <!-- 500-LAYERING ENGINE & LOGIKA BARU -->
+              <div class="mb-3 bg-slate-900 p-3 rounded border border-slate-800">
+                <span class="text-xs text-amber-400 font-bold block mb-1">🧠 Logika & Strategi Tim:</span>
+                <p class="text-xs text-slate-300 mb-2">${m.logikaBaru}</p>
+                
+                <div class="layer-box p-2 rounded text-xs">
+                  <span class="text-blue-400 font-bold">⚙️ 500-Layering Engine:</span>
+                  <p class="text-slate-400 mt-0.5">${m.layering500}</p>
                 </div>
-            `;
-        }
+              </div>
 
-        // Modul Filter Kategori Pertandingan
-        function setFilter(type) {
-            currentFilter = type;
-            ['semua', 'sengit', 'dominan'].forEach(t => {
-                const btn = document.getElementById(`btn-${t}`);
-                if (btn) {
-                    if (t === type) {
-                        btn.className = "bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow";
-                    } else {
-                        btn.className = "bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-4 py-2.5 rounded-xl transition";
-                    }
-                }
-            });
-            const searchInputEl = document.getElementById('searchInput');
-            renderMatches(currentFilter, searchInputEl ? searchInputEl.value : '');
-        }
+              <!-- FITUR LAMA: O/U, BTTS, 1X2, CORNER, HANDICAP -->
+              <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950 p-3 rounded border border-slate-900 mb-4">
+                <div><span class="text-slate-500">1X2:</span> <b class="text-white">${m.odds.m1} | ${m.odds.x} | ${m.odds.m2}</b></div>
+                <div><span class="text-slate-500">BTTS:</span> <b class="${m.fiturLama.btts === 'Ya' ? 'text-emerald-400' : 'text-red-400'}">${m.fiturLama.btts}</b></div>
+                <div><span class="text-slate-500">O/U:</span> <b class="${m.fiturLama.overUnder.includes('Over') ? 'text-amber-400' : 'text-cyan-400'}">${m.fiturLama.overUnder}</b></div>
+                <div><span class="text-slate-500">HT Result:</span> <b class="text-white">${m.fiturLama.htResult}</b></div>
+                <div><span class="text-slate-500">Corner:</span> <b class="text-blue-300">${m.fiturLama.corners}</b></div>
+                <div><span class="text-slate-500">Handicap:</span> <b class="text-purple-300">${m.fiturLama.handicap}</b></div>
+              </div>
+            </div>
 
-        // Modul Render Kartu Pertandingan Utama ke DOM
-        function renderMatches(filter, searchQuery) {
-            const container = document.getElementById('matchesContainer');
-            if (!container) return;
-            container.innerHTML = '';
+            <button onclick="toggleParlay(${m.id})" id="btn-${m.id}" class="w-full ${btnClass} text-white font-bold py-2.5 rounded text-xs transition">
+              ${btnText}
+            </button>
+          </div>
+        `;
+        container.innerHTML += card;
+      });
+    }
 
-            const filtered = matchesData.filter(item => {
-                const matchName = item.match.toLowerCase();
-                const category = item.category.toLowerCase();
-                const query = searchQuery.toLowerCase();
-                const matchesSearch = matchName.includes(query) || category.includes(query);
+    let selectedParlay = [];
 
-                if (!matchesSearch) return false;
-                if (filter === 'sengit') return item.league_badge === 'Sengit';
-                if (filter === 'dominan') return item.league_badge === 'Dominan';
-                return true;
-            });
+    function toggleParlay(id) {
+      const btn = document.getElementById(`btn-${id}`);
+      if (selectedParlay.includes(id)) {
+        selectedParlay = selectedParlay.filter(i => i !== id);
+        btn.innerText = "+ Tambah ke Parlay";
+        btn.className = "w-full bg-slate-800 hover:bg-blue-600 text-white font-bold py-2.5 rounded text-xs transition";
+      } else {
+        selectedParlay.push(id);
+        btn.innerText = "✓ Dimasukkan ke Parlay";
+        btn.className = "w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded text-xs transition";
+      }
+      updateParlaySummary();
+    }
 
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="text-center py-12 text-slate-500 font-mono text-sm">Tidak ada pertandingan yang cocok dengan kriteria pencarian.</div>`;
-                return;
-            }
+    function updateParlaySummary() {
+      document.getElementById('parlay-count').innerText = `${selectedParlay.length} Tim`;
+      
+      let totalOdds = 1.0;
+      selectedParlay.forEach(id => {
+        const m = matchesData.find(item => item.id === id);
+        const pickOdds = m.odds.m2 < m.odds.m1 ? m.odds.m2 : m.odds.m1;
+        totalOdds *= pickOdds;
+      });
 
-            filtered.forEach(item => {
-                const cardHTML = `
-                <div class="glass-card border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition-all duration-300 shadow-2xl">
-                    
-                    <!-- Header Kartu -->
-                    <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-4 mb-4 gap-2">
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-bold bg-slate-800 text-emerald-400 px-2.5 py-1 rounded-md border border-slate-700 uppercase tracking-wider font-mono">
-                                    ${item.category}
-                                </span>
-                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-md border uppercase tracking-wider font-mono ${item.badge_class}">
-                                    ${item.league_badge}
-                                </span>
-                            </div>
-                            <h3 class="text-xl font-extrabold text-slate-100 mt-2">${item.match}</h3>
-                        </div>
-                        <div>
-                            <button onclick="toggleParlay(this)" class="bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white font-mono text-xs px-4 py-2 rounded-xl transition shadow">
-                                + Slip Parlay
-                            </button>
-                        </div>
-                    </div>
+      document.getElementById('total-odds').innerText = `Total Odds Est: ${selectedParlay.length > 0 ? totalOdds.toFixed(2) : '1.00'}`;
+    }
 
-                    <!-- 1 Pilihan Safe Pick Terbaik (Anti-L1) -->
-                    <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-xl p-3.5 mb-4 text-xs flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-emerald-300">
-                            <i class="fa-solid fa-shield-cat text-emerald-400"></i>
-                            <span>1 Pilihan Safe Pick Terbaik (Anti-L1): <strong class="text-white font-mono">${item.safe_pick_text}</strong></span>
-                        </div>
-                        <span class="text-[10px] bg-emerald-900 text-emerald-200 px-2.5 py-0.5 rounded font-bold font-mono">99% SAFE</span>
-                    </div>
+    function openBojalModal(id) {
+      const m = matchesData.find(item => item.id === id);
+      const modal = document.getElementById('bojal-modal');
+      const content = document.getElementById('bojal-modal-content');
 
-                    <!-- Logika & Strategi Tim -->
-                    <div class="bg-slate-950/90 border border-slate-800 p-3.5 rounded-xl text-xs mb-4 space-y-1">
-                        <span class="text-amber-400 font-bold uppercase tracking-wider font-mono text-[11px] block"><i class="fa-solid fa-brain mr-1"></i> Logika & Strategi Tim</span>
-                        <p class="text-slate-300 text-[11px] leading-relaxed">${item.strategy}</p>
-                    </div>
+      content.innerHTML = `
+        <div class="border-b border-indigo-800 pb-3 mb-4">
+          <span class="text-xs text-indigo-400 font-semibold block">${m.league}</span>
+          <h2 class="text-xl font-extrabold text-white mt-1">${m.home} vs ${m.away}</h2>
+        </div>
+        <div class="space-y-3 text-xs">
+          <div class="bg-slate-950 p-3 rounded border border-slate-800">
+            <span class="text-amber-400 font-bold block mb-1">⏱️ Analisis Babak Pertama (HT):</span>
+            <p class="text-slate-300">${m.bojal.ht}</p>
+          </div>
+          <div class="bg-slate-950 p-3 rounded border border-slate-800">
+            <span class="text-blue-400 font-bold block mb-1">🚩 Analisis Corner Babak Pertama:</span>
+            <p class="text-slate-300">${m.bojal.cornerHt}</p>
+          </div>
+          <div class="bg-slate-950 p-3 rounded border border-slate-800">
+            <span class="text-indigo-400 font-bold block mb-1">📊 Expected Goals (xG) & Peluang:</span>
+            <p class="text-slate-300">${m.bojal.xg}</p>
+          </div>
+          <div class="bg-slate-950 p-3 rounded border border-slate-800">
+            <span class="text-emerald-400 font-bold block mb-1">⚽ Over/Under & BTTS:</span>
+            <p class="text-slate-300">${m.bojal.goals}</p>
+          </div>
+          <div class="bg-slate-950 p-3 rounded border border-slate-800">
+            <span class="text-purple-400 font-bold block mb-1">🔥 Over Personal Tim (Individual Goals):</span>
+            <p class="text-slate-300">${m.bojal.overPersonal}</p>
+          </div>
+          <div class="bg-emerald-950/60 p-3 rounded border border-emerald-800">
+            <span class="text-emerald-300 font-bold block mb-1">🎯 Tebakan Skor Akurat (Exact Score):</span>
+            <p class="text-white font-extrabold text-sm">${m.bojal.score}</p>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+    }
 
-                    <!-- Analisis Babak 1 & Babak Kedua -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div class="bg-slate-950/80 border border-slate-800 p-3.5 rounded-xl text-xs space-y-1.5">
-                            <span class="text-[10px] text-amber-400 font-mono font-bold block uppercase"><i class="fa-solid fa-1 mr-1"></i> Analisis Babak Pertama (HT Flow)</span>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">${item.ht_2h_analysis.ht_flow}</p>
-                        </div>
-                        <div class="bg-slate-950/80 border border-slate-800 p-3.5 rounded-xl text-xs space-y-1.5">
-                            <span class="text-[10px] text-emerald-400 font-mono font-bold block uppercase"><i class="fa-solid fa-2 mr-1"></i> Analisis Babak Kedua (2H Shift)</span>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">${item.ht_2h_analysis.ft_flow}</p>
-                        </div>
-                    </div>
+    function closeBojalModal() {
+      document.getElementById('bojal-modal').classList.add('hidden');
+    }
 
-                    <!-- Saran Corner & Alur Over/Under -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                        <div class="bg-indigo-950/40 border border-indigo-500/30 p-3.5 rounded-xl space-y-1">
-                            <span class="text-indigo-300 font-bold font-mono text-[10px] uppercase block"><i class="fa-solid fa-flag mr-1"></i> Saran Corner Akurat</span>
-                            <p class="text-slate-200 text-[11px]">${item.corner_prediction}</p>
-                        </div>
-                        <div class="bg-amber-950/40 border border-amber-500/30 p-3.5 rounded-xl space-y-1">
-                            <span class="text-amber-300 font-bold font-mono text-[10px] uppercase block"><i class="fa-solid fa-chart-line mr-1"></i> Alur Gol & Over/Under</span>
-                            <p class="text-slate-200 text-[11px]">${item.over_under_flow}</p>
-                        </div>
-                    </div>
+    function filterMatch(type) {
+      if (type === 'all') renderMatches(matchesData);
+      else if (type === 'sengit') renderMatches(matchesData.filter(m => m.intensitas === 'Sengit'));
+      else if (type === 'biasa') renderMatches(matchesData.filter(m => m.intensitas === 'Biasa'));
+      else if (type === 'safe') renderMatches(matchesData.filter(m => m.isSafe));
+    }
 
-                </div>
-                `;
-                container.innerHTML += cardHTML;
-            });
-        }
+    function searchMatch() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      renderMatches(matchesData.filter(m => 
+        m.home.toLowerCase().includes(query) || 
+        m.away.toLowerCase().includes(query) || 
+        m.league.toLowerCase().includes(query)
+      ));
+    }
 
-        // Modul Interaktif Parlay Slip Accumulator
-        function toggleParlay(btn) {
-            if (!btn) return;
-            if (btn.classList.contains('bg-emerald-600')) {
-                btn.classList.remove('bg-emerald-600', 'text-white');
-                btn.classList.add('bg-slate-800', 'text-slate-300');
-                selectedParlayCount = Math.max(0, selectedParlayCount - 1);
-                totalOddsAccumulator = Math.max(1.00, totalOddsAccumulator / 1.85);
-            } else {
-                btn.classList.add('bg-emerald-600', 'text-white');
-                btn.classList.remove('bg-slate-800', 'text-slate-300');
-                selectedParlayCount++;
-                totalOddsAccumulator = totalOddsAccumulator === 1.00 ? 1.85 : totalOddsAccumulator * 1.85;
-            }
-            
-            const countEl = document.getElementById('selectedCount');
-            const oddsEl = document.getElementById('totalOddsEst');
-            
-            if (countEl) countEl.innerText = `${selectedParlayCount} Tim`;
-            if (oddsEl) oddsEl.innerText = totalOddsAccumulator.toFixed(2);
-        }
-
-        // Modul Filter Pencarian Real-Time
-        function filterMatches() {
-            const searchInputEl = document.getElementById('searchInput');
-            const query = searchInputEl ? searchInputEl.value : '';
-            renderMatches(currentFilter, query);
-        }
-
-        // Inisialisasi Pertama Saat DOM Loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            renderMatches('semua', '');
-        });
-    </script>
+    renderMatches(matchesData);
+  </script>
 </body>
 </html>
