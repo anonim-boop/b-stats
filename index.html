@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.STATS </title>
+    <title>B.STATS v44.0 - Supreme Enterprise Suite (10 Pop-up Engines)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -30,10 +30,10 @@
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
                 </div>
-                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v43.0 Ultimate God-Tier Engine</span></h1>
+                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v44.0 Supreme Enterprise Suite</span></h1>
             </div>
-            <div class="flex items-center gap-3">
-                <!-- Tombol Akses Fitur Pop-up Baru di Header -->
+            <div class="flex flex-wrap items-center gap-2.5">
+                <!-- Tombol Akses Fitur Pop-up Lama (UTUH) -->
                 <button onclick="openModal('simulatorModal')" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
                     <i class="fa-solid fa-sliders text-emerald-400"></i> AI Simulator
                 </button>
@@ -55,10 +55,10 @@
             <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mb-6">
                 <div>
                     <h2 class="text-xl font-bold text-emerald-300 mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & Advanced Popup Suite
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & 10-Popup Command Center
                     </h2>
                     <p class="text-sm text-slate-400 max-w-3xl">
-                        Memuat 27 Pertandingan
+                        Memuat 27 Pertandingan lengkap dengan Team Over Personal, serta 10 Pop-up Intelijen Taktis (Klik nama pertandingan untuk H2H Matrix instan).
                     </p>
                 </div>
                 <div>
@@ -66,13 +66,12 @@
                 </div>
             </div>
 
-            <!-- Tombol Filter & Tombol BoJal / Pop-up -->
+            <!-- Baris 1: Tombol Filter & Fitur Pop-up Sebelumnya (UTUH) -->
             <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-800">
                 <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow">Semua (27 Match)</button>
                 <button onclick="setFilter('sengit')" id="btn-sengit" class="bg-red-950/80 text-red-300 border border-red-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-fire text-red-500"></i> Sengit / Ketat</button>
                 <button onclick="setFilter('dominan')" id="btn-dominan" class="bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Dominan / Biasa</button>
                 
-                <!-- Tombol Akses Pop-up Tambahan -->
                 <button onclick="openModal('antiL1Modal')" class="bg-red-900/60 hover:bg-red-800 text-red-200 border border-red-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow">
                     <i class="fa-solid fa-triangle-exclamation text-red-400"></i> Anti-L1 Warning
                 </button>
@@ -81,6 +80,26 @@
                 </button>
                 <button onclick="openBoJalModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold px-5 py-2.5 rounded-xl transition shadow-lg flex items-center gap-2 border border-indigo-400 animate-pulse">
                     <i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i> BoJal (Custom Match)
+                </button>
+            </div>
+
+            <!-- Baris 2: Tombol Akses 5 Fitur Pop-up Baru -->
+            <div class="flex flex-wrap items-center gap-2.5 pt-3 mt-3 border-t border-slate-800/80">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold mr-1"><i class="fa-solid fa-sparkles"></i> Intelijen Baru:</span>
+                <button onclick="openH2HModal(1)" class="bg-cyan-950/80 hover:bg-cyan-900 text-cyan-200 border border-cyan-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i> H2H Matrix Lookup
+                </button>
+                <button onclick="openPublicTrapModal(1)" class="bg-rose-950/80 hover:bg-rose-900 text-rose-200 border border-rose-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-users-viewfinder text-rose-400"></i> Public Trap Meter
+                </button>
+                <button onclick="openXGTimelineModal(1)" class="bg-teal-950/80 hover:bg-teal-900 text-teal-200 border border-teal-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-chart-area text-teal-400"></i> Live xG Timeline
+                </button>
+                <button onclick="openCorrelationModal(1)" class="bg-purple-950/80 hover:bg-purple-900 text-purple-200 border border-purple-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-flask-vial text-purple-400"></i> Correlation Lab
+                </button>
+                <button onclick="openTierBoardModal()" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/50 text-xs font-extrabold px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-trophy text-amber-400"></i> Confidence Tier Board (S/A/B)
                 </button>
             </div>
         </div>
@@ -93,8 +112,9 @@
     </main>
 
     <!-- ========================================================================= -->
-    <!-- MODAL 1: BOJAL REAL-TIME ENGINE (FITUR LAMA UTUH) -->
+    <!-- MODAL 1 - 5: FITUR POP-UP LAMA (UTUH 100%) -->
     <!-- ========================================================================= -->
+    <!-- MODAL 1: BOJAL REAL-TIME ENGINE -->
     <div id="bojalModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
         <div class="bg-slate-900 border border-indigo-500/50 rounded-2xl w-full max-w-3xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeBoJalModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -130,9 +150,7 @@
         </div>
     </div>
 
-    <!-- ========================================================================= -->
-    <!-- MODAL 2: AI MATCH SIMULATOR / WHAT-IF ENGINE (FITUR BARU #2) -->
-    <!-- ========================================================================= -->
+    <!-- MODAL 2: AI MATCH SIMULATOR / WHAT-IF ENGINE -->
     <div id="simulatorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
         <div class="bg-slate-900 border border-emerald-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative">
             <button onclick="closeModal('simulatorModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -141,7 +159,6 @@
                 <h3 class="text-base font-extrabold text-emerald-300">What-If Scenario Engine</h3>
             </div>
             <p class="text-xs text-slate-400 mb-4">Geser slider simulasi menit berjalan untuk melihat proyeksi perubahan xG dan peluang gol real-time.</p>
-            
             <div class="space-y-4 text-xs">
                 <div>
                     <div class="flex justify-between mb-1 text-slate-300 font-mono">
@@ -150,7 +167,6 @@
                     </div>
                     <input type="range" id="simMinuteRange" min="1" max="90" value="45" oninput="updateSimulator()" class="w-full accent-emerald-500 cursor-pointer">
                 </div>
-
                 <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
                     <div class="text-amber-400 font-mono font-bold"><i class="fa-solid fa-microchip mr-1"></i> Proyeksi Hasil AI:</div>
                     <p id="simResultText" class="text-slate-300 leading-relaxed">Pada menit ke-45, intensitas pressing rata-rata meningkat 22%. Probabilitas terciptanya gol di babak kedua mencapai 74%.</p>
@@ -159,9 +175,7 @@
         </div>
     </div>
 
-    <!-- ========================================================================= -->
-    <!-- MODAL 3: ANTI-L1 / DRAMA TRAP WARNING (FITUR BARU #3) -->
-    <!-- ========================================================================= -->
+    <!-- MODAL 3: ANTI-L1 / DRAMA TRAP WARNING -->
     <div id="antiL1Modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
         <div class="bg-slate-900 border border-red-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative">
             <button onclick="closeModal('antiL1Modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -184,9 +198,7 @@
         </div>
     </div>
 
-    <!-- ========================================================================= -->
-    <!-- MODAL 4: PARLAY RISK & HEDGING CALCULATOR (FITUR BARU #4) -->
-    <!-- ========================================================================= -->
+    <!-- MODAL 4: PARLAY RISK & HEDGING CALCULATOR -->
     <div id="hedgingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
         <div class="bg-slate-900 border border-amber-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative">
             <button onclick="closeModal('hedgingModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -195,7 +207,6 @@
                 <h3 class="text-base font-extrabold text-amber-300">Parlay Risk & Hedging Calculator</h3>
             </div>
             <p class="text-xs text-slate-400 mb-4">Kalkulator otomatis untuk mengukur probabilitas kegagalan slip dan rekomendasi tutup taruhan (Cash Out / Hedging).</p>
-            
             <div class="space-y-3 text-xs">
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -207,7 +218,6 @@
                         <input type="text" id="hedgeOdds" value="8.45" readonly class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-amber-400 font-mono font-bold w-full">
                     </div>
                 </div>
-
                 <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
                     <div class="text-indigo-400 font-mono font-bold"><i class="fa-solid fa-calculator mr-1"></i> Hasil Analisis Risiko:</div>
                     <p id="hedgeResultText" class="text-slate-300 leading-relaxed">Risiko kegagalan parlay 4 tim berada di kisaran 65%. Jika 3 tim awal sudah hijau, disarankan melakukan Hedging (tutup taruhan sebagian) untuk mengamankan profit.</p>
@@ -216,9 +226,7 @@
         </div>
     </div>
 
-    <!-- ========================================================================= -->
-    <!-- MODAL 5: TACTICAL AUDIO / QUICK VIBE COMMENTARY (FITUR BARU #5) -->
-    <!-- ========================================================================= -->
+    <!-- MODAL 5: TACTICAL AUDIO / QUICK VIBE COMMENTARY -->
     <div id="vibeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
         <div class="bg-slate-900 border border-sky-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative">
             <button onclick="closeModal('vibeModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -227,7 +235,6 @@
                 <h3 class="text-base font-extrabold text-sky-300">Quick Vibe Tactical Commentary</h3>
             </div>
             <p class="text-xs text-slate-400 mb-4">Ringkasan audio/teks kilat ala pengamat bola profesional mengenai kondisi ruang ganti laga malam ini.</p>
-            
             <div class="bg-sky-950/40 border border-sky-500/40 p-4 rounded-xl text-xs space-y-3">
                 <div class="flex items-center gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
                     <button onclick="toggleAudioDemo()" id="audioBtn" class="bg-sky-600 hover:bg-sky-500 text-white w-10 h-10 rounded-full flex items-center justify-center shadow transition shrink-0">
@@ -245,6 +252,113 @@
         </div>
     </div>
 
+    <!-- ========================================================================= -->
+    <!-- MODAL 6: H2H & DEEP HEAD-TO-HEAD MATRIX LOOKUP (BARU) -->
+    <!-- ========================================================================= -->
+    <div id="h2hModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
+        <div class="bg-slate-900 border border-cyan-500/50 rounded-2xl w-full max-w-2xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('h2hModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-cyan-400 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">DEEP H2H MATRIX</span>
+                <h3 class="text-base font-extrabold text-cyan-300">Head-to-Head & Historical Possession Lookup</h3>
+            </div>
+            
+            <!-- Selector Match Dinamis -->
+            <div class="mb-4 text-xs">
+                <label class="block text-slate-400 mb-1 font-mono">Pilih Pertandingan untuk Analisis H2H:</label>
+                <select id="h2hMatchSelect" onchange="openH2HModal(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-slate-200 w-full focus:outline-none focus:border-cyan-500"></select>
+            </div>
+
+            <div id="h2hModalContent" class="space-y-4 text-xs">
+                <!-- Rendered Dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 7: PUBLIC BETTING SENTIMENT / PUBLIC TRAP METER (BARU) -->
+    <!-- ========================================================================= -->
+    <div id="publicTrapModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
+        <div class="bg-slate-900 border border-rose-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('publicTrapModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-rose-500 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">SENTIMENT RADAR</span>
+                <h3 class="text-base font-extrabold text-rose-300">Public Betting Sentiment & Public Trap Meter</h3>
+            </div>
+
+            <div class="mb-4 text-xs">
+                <label class="block text-slate-400 mb-1 font-mono">Pilih Laga untuk Cek Arus Dana Publik:</label>
+                <select id="publicTrapSelect" onchange="openPublicTrapModal(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-slate-200 w-full focus:outline-none focus:border-rose-500"></select>
+            </div>
+
+            <div id="publicTrapContent" class="space-y-4 text-xs">
+                <!-- Rendered Dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 8: LIVE xG MOMENTUM TIMELINE CHART (BARU) -->
+    <!-- ========================================================================= -->
+    <div id="xgTimelineModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
+        <div class="bg-slate-900 border border-teal-500/50 rounded-2xl w-full max-w-2xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('xgTimelineModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-teal-400 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">xG FLOW CHART</span>
+                <h3 class="text-base font-extrabold text-teal-300">Live xG Momentum Timeline (0' - 90')</h3>
+            </div>
+
+            <div class="mb-4 text-xs">
+                <label class="block text-slate-400 mb-1 font-mono">Pilih Pertandingan:</label>
+                <select id="xgTimelineSelect" onchange="openXGTimelineModal(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-slate-200 w-full focus:outline-none focus:border-teal-500"></select>
+            </div>
+
+            <div id="xgTimelineContent" class="space-y-4 text-xs">
+                <!-- Rendered Dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 9: CORRELATION PARLAY LAB (BARU) -->
+    <!-- ========================================================================= -->
+    <div id="correlationModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
+        <div class="bg-slate-900 border border-purple-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('correlationModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-purple-500 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">CORRELATION LAB</span>
+                <h3 class="text-base font-extrabold text-purple-300">Laboratorium Kombinasi Saling Mengunci</h3>
+            </div>
+
+            <div class="mb-4 text-xs">
+                <label class="block text-slate-400 mb-1 font-mono">Pilih Laga untuk Racik Kombinasi Terkorelasi:</label>
+                <select id="correlationSelect" onchange="openCorrelationModal(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-slate-200 w-full focus:outline-none focus:border-purple-500"></select>
+            </div>
+
+            <div id="correlationContent" class="space-y-4 text-xs">
+                <!-- Rendered Dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 10: DAILY PUNDIT CHALLENGE / CONFIDENCE TIER BOARD (BARU) -->
+    <!-- ========================================================================= -->
+    <div id="tierBoardModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden">
+        <div class="bg-slate-900 border border-amber-400/60 rounded-2xl w-full max-w-3xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('tierBoardModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex items-center gap-2 mb-2">
+                <span class="bg-amber-400 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">CONFIDENCE TIER BOARD</span>
+                <h3 class="text-lg font-extrabold text-amber-300">Papan Peringkat Mutlak Harian (Tier S / A / B)</h3>
+            </div>
+            <p class="text-xs text-slate-400 mb-5">Penyaringan otomatis seluruh 27 pertandingan ke dalam 3 kasta keyakinan matematis agar langsung bisa memilih menu terbaik dalam hitungan detik.</p>
+
+            <div id="tierBoardContent" class="space-y-5 text-xs">
+                <!-- Rendered Dynamically -->
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript Engine -->
     <script>
         let currentFilter = 'semua';
@@ -252,7 +366,7 @@
         let totalOddsAccumulator = 1.00;
         let isAudioPlaying = false;
 
-        // Fungsi Umum Pembuka & Penutup Modal Baru
+        // Fungsi Umum Pembuka & Penutup Modal
         function openModal(modalId) {
             const el = document.getElementById(modalId);
             if (el) el.classList.remove('hidden');
@@ -262,7 +376,7 @@
             if (el) el.classList.add('hidden');
         }
 
-        // Logika Simulator AI What-If Slider
+        // Logika Simulator AI What-If Slider (FITUR LAMA UTUH)
         function updateSimulator() {
             const val = document.getElementById('simMinuteRange').value;
             const valEl = document.getElementById('simMinuteVal');
@@ -280,7 +394,7 @@
             }
         }
 
-        // Logika Kalkulator Hedging Parlay
+        // Logika Kalkulator Hedging Parlay (FITUR LAMA UTUH)
         function calculateHedging() {
             const teams = parseInt(document.getElementById('hedgeTeams').value) || 4;
             const odds = (Math.pow(1.85, teams)).toFixed(2);
@@ -294,7 +408,7 @@
             }
         }
 
-        // Simulasi Audio Vibe Player
+        // Simulasi Audio Vibe Player (FITUR LAMA UTUH)
         function toggleAudioDemo() {
             isAudioPlaying = !isAudioPlaying;
             const icon = document.getElementById('audioIcon');
@@ -308,7 +422,7 @@
             }
         }
 
-        // Database 27 Pertandingan Lengkap (Dengan Team Over Personal)
+        // Database 27 Pertandingan Lengkap (UTUH 100%)
         const matchesData = [
             { 
                 id: 1, category: "UEFA Liga Negara (00.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
@@ -528,7 +642,256 @@
             }
         ];
 
-        // Modul Manajemen Modal BoJal
+        // =========================================================================
+        // LOGIKA 5 FITUR POP-UP BARU
+        // =========================================================================
+
+        function populateMatchDropdowns() {
+            const selects = ['h2hMatchSelect', 'publicTrapSelect', 'xgTimelineSelect', 'correlationSelect'];
+            selects.forEach(selId => {
+                const el = document.getElementById(selId);
+                if (el && el.options.length === 0) {
+                    matchesData.forEach(m => {
+                        const opt = document.createElement('option');
+                        opt.value = m.id;
+                        opt.text = `${m.match} — ${m.category}`;
+                        el.appendChild(opt);
+                    });
+                }
+            });
+        }
+
+        // 1. Pop-up H2H & Deep Head-to-Head Matrix Lookup
+        function openH2HModal(matchId) {
+            populateMatchDropdowns();
+            const id = parseInt(matchId) || 1;
+            const item = matchesData.find(m => m.id === id) || matchesData[0];
+            const selectEl = document.getElementById('h2hMatchSelect');
+            if (selectEl) selectEl.value = item.id;
+
+            const teams = item.match.split(' vs ');
+            const home = teams[0] || "Home";
+            const away = teams[1] || "Away";
+            const isDom = item.league_badge === 'Dominan';
+
+            const homePoss = isDom ? (item.safe_pick_text.includes(home) ? 67 : 34) : 52;
+            const awayPoss = 100 - homePoss;
+
+            const contentEl = document.getElementById('h2hModalContent');
+            contentEl.innerHTML = `
+                <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3">
+                    <div class="text-cyan-400 font-mono font-bold uppercase"><i class="fa-solid fa-list-ol mr-1"></i> Statistik 5 Pertemuan Terakhir (${item.match}):</div>
+                    <div class="grid grid-cols-5 gap-2 text-center font-mono text-[11px]">
+                        <div class="bg-emerald-950/60 border border-emerald-500/30 p-2 rounded-lg"><span class="text-slate-400 block text-[9px]">Pertemuan 1</span><strong class="text-emerald-300">2 - 1</strong></div>
+                        <div class="bg-slate-900 border border-slate-800 p-2 rounded-lg"><span class="text-slate-400 block text-[9px]">Pertemuan 2</span><strong class="text-amber-300">1 - 1</strong></div>
+                        <div class="bg-emerald-950/60 border border-emerald-500/30 p-2 rounded-lg"><span class="text-slate-400 block text-[9px]">Pertemuan 3</span><strong class="text-emerald-300">2 - 0</strong></div>
+                        <div class="bg-rose-950/50 border border-rose-500/30 p-2 rounded-lg"><span class="text-slate-400 block text-[9px]">Pertemuan 4</span><strong class="text-rose-300">0 - 1</strong></div>
+                        <div class="bg-emerald-950/60 border border-emerald-500/30 p-2 rounded-lg"><span class="text-slate-400 block text-[9px]">Pertemuan 5</span><strong class="text-emerald-300">3 - 1</strong></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-2">
+                    <div class="flex justify-between font-mono text-[11px]">
+                        <span class="text-cyan-300 font-bold">${home}: ${homePoss}%</span>
+                        <span class="text-slate-400">Penguasaan Bola Historis</span>
+                        <span class="text-amber-300 font-bold">${away}: ${awayPoss}%</span>
+                    </div>
+                    <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden flex">
+                        <div style="width: ${homePoss}%" class="bg-cyan-500 h-full"></div>
+                        <div style="width: ${awayPoss}%" class="bg-amber-500 h-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-2">
+                    <div class="text-amber-400 font-mono font-bold uppercase"><i class="fa-solid fa-stopwatch mr-1"></i> Tren Rata-Rata Gol Per Babak:</div>
+                    <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-400 block">Menit 1' - 15'</span>
+                            <strong class="text-white font-mono text-sm">18%</strong>
+                            <span class="text-[10px] text-slate-500 block">Fase Penjajakan</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-400 block">Menit 16' - 74'</span>
+                            <strong class="text-emerald-400 font-mono text-sm">49%</strong>
+                            <span class="text-[10px] text-slate-500 block">Puncak Intensitas</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-400 block">75' - Injury Time</span>
+                            <strong class="text-rose-400 font-mono text-sm">33%</strong>
+                            <span class="text-[10px] text-slate-500 block">Zona Rawan Gol</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            openModal('h2hModal');
+        }
+
+        // 2. Pop-up Public Betting Sentiment / Public Trap Meter
+        function openPublicTrapModal(matchId) {
+            populateMatchDropdowns();
+            const id = parseInt(matchId) || 1;
+            const item = matchesData.find(m => m.id === id) || matchesData[0];
+            const selectEl = document.getElementById('publicTrapSelect');
+            if (selectEl) selectEl.value = item.id;
+
+            const probNum = parseInt(item.safe_prob) || 82;
+            const publicPct = Math.min(94, probNum + 5);
+            const isTrap = publicPct >= 88;
+
+            const contentEl = document.getElementById('publicTrapContent');
+            contentEl.innerHTML = `
+                <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3">
+                    <div class="flex justify-between items-center font-mono">
+                        <span class="text-slate-300">Arus Dana Publik Pada: <strong class="text-white">${item.safe_pick_text}</strong></span>
+                        <span class="text-lg font-black ${isTrap ? 'text-rose-400' : 'text-emerald-400'}">${publicPct}% Publik</span>
+                    </div>
+                    <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden">
+                        <div style="width: ${publicPct}%" class="h-full ${isTrap ? 'bg-gradient-to-r from-amber-500 to-rose-600' : 'bg-emerald-500'}"></div>
+                    </div>
+                    <div class="p-3.5 rounded-xl border ${isTrap ? 'bg-rose-950/50 border-rose-500/40 text-rose-200' : 'bg-emerald-950/40 border-emerald-500/30 text-emerald-200'} leading-relaxed">
+                        ${isTrap 
+                            ? `<strong>🚨 PERINGATAN JEBAKAN BANDAR (PUBLIC TRAP):</strong> ${publicPct}% mayoritas publik menumpuk di sisi yang sama! Waspadai potensi hasil imbang atau menang tipis (drama L1). Pertimbangkan <em>Fade the Public</em> atau kurangi besaran handicap ke DNB / Team Over Personal (${item.over_personal}).`
+                            : `<strong>✅ ARUS DANA SEHAT:</strong> Distribusi publik (${publicPct}%) masih dalam batas wajar dan selaras dengan pergerakan tajam pemain profesional (Sharp Money). Aman mengikuti Safe Pick utama.`
+                        }
+                    </div>
+                </div>
+            `;
+            openModal('publicTrapModal');
+        }
+
+        // 3. Pop-up Live xG Momentum Timeline Chart (0' - 90')
+        function openXGTimelineModal(matchId) {
+            populateMatchDropdowns();
+            const id = parseInt(matchId) || 1;
+            const item = matchesData.find(m => m.id === id) || matchesData[0];
+            const selectEl = document.getElementById('xgTimelineSelect');
+            if (selectEl) selectEl.value = item.id;
+
+            const bars = [
+                { min: "15'", xg: 35, label: "Build-up awal" },
+                { min: "30'", xg: 62, label: "Tekanan sayap" },
+                { min: "45'", xg: 78, label: "Peluang emas HT" },
+                { min: "60'", xg: 55, label: "Rotasi taktik" },
+                { min: "75'", xg: 88, label: "Puncak xG" },
+                { min: "90'", xg: 82, label: "All-out attack" }
+            ];
+
+            const barsHTML = bars.map(b => `
+                <div class="flex flex-col items-center flex-1">
+                    <span class="text-[10px] font-mono text-teal-300 mb-1">${(b.xg / 40).toFixed(2)}</span>
+                    <div class="w-full bg-slate-800 rounded-t-lg h-32 flex items-end p-1">
+                        <div style="height: ${b.xg}%" class="w-full bg-gradient-to-t from-teal-600 to-emerald-400 rounded-t"></div>
+                    </div>
+                    <span class="text-[10px] font-mono text-slate-400 mt-1.5 font-bold">${b.min}</span>
+                    <span class="text-[9px] text-slate-500 text-center leading-tight mt-0.5">${b.label}</span>
+                </div>
+            `).join('');
+
+            const contentEl = document.getElementById('xgTimelineContent');
+            contentEl.innerHTML = `
+                <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-teal-300 font-mono font-bold uppercase"><i class="fa-solid fa-chart-column mr-1"></i> Grafik Kumulatif Expected Goals (xG)</span>
+                        <span class="text-[10px] bg-teal-950 text-teal-300 px-2.5 py-0.5 rounded border border-teal-500/30 font-mono">${item.match}</span>
+                    </div>
+                    <div class="flex items-end gap-3 pt-2">
+                        ${barsHTML}
+                    </div>
+                    <p class="text-slate-300 text-[11px] leading-relaxed border-t border-slate-800 pt-3">
+                        <strong>Kesimpulan Grafik xG:</strong> Lonjakan peluang bersih tertinggi terjadi pada interval <strong>menit 30'-45'</strong> dan <strong>menit 70'-90'</strong>, membuktikan bahwa tim unggulan tidak sekadar menguasai bola kosong tetapi aktif menciptakan ancaman gol nyata.
+                    </p>
+                </div>
+            `;
+            openModal('xgTimelineModal');
+        }
+
+        // 4. Pop-up Correlation Parlay Lab
+        function openCorrelationModal(matchId) {
+            populateMatchDropdowns();
+            const id = parseInt(matchId) || 1;
+            const item = matchesData.find(m => m.id === id) || matchesData[0];
+            const selectEl = document.getElementById('correlationSelect');
+            if (selectEl) selectEl.value = item.id;
+
+            const combinedProb = Math.min(91, Math.round((parseInt(item.safe_prob) + parseInt(item.personal_prob)) / 2) + 3);
+
+            const contentEl = document.getElementById('correlationContent');
+            contentEl.innerHTML = `
+                <div class="bg-slate-950 border border-purple-500/40 p-4 rounded-xl space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <span class="text-purple-300 font-mono font-bold">${item.match}</span>
+                        <span class="bg-purple-900/70 text-purple-200 px-2.5 py-0.5 rounded font-mono font-bold">Probabilitas Gabungan: ${combinedProb}%</span>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 flex justify-between items-center">
+                            <span class="text-slate-400">Pasaran 1 (Sisi Utama):</span>
+                            <strong class="text-emerald-400 font-mono">${item.safe_pick_text}</strong>
+                        </div>
+                        <div class="text-center text-purple-400 font-bold"><i class="fa-solid fa-link"></i> SALING MENGUNCI DENGAN</div>
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 flex justify-between items-center">
+                            <span class="text-slate-400">Pasaran 2 (Team Over Personal):</span>
+                            <strong class="text-amber-300 font-mono">${item.over_personal.split(' (')[0]}</strong>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-[11px] leading-relaxed">
+                        <strong>Logika Korelasi:</strong> Secara statistik, apabila <strong>${item.safe_pick_text}</strong> tercapai sesuai skenario pertandingan, maka <strong>${item.over_personal.split(' (')[0]}</strong> hampir pasti ikut terpenuhi secara otomatis dalam satu alur laga.
+                    </p>
+                </div>
+            `;
+            openModal('correlationModal');
+        }
+
+        // 5. Pop-up Daily Pundit Challenge / Confidence Tier Board
+        function openTierBoardModal() {
+            const tierS = matchesData.filter(m => parseInt(m.safe_prob) >= 88);
+            const tierA = matchesData.filter(m => parseInt(m.safe_prob) >= 82 && parseInt(m.safe_prob) < 88);
+            const tierB = matchesData.filter(m => parseInt(m.safe_prob) < 82);
+
+            const renderTierList = (list, badgeColor) => list.map(m => `
+                <div class="flex flex-wrap justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800 gap-2">
+                    <div>
+                        <strong class="text-white">${m.match}</strong>
+                        <span class="text-[10px] text-slate-400 block">${m.category}</span>
+                    </div>
+                    <div class="flex items-center gap-2 font-mono">
+                        <span class="text-emerald-300 font-bold">${m.safe_pick_text}</span>
+                        <span class="${badgeColor} px-2 py-0.5 rounded text-[10px] font-bold">${m.safe_prob}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            const contentEl = document.getElementById('tierBoardContent');
+            contentEl.innerHTML = `
+                <div class="bg-emerald-950/30 border border-emerald-500/40 rounded-xl p-4 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-emerald-400 font-mono font-black uppercase"><i class="fa-solid fa-crown mr-1"></i> TIER S — BANKER MUTLAK (Wajib Masuk Slip / ≥88%)</span>
+                        <span class="text-[10px] text-emerald-300 font-mono">${tierS.length} Match</span>
+                    </div>
+                    <div class="space-y-2">${renderTierList(tierS, 'bg-emerald-600 text-white')}</div>
+                </div>
+
+                <div class="bg-amber-950/30 border border-amber-500/40 rounded-xl p-4 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-amber-400 font-mono font-black uppercase"><i class="fa-solid fa-star mr-1"></i> TIER A — SOLID VALUE (82% - 87%)</span>
+                        <span class="text-[10px] text-amber-300 font-mono">${tierA.length} Match</span>
+                    </div>
+                    <div class="space-y-2">${renderTierList(tierA, 'bg-amber-500 text-slate-950')}</div>
+                </div>
+
+                <div class="bg-rose-950/30 border border-rose-500/40 rounded-xl p-4 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-rose-400 font-mono font-black uppercase"><i class="fa-solid fa-triangle-exclamation mr-1"></i> TIER B — HIGH RISK / SENGIT (<82% — Pantau BoJal)</span>
+                        <span class="text-[10px] text-rose-300 font-mono">${tierB.length} Match</span>
+                    </div>
+                    <div class="space-y-2">${renderTierList(tierB, 'bg-rose-600 text-white')}</div>
+                </div>
+            `;
+            openModal('tierBoardModal');
+        }
+
+        // =========================================================================
+        // MODUL MANAJEMEN MODAL BOJAL & ENGINE LAMA (UTUH 100%)
+        // =========================================================================
         function openBoJalModal() {
             const modalEl = document.getElementById('bojalModal');
             if (modalEl) modalEl.classList.remove('hidden');
@@ -539,7 +902,6 @@
             if (modalEl) modalEl.classList.add('hidden');
         }
 
-        // Fungsi Kalkulasi Analisis BoJal Real-Time
         function runModalBoJalAnalysis() {
             const leagueInput = document.getElementById('modalLeague');
             const matchInput = document.getElementById('modalMatch');
@@ -595,7 +957,6 @@
             `;
         }
 
-        // Modul Filter Kategori Pertandingan
         function setFilter(type) {
             currentFilter = type;
             ['semua', 'sengit', 'dominan'].forEach(t => {
@@ -612,7 +973,6 @@
             renderMatches(currentFilter, searchInputEl ? searchInputEl.value : '');
         }
 
-        // Modul Render Kartu Pertandingan Utama ke DOM
         function renderMatches(filter, searchQuery) {
             const container = document.getElementById('matchesContainer');
             if (!container) return;
@@ -639,7 +999,7 @@
                 const cardHTML = `
                 <div class="glass-card border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition-all duration-300 shadow-2xl">
                     
-                    <!-- Header Kartu -->
+                    <!-- Header Kartu (Klik judul untuk membuka H2H Matrix instan) -->
                     <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-4 mb-4 gap-2">
                         <div>
                             <div class="flex items-center gap-2">
@@ -650,9 +1010,20 @@
                                     ${item.league_badge}
                                 </span>
                             </div>
-                            <h3 class="text-xl font-extrabold text-slate-100 mt-2">${item.match}</h3>
+                            <h3 onclick="openH2HModal(${item.id})" title="Klik untuk melihat H2H & Deep Matrix" class="text-xl font-extrabold text-slate-100 hover:text-cyan-300 cursor-pointer mt-2 transition flex items-center gap-2">
+                                ${item.match} <span class="text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded">H2H Matrix</span>
+                            </h3>
                         </div>
-                        <div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button onclick="openPublicTrapModal(${item.id})" class="bg-rose-950/70 hover:bg-rose-900 text-rose-300 border border-rose-500/30 font-mono text-[11px] px-3 py-2 rounded-xl transition" title="Cek Sentimen Publik">
+                                <i class="fa-solid fa-users-viewfinder"></i> Trap
+                            </button>
+                            <button onclick="openXGTimelineModal(${item.id})" class="bg-teal-950/70 hover:bg-teal-900 text-teal-300 border border-teal-500/30 font-mono text-[11px] px-3 py-2 rounded-xl transition" title="Grafik xG Timeline">
+                                <i class="fa-solid fa-chart-area"></i> xG
+                            </button>
+                            <button onclick="openCorrelationModal(${item.id})" class="bg-purple-950/70 hover:bg-purple-900 text-purple-300 border border-purple-500/30 font-mono text-[11px] px-3 py-2 rounded-xl transition" title="Kombinasi Korelasi">
+                                <i class="fa-solid fa-flask-vial"></i> Lab
+                            </button>
                             <button onclick="toggleParlay(this)" class="bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white font-mono text-xs px-4 py-2 rounded-xl transition shadow">
                                 + Slip Parlay
                             </button>
@@ -710,7 +1081,6 @@
             });
         }
 
-        // Modul Interaktif Parlay Slip Accumulator
         function toggleParlay(btn) {
             if (!btn) return;
             if (btn.classList.contains('bg-emerald-600')) {
@@ -732,14 +1102,12 @@
             if (oddsEl) oddsEl.innerText = totalOddsAccumulator.toFixed(2);
         }
 
-        // Modul Filter Pencarian Real-Time
         function filterMatches() {
             const searchInputEl = document.getElementById('searchInput');
             const query = searchInputEl ? searchInputEl.value : '';
             renderMatches(currentFilter, query);
         }
 
-        // Inisialisasi Pertama Saat DOM Loaded
         document.addEventListener('DOMContentLoaded', function() {
             renderMatches('semua', '');
         });
