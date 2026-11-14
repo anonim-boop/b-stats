@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.STATS </title>
+    <title>B.STATS</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -55,10 +55,10 @@
             <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mb-6">
                 <div>
                     <h2 class="text-xl font-bold text-emerald-300 mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> ANALISIS GEGEEE & 10-Popup Command Center
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & 10-Popup Command Center
                     </h2>
                     <p class="text-sm text-slate-400 max-w-3xl">
-                        Memuat 40 Pertandingan terbaru lengkap dengan Team Over Personal, serta 10 Pop-up Intelijen Taktis.
+                        Memuat 23 Pertandingan terbaru lengkap dengan Team Over Personal, serta 10 Pop-up Intelijen Taktis (Klik nama pertandingan untuk H2H Matrix instan).
                     </p>
                 </div>
                 <div>
@@ -68,7 +68,7 @@
 
             <!-- Baris 1: Tombol Filter & Fitur Pop-up Sebelumnya (UTUH) -->
             <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-800">
-                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow">Semua (40 Match)</button>
+                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow">Semua (23 Match)</button>
                 <button onclick="setFilter('sengit')" id="btn-sengit" class="bg-red-950/80 text-red-300 border border-red-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-fire text-red-500"></i> Sengit / Ketat</button>
                 <button onclick="setFilter('dominan')" id="btn-dominan" class="bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Dominan / Biasa</button>
                 
@@ -130,7 +130,7 @@
                 </div>
                 <div>
                     <label class="block text-slate-400 mb-1 font-mono">Tim Home vs Away:</label>
-                    <input type="text" id="modalMatch" placeholder="Cth: Serbia vs Jerman" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                    <input type="text" id="modalMatch" placeholder="Cth: Portugal vs Denmark" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -246,7 +246,7 @@
                     </div>
                 </div>
                 <p class="text-slate-300 leading-relaxed italic">
-                    "Halo Punteur! Pantauan jadwal kali ini dipenuhi laga panas UEFA Nations League seperti Belanda vs Yunani dan Serbia vs Jerman, hingga duel sengit Persahabatan Argentina vs Uruguay. Pastikan ambil opsi Team Over Personal yang aman atau pantau pasar Live Bet di babak kedua."
+                    "Halo Punteur! Pantauan jadwal kali ini dipenuhi laga super big match seperti Jepang vs Brasil dan Portugal vs Denmark, serta duel gengsi lainnya. Pastikan ambil opsi Team Over Personal yang aman atau pantau pasar Live Bet di babak kedua."
                 </p>
             </div>
         </div>
@@ -342,7 +342,7 @@
                 <span class="bg-amber-400 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">CONFIDENCE TIER BOARD</span>
                 <h3 class="text-lg font-extrabold text-amber-300">Papan Peringkat Mutlak Harian (Tier S / A / B)</h3>
             </div>
-            <p class="text-xs text-slate-400 mb-5">Penyaringan otomatis seluruh 40 pertandingan ke dalam 3 kasta keyakinan matematis agar langsung bisa memilih menu terbaik dalam hitungan detik.</p>
+            <p class="text-xs text-slate-400 mb-5">Penyaringan otomatis seluruh 23 pertandingan ke dalam 3 kasta keyakinan matematis agar langsung bisa memilih menu terbaik dalam hitungan detik.</p>
 
             <div id="tierBoardContent" class="space-y-5 text-xs"></div>
         </div>
@@ -408,200 +408,144 @@
         }
 
         // =========================================================================
-        // DATABASE 40 PERTANDINGAN TERBARU (REPLACEMENT SESUAI PERMINTAAN USER)
+        // DATABASE 23 PERTANDINGAN TERBARU (REPLACEMENT SESUAI PERMINTAAN USER)
         // =========================================================================
         const matchesData = [
-            // --- UEFA LIGA NEGARA (10 MATCH) ---
+            // --- UEFA LIGA NEGARA (8 MATCH) ---
             { 
-                id: 1, category: "UEFA Liga Negara (00.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Moldova vs Kazakhstan", safe_pick_text: "Moldova DNB (0)", safe_prob: "80%", 
-                strategy: "Moldova tampil disiplin di kandang dengan blok pertahanan rapat dan transisi sayap cepat. Kazakhstan kerap kesulitan membongkar lini belakang tim yang bermain kompak saat tandang.", 
-                ht_2h_analysis: { ht_flow: "Tempo sedang dan hati-hati; kedua tim menjaga jarak antarlini di 45 menit awal.", ft_flow: "Moldova meningkatkan intensitas pressing di paruh kedua dan memanfaatkan bola mati." }, 
-                over_personal: "Moldova Over 0.5 / Over 1.0 Goal (Gol kandang terukur)", personal_prob: "84%", 
-                over_under_flow: "Under 2.25 Goals / BTTS No", ou_prob: "83%" 
+                id: 1, category: "UEFA Liga Negara (21.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Kosovo vs Israel", safe_pick_text: "Kosovo DNB (0)", safe_prob: "80%", 
+                strategy: "Kosovo tampil sangat agresif dengan dukungan publik kandang dan pressing ketat di lini tengah. Israel kerap kesulitan menghadapi kecepatan transisi sayap lawan saat tandang.", 
+                ht_2h_analysis: { ht_flow: "Tempo tinggi sejak menit awal; kedua tim saling bertukar serangan cepat.", ft_flow: "Stamina fisik Israel menurun di paruh kedua, memberikan ruang bagi Kosovo mendikte laga." }, 
+                over_personal: "Kosovo Over 1.0 Goal (Agresivitas kandang)", personal_prob: "84%", 
+                over_under_flow: "Over 2.25 Goals / BTTS Yes", ou_prob: "82%" 
             },
             { 
-                id: 2, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Belanda vs Yunani", safe_pick_text: "Belanda -0.75", safe_prob: "86%", 
-                strategy: "Belanda mencatat penguasaan bola dominan di kandang dengan variasi serangan sayap dan gelandang box-to-box agresif. Yunani mengandalkan blok rendah yang rentan ditembus umpan cut-back.", 
-                ht_2h_analysis: { ht_flow: "Belanda mengurung pertahanan Yunani sejak awal dan menciptakan banyak peluang dari setengah ruang.", ft_flow: "Kelelahan lini belakang Yunani membuka ruang bagi Belanda menambah gol kemenangan." }, 
-                over_personal: "Belanda Over 1.5 Goal (Produktivitas kandang tajam)", personal_prob: "89%", 
-                over_under_flow: "Over 2.25 Goals", ou_prob: "82%" 
-            },
-            { 
-                id: 3, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Serbia vs Jerman", safe_pick_text: "Jerman -0.5", safe_prob: "83%", 
-                strategy: "Serbia berbahaya lewat duel fisik dan bola udara di kandang, namun Jerman unggul jauh dalam struktur build-up, kecepatan rotasi posisi, serta efektivitas tembakan tepat sasaran.", 
-                ht_2h_analysis: { ht_flow: "Serbia menekan agresif di 20 menit pertama; Jerman perlahan mengambil alih kendali lini tengah.", ft_flow: "Jerman mendikte ritme babak kedua dan menghukum celah transisi bertahan tuan rumah." }, 
-                over_personal: "Jerman Over 1.5 Goal (Kualitas lini serang elite)", personal_prob: "87%", 
-                over_under_flow: "Over 2.5 Goals / BTTS Yes", ou_prob: "84%" 
-            },
-            { 
-                id: 4, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Slovenia vs Swiss", safe_pick_text: "Swiss DNB (0)", safe_prob: "79%", 
-                strategy: "Slovenia memiliki organisasi pertahanan solid di kandang, sementara Swiss unggul pengalaman turnamen besar dan ketenangan mengalirkan bola di area krusial.", 
-                ht_2h_analysis: { ht_flow: "Duel taktik ketat di sektor tengah dengan minim kesalahan individual.", ft_flow: "Swiss meningkatkan tempo serangan sayap untuk mencari gol penentu kemenangan." }, 
-                over_personal: "Swiss Over 0.5 / Over 1.0 Goal (Konsistensi gol tandang)", personal_prob: "84%", 
+                id: 2, category: "UEFA Liga Negara (00.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Norwegia vs Wales", safe_pick_text: "Norwegia -0.5", safe_prob: "83%", 
+                strategy: "Norwegia memiliki keunggulan fisik dan ketajaman lini serang di kandang. Wales mengandalkan pertahanan blok rendah dan serangan balik cepat.", 
+                ht_2h_analysis: { ht_flow: "Norwegia mengurung pertahanan Wales dan menciptakan peluang dari bola udara.", ft_flow: "Gol pemecah kebuntuan tuan rumah tercipta di babak kedua lewat dominasi lini tengah." }, 
+                over_personal: "Norwegia Over 1.5 Goal (Ketajaman lini depan)", personal_prob: "86%", 
                 over_under_flow: "Under 2.5 Goals", ou_prob: "80%" 
             },
             { 
-                id: 5, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Skotlandia vs Makedonia Utara", safe_pick_text: "Skotlandia -0.5", safe_prob: "82%", 
-                strategy: "Atmosfer Hampden Park mendorong Skotlandia bermain intens dengan umpan silang akurat dan bola mati berbahaya. Makedonia Utara kerap kewalahan menahan tekanan fisik konstan.", 
-                ht_2h_analysis: { ht_flow: "Skotlandia mendominasi wilayah permainan dan memaksa tamu bertahan dalam.", ft_flow: "Tekanan bertubi-tubi tuan rumah membuahkan gol di paruh kedua." }, 
-                over_personal: "Skotlandia Over 1.0 / Over 1.5 Goal (Dominasi kandang)", personal_prob: "85%", 
-                over_under_flow: "Over 2.0 Goals", ou_prob: "79%" 
+                id: 3, category: "UEFA Liga Negara (00.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Georgia vs Hongaria", safe_pick_text: "Hongaria DNB (0)", safe_prob: "79%", 
+                strategy: "Georgia sangat bersemangat di kandang dengan gaya main terbuka, namun Hongaria unggul kedisiplinan taktik Eropa dan efektivitas serangan balik.", 
+                ht_2h_analysis: { ht_flow: "Pertandingan berjalan terbuka dengan intensitas sedang di paruh pertama.", ft_flow: "Hongaria lebih efektif memanfaatkan kelengahan lini belakang Georgia di babak kedua." }, 
+                over_personal: "Hongaria Over 0.5 / Over 1.0 Goal (Efisiensi serangan balik)", personal_prob: "83%", 
+                over_under_flow: "Over 2.25 Goals / BTTS Yes", ou_prob: "81%" 
             },
             { 
-                id: 6, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Slowakia vs Kepulauan Faroe", safe_pick_text: "Slowakia -1.25", safe_prob: "90%", 
-                strategy: "Perbedaan kualitas teknis sangat mencolok. Slowakia unggul penguasaan bola, kecepatan kombinasi lini depan, dan akurasi eksekusi peluang melawan pertahanan low-block Kepulauan Faroe.", 
-                ht_2h_analysis: { ht_flow: "Slowakia menggempur total sejak kick-off dan unggul minimal 1 gol sebelum turun minum.", ft_flow: "Dominasi penuh berlanjut dengan tambahan gol pengunci kemenangan bersih." }, 
-                over_personal: "Slowakia Over 1.5 / Over 2.0 Goal (Pesta gol kandang)", personal_prob: "91%", 
-                over_under_flow: "Over 2.5 Goals / BTTS No", ou_prob: "87%" 
+                id: 4, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Portugal vs Denmark", safe_pick_text: "Portugal -0.75", safe_prob: "88%", 
+                strategy: "Portugal superior dalam penguasaan bola, kreativitas lini tengah, dan ketajaman lini serang kelas dunia. Denmark mengandalkan organisasi ketat yang rentan ditekan bertubi-tubi.", 
+                ht_2h_analysis: { ht_flow: "Portugal mendominasi total permainan dan mengurung area pertahanan Denmark.", ft_flow: "Kualitas bintang Portugal memastikan kemenangan bersih di paruh kedua." }, 
+                over_personal: "Portugal Over 1.5 Goal (Dominasi lini serang elit)", personal_prob: "90%", 
+                over_under_flow: "Over 2.5 Goals / BTTS No", ou_prob: "85%" 
+            },
+            { 
+                id: 5, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Irlandia Utara vs Ukraina", safe_pick_text: "Ukraina -0.5", safe_prob: "82%", 
+                strategy: "Irlandia Utara mengandalkan duel fisik dan bola mati di kandang, namun Ukraina memiliki kualitas teknik individu dan kecepatan transisi yang lebih matang.", 
+                ht_2h_analysis: { ht_flow: "Duel fisik ketat dengan minim ruang di lini tengah babak pertama.", ft_flow: "Ukraina meningkatkan tempo dan mencuri gol kemenangan lewat skema sayap." }, 
+                over_personal: "Ukraina Over 1.0 Goal (Kualitas teknik tandang)", personal_prob: "85%", 
+                over_under_flow: "Under 2.25 Goals", ou_prob: "81%" 
+            },
+            { 
+                id: 6, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Austria vs Republik Irlandia", safe_pick_text: "Austria -0.75", safe_prob: "86%", 
+                strategy: "Austria menerapkan pressing ketat dan intensitas tinggi yang menyulitkan Republik Irlandia dalam membangun serangan dari bawah.", 
+                ht_2h_analysis: { ht_flow: "Austria menekan total dan menguasai penguasaan bola di atas 60%.", ft_flow: "Keunggulan fisik dan taktik Austria berbuah gol pengunci kemenangan." }, 
+                over_personal: "Austria Over 1.5 Goal (Pressing intensitas tinggi)", personal_prob: "88%", 
+                over_under_flow: "Under 2.5 Goals / BTTS No", ou_prob: "83%" 
             },
             { 
                 id: 7, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Bulgaria vs Islandia", safe_pick_text: "Islandia DNB (0)", safe_prob: "78%", 
-                strategy: "Bulgaria sering kesulitan menjaga konsistensi pertahanan saat menghadapi transisi cepat. Islandia unggul postur duel udara dan efisiensi serangan balik terukur.", 
-                ht_2h_analysis: { ht_flow: "Pertandingan berlangsung seimbang dengan perebutan bola ketat di lini tengah.", ft_flow: "Islandia memanfaatkan celah bola mati dan serangan balik di babak kedua." }, 
-                over_personal: "Islandia Over 0.5 / Over 1.0 Goal (Efektivitas set-piece)", personal_prob: "83%", 
-                over_under_flow: "Under 2.5 Goals", ou_prob: "81%" 
+                match: "Rumania vs Polandia", safe_pick_text: "Polandia DNB (0)", safe_prob: "81%", 
+                strategy: "Rumania solid dalam bertahan di kandang, namun Polandia memiliki ketajaman striker top Eropa dan variasi serangan bola mati yang berbahaya.", 
+                ht_2h_analysis: { ht_flow: "Permainan alot dan berhati-hati dari kedua kubu di paruh pertama.", ft_flow: "Polandia memanfaatkan efektivitas peluang di babak kedua untuk unggul." }, 
+                over_personal: "Polandia Over 0.5 / Over 1.0 Goal (Ketajaman lini depan)", personal_prob: "84%", 
+                over_under_flow: "Under 2.25 Goals", ou_prob: "82%" 
             },
             { 
                 id: 8, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Luksemburg vs Estonia", safe_pick_text: "Luksemburg -0.5", safe_prob: "81%", 
-                strategy: "Luksemburg mengalami peningkatan kualitas permainan yang signifikan dengan penguasaan bola rapi di kandang, sementara Estonia rapuh di lini pertahanan saat bermain tandang.", 
-                ht_2h_analysis: { ht_flow: "Luksemburg mengontrol sirkulasi bola dan menekan pertahanan sayap Estonia.", ft_flow: "Dominasi tuan rumah berbuah gol kemenangan di paruh kedua." }, 
-                over_personal: "Luksemburg Over 1.0 Goal (Minimal 1 gol kandang)", personal_prob: "85%", 
-                over_under_flow: "Under 2.5 Goals / BTTS No", ou_prob: "80%" 
-            },
-            { 
-                id: 9, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Andorra vs Gibraltar", safe_pick_text: "Andorra DNB (0)", safe_prob: "80%", 
-                strategy: "Duel dua tim defensif dengan tempo rendah. Andorra lebih terbiasa bermain rapat di kandang dan unggul pengalaman menghadapi lawan setara dibanding Gibraltar.", 
-                ht_2h_analysis: { ht_flow: "Minim peluang bersih di babak pertama; kedua tim fokus menjaga kedalaman pertahanan.", ft_flow: "Satu momen bola mati diprediksi menjadi pembeda skor akhir." }, 
-                over_personal: "Andorra Over 0.5 Goal (Gol tunggal krusial)", personal_prob: "79%", 
-                over_under_flow: "Under 2.0 Goals / BTTS No", ou_prob: "88%" 
-            },
-            { 
-                id: 10, category: "UEFA Liga Negara (02.45 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Lichtenstein vs Azerbaijan", safe_pick_text: "Azerbaijan -1.0", safe_prob: "87%", 
-                strategy: "Azerbaijan memiliki kualitas individu dan organisasi serangan jauh di atas Lichtenstein yang rata-rata kebobolan lebih dari 2 gol di laga kandang.", 
-                ht_2h_analysis: { ht_flow: "Azerbaijan mendominasi penguasaan bola dan mengurung pertahanan tuan rumah.", ft_flow: "Keunggulan stamina dan teknik memastikan kemenangan nyaman tim tamu." }, 
-                over_personal: "Azerbaijan Over 1.5 Goal (Dominasi serangan tamu)", personal_prob: "89%", 
-                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "84%" 
+                match: "Swedia vs Bosnia dan Herzegovina", safe_pick_text: "Swedia -0.5", safe_prob: "83%", 
+                strategy: "Swedia unggul postur fisik, kecepatan sayap, dan rekor kandang yang solid. Bosnia kerap kesulitan menjaga konsentrasi lini belakang di laga tandang.", 
+                ht_2h_analysis: { ht_flow: "Swedia mengambil inisiatif serangan lewat sisi lapangan.", ft_flow: "Tekanan konstan tuan rumah membuahkan gol penentu di babak kedua." }, 
+                over_personal: "Swedia Over 1.5 Goal (Agresivitas kandang)", personal_prob: "86%", 
+                over_under_flow: "Over 2.25 Goals", ou_prob: "80%" 
             },
 
-            // --- PIALA AFRIKA (12 MATCH) ---
+            // --- PIALA AFRIKA (3 MATCH) ---
             { 
-                id: 11, category: "Piala Afrika (20.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Zambia vs Burundi", safe_pick_text: "Zambia -0.75", safe_prob: "84%", 
-                strategy: "Zambia memiliki kecepatan lini serang yang eksplosif dan dukungan kandang masif. Burundi cenderung bermain bertahan total namun sering kehilangan konsentrasi di babak kedua.", 
-                ht_2h_analysis: { ht_flow: "Zambia mengambil inisiatif serangan sejak menit awal; Burundi menumpuk pemain di belakang.", ft_flow: "Gempuran sayap Zambia membongkar pertahanan rapat tim tamu." }, 
-                over_personal: "Zambia Over 1.5 Goal (Kecepatan lini depan tuan rumah)", personal_prob: "87%", 
-                over_under_flow: "Over 2.25 Goals", ou_prob: "81%" 
+                id: 9, category: "Piala Afrika (23.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Uganda vs Botswana", safe_pick_text: "Uganda -0.75", safe_prob: "85%", 
+                strategy: "Uganda sangat tangguh di kandang dengan dukungan suporter fanatik dan kekuatan fisik prima. Botswana cenderung bertahan total dan minim daya gedor.", 
+                ht_2h_analysis: { ht_flow: "Uganda mengurung pertahanan Botswana sejak menit awal.", ft_flow: "Gol kemenangan tuan rumah lahir di paruh kedua lewat situasi kemelut." }, 
+                over_personal: "Uganda Over 1.0 / Over 1.5 Goal (Dominasi kandang)", personal_prob: "87%", 
+                over_under_flow: "Under 2.25 Goals / BTTS No", ou_prob: "84%" 
             },
             { 
-                id: 12, category: "Piala Afrika (20.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Comoro Islands vs Kongo", safe_pick_text: "Comoro Islands DNB (0)", safe_prob: "79%", 
-                strategy: "Comoro Islands tampil sangat kolektif dan sulit dikalahkan di kandang dengan kombinasi pemain berdarah Prancis yang rapi dalam penguasaan bola.", 
-                ht_2h_analysis: { ht_flow: "Pertarungan sengit di lini tengah dengan tempo sedang.", ft_flow: "Comoro memanfaatkan kecepatan transisi untuk mengamankan poin penuh." }, 
-                over_personal: "Comoro Islands Over 0.5 / Over 1.0 Goal (Kolektivitas kandang)", personal_prob: "83%", 
-                over_under_flow: "Under 2.5 Goals", ou_prob: "82%" 
-            },
-            { 
-                id: 13, category: "Piala Afrika (20.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Mozambik vs Ethiopia", safe_pick_text: "Mozambik -0.5", safe_prob: "83%", 
-                strategy: "Mozambik tangguh di kandang dan unggul dalam fisik serta kecepatan transisi sayap dibanding Ethiopia yang memiliki rekor tandang sangat lemah.", 
-                ht_2h_analysis: { ht_flow: "Mozambik menekan agresif dan memaksa Ethiopia melakukan banyak pelanggaran.", ft_flow: "Gol penentu tuan rumah lahir lewat penetrasi kotak penalti babak kedua." }, 
-                over_personal: "Mozambik Over 1.0 / Over 1.5 Goal (Rekor kandang kuat)", personal_prob: "86%", 
-                over_under_flow: "Over 2.0 Goals", ou_prob: "80%" 
-            },
-            { 
-                id: 14, category: "Piala Afrika (23.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Burkina Faso vs Mauritania", safe_pick_text: "Burkina Faso -0.75", safe_prob: "86%", 
-                strategy: "Burkina Faso unggul kualitas teknik individu dan kekuatan fisik di semua lini. Mauritania bermain pragmatis namun kesulitan meredam variasi serangan tuan rumah.", 
-                ht_2h_analysis: { ht_flow: "Burkina Faso mengendalikan penguasaan bola dan menciptakan peluang emas.", ft_flow: "Tuan rumah mengunci kemenangan dengan margin gol aman." }, 
-                over_personal: "Burkina Faso Over 1.5 Goal (Tajam di kandang)", personal_prob: "88%", 
-                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "83%" 
-            },
-            { 
-                id: 15, category: "Piala Afrika (23.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Gabon vs Lesotho", safe_pick_text: "Gabon -1.0", safe_prob: "88%", 
-                strategy: "Gabon memiliki penyerang kelas Eropa yang mampu memanfaatkan ruang sekecil apa pun. Lesotho sangat rentan saat menghadapi tekanan konstan di laga tandang.", 
-                ht_2h_analysis: { ht_flow: "Gabon langsung menekan total dan membuka keunggulan di paruh pertama.", ft_flow: "Gabon menambah gol kedua dan mengontrol penuh tempo permainan." }, 
-                over_personal: "Gabon Over 1.5 Goal (Kualitas penyerang superior)", personal_prob: "90%", 
-                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "85%" 
-            },
-            { 
-                id: 16, category: "Piala Afrika (23.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Cape Verde vs Liberia", safe_pick_text: "Cape Verde -1.0", safe_prob: "87%", 
-                strategy: "Cape Verde punya organisasi taktik modern dan sangat solid di kandang. Liberia kesulitan keluar dari tekanan pressing tinggi sejak lini tengah.", 
-                ht_2h_analysis: { ht_flow: "Cape Verde mendominasi aliran bola dan mengurung pertahanan Liberia.", ft_flow: "Efisiensi penyelesaian akhir tuan rumah memastikan kemenangan bersih." }, 
-                over_personal: "Cape Verde Over 1.5 Goal (Organisasi serangan rapi)", personal_prob: "89%", 
-                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "84%" 
-            },
-            { 
-                id: 17, category: "Piala Afrika (23.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Nigeria vs Tanzania", safe_pick_text: "Nigeria -1.25", safe_prob: "91%", 
-                strategy: "Nigeria jauh lebih unggul dalam materi pemain bintang, kecepatan transisi, dan kekuatan fisik dibanding Tanzania yang bermain sangat defensif.", 
-                ht_2h_analysis: { ht_flow: "Nigeria menggempur pertahanan Tanzania tanpa henti sejak kick-off.", ft_flow: "Dominasi total berlanjut dengan pesta gol kemenangan tuan rumah." }, 
-                over_personal: "Nigeria Over 1.5 / Over 2.0 Goal (Lini serang bintang)", personal_prob: "92%", 
+                id: 10, category: "Piala Afrika (02.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Alijazair vs Togo", safe_pick_text: "Alijazair -1.25", safe_prob: "90%", 
+                strategy: "Aljazair memiliki kualitas teknik individu kelas atas dan rekor kandang yang luar biasa. Togo kesulitan mengimbangi kecepatan aliran bola lini tengah Aljazair.", 
+                ht_2h_analysis: { ht_flow: "Aljazair mendominasi total penguasaan bola dan unggul di babak pertama.", ft_flow: "Aljazair menambah gol kemenangan nyaman hingga peluit akhir." }, 
+                over_personal: "Aljazair Over 1.5 / Over 2.0 Goal (Kualitas teknik superior)", personal_prob: "91%", 
                 over_under_flow: "Over 2.5 Goals / BTTS No", ou_prob: "88%" 
             },
             { 
-                id: 18, category: "Piala Afrika (23.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Tunisia vs Libya", safe_pick_text: "Tunisia -1.0", safe_prob: "88%", 
-                strategy: "Derby Afrika Utara yang didominasi Tunisia berkat disiplin taktik tinggi, pertahanan kokoh, serta efektivitas serangan sayap di kandang.", 
-                ht_2h_analysis: { ht_flow: "Tunisia memegang kendali permainan dan memaksa Libya bertahan dalam.", ft_flow: "Tunisia mengamankan kemenangan meyakinkan tanpa kebobolan." }, 
-                over_personal: "Tunisia Over 1.5 Goal (Dominasi derby kandang)", personal_prob: "89%", 
+                id: 11, category: "Piala Afrika (02.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Angola vs Sudan Selatan", safe_pick_text: "Angola -1.0", safe_prob: "88%", 
+                strategy: "Angola unggul fisik, pengalaman, dan organisasi permainan atas Sudan Selatan yang memiliki lini pertahanan sangat rapuh.", 
+                ht_2h_analysis: { ht_flow: "Angola menekan konstan dan menciptakan banyak peluang bersih.", ft_flow: "Angola mengamankan kemenangan meyakinkan tanpa kebobolan." }, 
+                over_personal: "Angola Over 1.5 Goal (Keunggulan kualitas skuad)", personal_prob: "89%", 
                 over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "85%" 
             },
-            { 
-                id: 19, category: "Piala Afrika (23.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Afrika Selatan vs Kenya", safe_pick_text: "Afrika Selatan -0.75", safe_prob: "85%", 
-                strategy: "Afrika Selatan memainkan sepak bola kombinasi umpan pendek yang sangat cepat dan terstruktur di kandang. Kenya mengandalkan fisik namun kerap kehilangan bentuk pertahanan.", 
-                ht_2h_analysis: { ht_flow: "Afrika Selatan mendikte tempo lewat penguasaan bola tinggi.", ft_flow: "Kombinasi cepat di kotak penalti menghasilkan gol kemenangan tuan rumah." }, 
-                over_personal: "Afrika Selatan Over 1.5 Goal (Kombinasi umpan cepat)", personal_prob: "87%", 
-                over_under_flow: "Over 2.25 Goals", ou_prob: "82%" 
-            },
-            { 
-                id: 20, category: "Piala Afrika (02.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Mesir vs Malawi", safe_pick_text: "Mesir -1.5", safe_prob: "92%", 
-                strategy: "Mesir sangat superior di Kairo dengan intensitas serangan tinggi dan kualitas penyelesaian akhir kelas dunia. Malawi memiliki lini belakang yang rapuh menghadapi tekanan bertubi-tubi.", 
-                ht_2h_analysis: { ht_flow: "Mesir langsung mengurung Malawi dan unggul cepat di babak pertama.", ft_flow: "Tuan rumah leluasa menambah margin gol di paruh kedua." }, 
-                over_personal: "Mesir Over 2.0 Goal (Pesta gol di Kairo)", personal_prob: "93%", 
-                over_under_flow: "Over 2.5 Goals / BTTS No", ou_prob: "90%" 
-            },
-            { 
-                id: 21, category: "Piala Afrika (02.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Mali vs Rwanda", safe_pick_text: "Mali -1.0", safe_prob: "88%", 
-                strategy: "Mali memiliki lini tengah yang sangat dominan secara fisik dan teknis, membuat Rwanda kesulitan mengembangkan permainan saat bermain tandang.", 
-                ht_2h_analysis: { ht_flow: "Mali mendominasi duel lini tengah dan menekan pertahanan Rwanda.", ft_flow: "Keunggulan kualitas individu memastikan kemenangan nyaman tuan rumah." }, 
-                over_personal: "Mali Over 1.5 Goal (Dominasi total lini tengah)", personal_prob: "90%", 
-                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "86%" 
-            },
-            { 
-                id: 22, category: "Piala Afrika (03.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Maroko vs Niger", safe_pick_text: "Maroko -1.75", safe_prob: "93%", 
-                strategy: "Maroko merupakan kekuatan nomor satu di Afrika dengan kedalaman skuad kelas dunia. Niger tidak memiliki kapasitas pertahanan untuk menahan gempuran tuan rumah selama 90 menit.", 
-                ht_2h_analysis: { ht_flow: "Maroko menguasai total jalannya laga dan mencetak gol sejak babak pertama.", ft_flow: "Pesta gol berlanjut di babak kedua dengan clean sheet." }, 
-                over_personal: "Maroko Over 2.0 / Over 2.5 Goal (Pesta gol mutlak)", personal_prob: "94%", 
-                over_under_flow: "Over 2.75 Goals / BTTS No", ou_prob: "91%" 
-            },
 
-            // --- PERTANDINGAN PERSAHABATAN TIM NASIONAL (10 MATCH) ---
+            // --- PERTANDINGAN PERSAHABATAN TIM NASIONAL (7 MATCH) ---
             { 
-                id: 23, category: "Persahabatan Tim Nasional (19.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Singapura vs Paraguay", safe_pick_text: "Paraguay -1.25", safe_prob: "89%", 
-                strategy: "Paraguay unggul jauh secara fisik, duel udara, dan intensitas permainan khas Amerika Selatan atas Singapura yang kerap kewalahan menghadapi tim berlevel tinggi.", 
-                ht_2h_analysis: { ht_flow: "Paraguay menekan agresif dan memanfaatkan keunggulan postur pada bola mati.", ft_flow: "Dominasi fisik berlanjut dengan tambahan gol kemenangan tim tamu." }, 
-                over_personal: "Paraguay Over 1.5 / Over 2.0 Goal (Keunggulan kelas Amerika Selatan)", personal_prob: "90%", 
-                over_under_flow: "Over 2.5 Goals / BTTS No", ou_prob: "86%" 
+                id: 12, category: "Persahabatan Tim Nasional (13.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Bahrain vs Yaman", safe_pick_text: "Bahrain -1.0", safe_prob: "87%", 
+                strategy: "Bahrain unggul kualitas taktik, pengalaman regional, dan performa kandang yang sangat stabil menghadapi Yaman.", 
+                ht_2h_analysis: { ht_flow: "Bahrain menguasai jalannya laga dan memimpin di babak pertama.", ft_flow: "Dominasi berlanjut dengan tambahan gol kemenangan." }, 
+                over_personal: "Bahrain Over 1.5 Goal (Dominasi regional)", personal_prob: "89%", 
+                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "84%" 
             },
             { 
-                id: 24, category: "Persahabatan Tim Nasional (19.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                id: 13, category: "Persahabatan Tim Nasional (12.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Tahiti vs Kepulauan Cook", safe_pick_text: "Tahiti -0.75", safe_prob: "82%", 
+                strategy: "Tahiti memiliki pengalaman internasional OGC yang lebih baik dan postur fisik lebih matang dibandingkan Kepulauan Cook.", 
+                ht_2h_analysis: { ht_flow: "Jual beli serangan terjadi dengan tempo sedang.", ft_flow: "Tahiti memanfaatkan keunggulan fisik di paruh kedua." }, 
+                over_personal: "Tahiti Over 1.0 / Over 1.5 Goal (Pengalaman OGC)", personal_prob: "85%", 
+                over_under_flow: "Over 2.5 Goals", ou_prob: "80%" 
+            },
+            { 
+                id: 14, category: "Persahabatan Tim Nasional (02.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Basque Country vs Venezuela", safe_pick_text: "Basque Country DNB (0)", safe_prob: "80%", 
+                strategy: "Basque Country diperkuat pemain-pemain La Liga berkualitas tinggi dengan penguasaan bola rapi, menghadapi Venezuela yang mengandalkan fisik.", 
+                ht_2h_analysis: { ht_flow: "Permainan taktis ketat dengan aliran bola dikuasai Basque Country.", ft_flow: "Gol penentu tercipta lewat kombinasi umpan pendek rapat di babak kedua." }, 
+                over_personal: "Basque Country Over 1.0 Goal (Kualitas La Liga)", personal_prob: "84%", 
+                over_under_flow: "Under 2.5 Goals", ou_prob: "81%" 
+            },
+            { 
+                id: 15, category: "Persahabatan Tim Nasional (17.15 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Jepang vs Brazil", safe_pick_text: "Brazil -0.75", safe_prob: "89%", 
+                strategy: "Super Big Match! Jepang sangat disiplin dan cepat dalam transisi, namun Brazil unggul mutlak dalam skill individu kelas dunia dan kreativitas lini serang.", 
+                ht_2h_analysis: { ht_flow: "Tempo sangat tinggi; Jepang menekan dengan pressing ketat, Brazil mengandalkan aksi individual.", ft_flow: "Kejeniusan pemain bintang Brazil menjadi pembeda di paruh kedua." }, 
+                over_personal: "Brazil Over 1.5 Goal (Skill individu kelas dunia)", personal_prob: "91%", 
+                over_under_flow: "Over 2.75 Goals / BTTS Yes", ou_prob: "87%" 
+            },
+            { 
+                id: 16, category: "Persahabatan Tim Nasional (19.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "China vs Malaysia", safe_pick_text: "China -1.0", safe_prob: "86%", 
+                strategy: "China unggul postur fisik, duel udara, dan pengalaman menghadapi tempo laga internasional tingkat tinggi atas Malaysia.", 
+                ht_2h_analysis: { ht_flow: "China menekan lewat set-piece dan umpan silang akurat.", ft_flow: "Keunggulan fisik memastikan kemenangan meyakinkan bagi China." }, 
+                over_personal: "China Over 1.5 Goal (Keunggulan fisik duel udara)", personal_prob: "88%", 
+                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "83%" 
+            },
+            { 
+                id: 17, category: "Persahabatan Tim Nasional (19.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
                 match: "Taiwan vs Kirgizstan", safe_pick_text: "Kirgizstan -0.75", safe_prob: "84%", 
                 strategy: "Kirgizstan memiliki organisasi fisik dan transisi serangan lebih matang dibanding Taiwan yang sering kehilangan bentuk pertahanan di paruh kedua.", 
                 ht_2h_analysis: { ht_flow: "Kirgizstan mengambil kendali permainan dan menekan lewat sisi sayap.", ft_flow: "Gol penentu tim tamu tercipta seiring menurunnya stamina tuan rumah." }, 
@@ -609,136 +553,50 @@
                 over_under_flow: "Over 2.25 Goals", ou_prob: "81%" 
             },
             { 
-                id: 25, category: "Persahabatan Tim Nasional (21.10 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Uni Emirat Arab vs Honduras", safe_pick_text: "Uni Emirat Arab DNB (0)", safe_prob: "80%", 
-                strategy: "Uni Emirat Arab unggul kenyamanan cuaca kandang dan permainan umpan pendek terukur, sementara Honduras mengandalkan fisik dan serangan balik cepat.", 
-                ht_2h_analysis: { ht_flow: "UEA mendominasi penguasaan bola; Honduras rapat menunggu momentum transisi.", ft_flow: "Laga terbuka di babak kedua dengan peluang gol dari kedua kubu." }, 
-                over_personal: "Uni Emirat Arab Over 1.0 Goal (Keunggulan kandang)", personal_prob: "84%", 
-                over_under_flow: "Over 2.0 Goals", ou_prob: "79%" 
-            },
-            { 
-                id: 26, category: "Persahabatan Tim Nasional (21.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Arab Saudi vs Korea Selatan", safe_pick_text: "Korea Selatan DNB (0)", safe_prob: "81%", 
-                strategy: "Big match Asia dengan intensitas tinggi. Korea Selatan unggul kualitas individu lini serang berbasis liga top Eropa dan kecepatan transisi mematikan.", 
-                ht_2h_analysis: { ht_flow: "Arab Saudi bermain disiplin menjaga lini tengah; Korea Selatan mengancam lewat sayap.", ft_flow: "Kualitas bintang lini depan Korea Selatan menjadi pembeda di babak kedua." }, 
-                over_personal: "Korea Selatan Over 1.0 / Over 1.5 Goal (Ketajaman lini serang)", personal_prob: "86%", 
-                over_under_flow: "Over 2.25 Goals / BTTS Yes", ou_prob: "82%" 
-            },
-            { 
-                id: 27, category: "Persahabatan Tim Nasional (21.45 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Qatar vs Austria", safe_pick_text: "Austria -0.75", safe_prob: "85%", 
-                strategy: "Austria menerapkan gegenpressing intensitas tinggi khas sepak bola Eropa yang sangat sulit diimbangi oleh tempo permainan Qatar.", 
-                ht_2h_analysis: { ht_flow: "Austria langsung menekan garis pertahanan Qatar dan memaksa kesalahan build-up.", ft_flow: "Dominasi fisik dan taktik Eropa memastikan kemenangan Austria." }, 
-                over_personal: "Austria Over 1.5 Goal (Pressing tinggi mematikan)", personal_prob: "88%", 
-                over_under_flow: "Over 2.5 Goals", ou_prob: "84%" 
-            },
-            { 
-                id: 28, category: "Persahabatan Tim Nasional (23.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Irak vs Lebanon", safe_pick_text: "Irak -0.75", safe_prob: "84%", 
-                strategy: "Irak unggul kekuatan fisik, duel udara, dan agresivitas menyerang dibanding Lebanon yang cenderung bermain defensif dan minim kreasi peluang.", 
-                ht_2h_analysis: { ht_flow: "Irak mendikte jalannya pertandingan dan menekan pertahanan Lebanon.", ft_flow: "Gol kemenangan Irak lahir lewat tekanan konstan di sepertiga akhir." }, 
-                over_personal: "Irak Over 1.5 Goal (Dominasi fisik Timur Tengah)", personal_prob: "86%", 
-                over_under_flow: "Under 2.75 Goals / BTTS No", ou_prob: "80%" 
-            },
-            { 
-                id: 29, category: "Persahabatan Tim Nasional (06.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Argentina vs Uruguay", safe_pick_text: "Argentina DNB (0)", safe_prob: "82%", 
-                strategy: "Superclasico Rio de la Plata yang penuh gengsi. Argentina unggul kontrol penguasaan bola dan kreativitas lini tengah, sementara Uruguay sangat agresif dalam pressing.", 
-                ht_2h_analysis: { ht_flow: "Duel fisik ketat sejak menit awal dengan intensitas tinggi di lini tengah.", ft_flow: "Argentina memanfaatkan celah kelelahan pressing Uruguay untuk mencetak gol penentu." }, 
-                over_personal: "Argentina Over 1.0 / Over 1.5 Goal (Kreativitas juara dunia)", personal_prob: "86%", 
-                over_under_flow: "Over 2.0 Goals", ou_prob: "79%" 
-            },
-            { 
-                id: 30, category: "Persahabatan Tim Nasional (07.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Kolombia vs Chili", safe_pick_text: "Kolombia -0.75", safe_prob: "85%", 
-                strategy: "Kolombia berada dalam performa kolektif yang sangat solid dengan kecepatan sayap dan eksekusi bola mati mematikan, sementara Chili sedang dalam fase transisi generasi.", 
-                ht_2h_analysis: { ht_flow: "Kolombia menekan tinggi dan mendominasi penguasaan bola di area lawan.", ft_flow: "Kecepatan transisi Kolombia menghasilkan gol pengunci kemenangan." }, 
-                over_personal: "Kolombia Over 1.5 Goal (Momentum positif Kolombia)", personal_prob: "88%", 
-                over_under_flow: "Over 2.25 Goals", ou_prob: "82%" 
-            },
-            { 
-                id: 31, category: "Persahabatan Tim Nasional (07.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Ekuador vs Kosta Rika", safe_pick_text: "Ekuador -1.0", safe_prob: "87%", 
-                strategy: "Ekuador memiliki kekuatan fisik prima, kecepatan sayap eksplosif, dan organisasi bertahan yang sangat rapi dibanding Kosta Rika.", 
-                ht_2h_analysis: { ht_flow: "Ekuador mendikte tempo dan menekan pertahanan Kosta Rika sejak awal.", ft_flow: "Dominasi fisik berlanjut dengan kemenangan nyaman Ekuador." }, 
-                over_personal: "Ekuador Over 1.5 Goal (Intensitas fisik CONMEBOL)", personal_prob: "89%", 
-                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "84%" 
-            },
-            { 
-                id: 32, category: "Persahabatan Tim Nasional (08.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Peru vs Bolivia", safe_pick_text: "Peru -0.75", safe_prob: "83%", 
-                strategy: "Bermain di permukaan normal (bukan dataran tinggi La Paz), Bolivia memiliki rekor tandang yang sangat lemah. Peru unggul teknik kombinasi bola pendek.", 
-                ht_2h_analysis: { ht_flow: "Peru mengontrol penuh sirkulasi bola dan mengepung pertahanan Bolivia.", ft_flow: "Peru memaksimalkan peluang di babak kedua untuk mengamankan kemenangan." }, 
-                over_personal: "Peru Over 1.5 Goal (Kelemahan tandang Bolivia)", personal_prob: "86%", 
-                over_under_flow: "Over 2.0 Goals / BTTS No", ou_prob: "81%" 
+                id: 18, category: "Persahabatan Tim Nasional (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Palestina vs Iran", safe_pick_text: "Iran -1.0", safe_prob: "88%", 
+                strategy: "Iran merupakan salah satu raksasa Asia dengan lini serang yang sangat tajam dan fisik kokoh. Palestina mengandalkan semangat juang tinggi namun rawan ditekan.", 
+                ht_2h_analysis: { ht_flow: "Iran mendominasi penguasaan bola dan mengurung pertahanan Palestina.", ft_flow: "Iran mencetak gol tambahan dan mengamankan kemenangan bersih." }, 
+                over_personal: "Iran Over 1.5 Goal (Ketajaman raksasa Asia)", personal_prob: "90%", 
+                over_under_flow: "Over 2.25 Goals / BTTS No", ou_prob: "85%" 
             },
 
-            // --- CONCACAF NATIONS LEAGUE (6 MATCH) ---
+            // --- CLUB FRIENDLIES TOP (1 MATCH) ---
             { 
-                id: 33, category: "CONCACAF Nations League (02.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Bermuda vs Saint Lucia", safe_pick_text: "Saint Lucia DNB (0)", safe_prob: "79%", 
-                strategy: "Saint Lucia memiliki kecepatan lini depan yang tajam dalam skema serangan balik, sementara Bermuda kerap terbuka saat transisi bertahan.", 
-                ht_2h_analysis: { ht_flow: "Permainan terbuka dengan jual beli serangan di kedua sisi sayap.", ft_flow: "Efektivitas penyelesaian akhir menjadi penentu hasil di paruh kedua." }, 
-                over_personal: "Saint Lucia Over 1.0 / Over 1.5 Goal (Transisi cepat tajam)", personal_prob: "84%", 
-                over_under_flow: "Over 2.5 Goals / BTTS Yes", ou_prob: "83%" 
-            },
-            { 
-                id: 34, category: "CONCACAF Nations League (02.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Puerto Rico vs Dominika", safe_pick_text: "Puerto Rico -1.0", safe_prob: "87%", 
-                strategy: "Puerto Rico diperkuat banyak pemain berbasis liga Amerika Serikat yang unggul taktik dan stamina atas Dominika.", 
-                ht_2h_analysis: { ht_flow: "Puerto Rico langsung menguasai permainan dan menciptakan banyak tembakan.", ft_flow: "Tuan rumah menambah gol di babak kedua dan mengunci kemenangan." }, 
-                over_personal: "Puerto Rico Over 1.5 Goal (Keunggulan struktur pemain US)", personal_prob: "89%", 
-                over_under_flow: "Over 2.5 Goals", ou_prob: "84%" 
-            },
-            { 
-                id: 35, category: "CONCACAF Nations League (03.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Grenada vs Saint Kitts and Nevis", safe_pick_text: "Saint Kitts and Nevis DNB (0)", safe_prob: "78%", 
-                strategy: "Kedua tim memiliki kekuatan relatif berimbang, namun Saint Kitts and Nevis sedikit lebih klinis dalam memanfaatkan peluang bola mati dan serangan balik.", 
-                ht_2h_analysis: { ht_flow: "Duel fisik ketat dengan tempo sedang di babak pertama.", ft_flow: "Laga lebih terbuka di 30 menit akhir seiring turunnya disiplin posisi." }, 
-                over_personal: "Saint Kitts and Nevis Over 1.0 Goal (Efisiensi peluang)", personal_prob: "82%", 
-                over_under_flow: "Over 2.25 Goals", ou_prob: "80%" 
-            },
-            { 
-                id: 36, category: "CONCACAF Nations League (06.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Saint Martin vs El Salvador", safe_pick_text: "El Salvador -1.5", safe_prob: "90%", 
-                strategy: "El Salvador jauh lebih berpengalaman di level tertinggi CONCACAF dan unggul organisasi permainan secara menyeluruh atas Saint Martin.", 
-                ht_2h_analysis: { ht_flow: "El Salvador mendominasi penguasaan bola dan menekan sejak menit pertama.", ft_flow: "Kemenangan nyaman dengan margin minimal 2 gol untuk El Salvador." }, 
-                over_personal: "El Salvador Over 1.5 / Over 2.0 Goal (Dominasi kelas CONCACAF)", personal_prob: "91%", 
-                over_under_flow: "Over 2.5 Goals / BTTS No", ou_prob: "87%" 
-            },
-            { 
-                id: 37, category: "CONCACAF Nations League (07.30 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Montserrat vs Nikaragua", safe_pick_text: "Nikaragua -1.25", safe_prob: "89%", 
-                strategy: "Nikaragua tampil sangat agresif dengan produktivitas gol tinggi di ajang CONCACAF, sementara Montserrat rapuh menghadapi tekanan konstan.", 
-                ht_2h_analysis: { ht_flow: "Nikaragua mengambil alih kendali penuh permainan dan mencetak gol awal.", ft_flow: "Dominasi tim tamu berlanjut hingga peluit akhir." }, 
-                over_personal: "Nikaragua Over 1.5 / Over 2.0 Goal (Produktivitas gol tinggi)", personal_prob: "90%", 
-                over_under_flow: "Over 2.5 Goals", ou_prob: "86%" 
-            },
-            { 
-                id: 38, category: "CONCACAF Nations League (09.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
-                match: "Guatemala vs Kanada", safe_pick_text: "Kanada -1.0", safe_prob: "88%", 
-                strategy: "Kanada memiliki kecepatan pemain kelas top Eropa dan intensitas pressing modern yang sulit diimbangi oleh lini pertahanan Guatemala.", 
-                ht_2h_analysis: { ht_flow: "Kanada mengeksploitasi sisi sayap dengan kecepatan tinggi sejak awal.", ft_flow: "Keunggulan fisik dan kedalaman skuad Kanada memastikan kemenangan." }, 
-                over_personal: "Kanada Over 1.5 Goal (Kecepatan lini serang elite)", personal_prob: "90%", 
-                over_under_flow: "Over 2.5 Goals", ou_prob: "85%" 
+                id: 19, category: "Club Friendlies Top (18.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "CSKA vs Arsenal Tula", safe_pick_text: "CSKA -0.75", safe_prob: "85%", 
+                strategy: "CSKA memiliki kedalaman skuad dan kualitas teknik yang jauh lebih superior dibandingkan Arsenal Tula dalam laga uji coba level atas.", 
+                ht_2h_analysis: { ht_flow: "CSKA mengambil inisiatif menyerang dan menguasai tempo.", ft_flow: "Rotasi pemain berkualitas di babak kedua memastikan kemenangan CSKA." }, 
+                over_personal: "CSKA Over 1.5 Goal (Superioritas kedalaman skuad)", personal_prob: "88%", 
+                over_under_flow: "Over 2.5 Goals", ou_prob: "83%" 
             },
 
-            // --- INDONESIA LIGA NUSANTARA (2 MATCH) ---
+            // --- KEJUARAAN SPANYOL SEGUNDA DIVISION (1 MATCH) ---
             { 
-                id: 39, category: "Indonesia Liga Nusantara (15.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Persibo Bojonegoro vs Persipa Pati", safe_pick_text: "Persibo Bojonegoro -0.5", safe_prob: "83%", 
-                strategy: "Derby panas Jawa Timur-Jawa Tengah. Persibo Bojonegoro sangat tangguh saat bermain dengan dukungan penuh suporter dan unggul agresivitas serangan sayap.", 
-                ht_2h_analysis: { ht_flow: "Duel keras lini tengah dengan tempo cepat sejak kick-off sore.", ft_flow: "Tekanan tuan rumah memaksa lini belakang Persipa melakukan kesalahan krusial." }, 
-                over_personal: "Persibo Bojonegoro Over 1.0 / Over 1.5 Goal (Magis kandang Persibo)", personal_prob: "86%", 
-                over_under_flow: "Over 2.0 Goals", ou_prob: "80%" 
+                id: 20, category: "Segunda Division (20.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Real Valladolid vs Castellon", safe_pick_text: "Real Valladolid -0.5", safe_prob: "84%", 
+                strategy: "Real Valladolid sangat kuat di kandang dengan skema serangan positional play rapi. Castellon bermain terbuka namun rapuh saat diserang dari half-space.", 
+                ht_2h_analysis: { ht_flow: "Valladolid mendikte sirkulasi bola dan menekan lini belakang Castellon.", ft_flow: "Gol kemenangan tuan rumah lahir di paruh kedua." }, 
+                over_personal: "Real Valladolid Over 1.0 / Over 1.5 Goal (Kekuatan kandang Segunda)", personal_prob: "87%", 
+                over_under_flow: "Over 2.25 Goals", nu_prob: "82%" 
+            },
+
+            // --- CONCACAF NATIONS LEAGUE (2 MATCH) ---
+            { 
+                id: 21, category: "CONCACAF Nations League (04.30 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Haiti vs AS", safe_pick_text: "AS -1.5", safe_prob: "91%", 
+                strategy: "Amerika Serikat unggul mutlak dalam standar fisik, taktik modern, dan kualitas pemain liga top Eropa atas Haiti.", 
+                ht_2h_analysis: { ht_flow: "AS mengurung pertahanan Haiti dan mencetak gol cepat di babak pertama.", ft_flow: "Dominasi total berlanjut dengan kemenangan margin besar." }, 
+                over_personal: "AS Over 2.0 Goal (Standar kualitas Eropa)", personal_prob: "92%", 
+                over_under_flow: "Over 2.75 Goals / BTTS No", ou_prob: "89%" 
             },
             { 
-                id: 40, category: "Indonesia Liga Nusantara (15.30 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
-                match: "Persitara Jakarta Utara vs Pekanbaru", safe_pick_text: "Persitara Jakarta Utara DNB (0)", safe_prob: "80%", 
-                strategy: "Persitara Jakarta Utara memiliki motivasi tinggi dan permainan kolektif cepat saat tampil di kandang, sementara Pekanbaru mengandalkan organisasi bertahan rapat.", 
-                ht_2h_analysis: { ht_flow: "Persitara mengambil inisiatif serangan; Pekanbaru bermain disiplin menjaga kedalaman.", ft_flow: "Intensitas serangan tuan rumah meningkat di 25 menit terakhir untuk mencuri gol." }, 
-                over_personal: "Persitara Jakarta Utara Over 1.0 Goal (Dukungan publik utara)", personal_prob: "84%", 
-                over_under_flow: "Under 2.5 Goals", ou_prob: "81%" 
+                id: 22, category: "CONCACAF Nations League (08.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Jamaika vs Meksiko", safe_pick_text: "Meksiko DNB (0)", safe_prob: "82%", 
+                strategy: "Jamaika mengandalkan kecepatan fisik luar biasa dan pemain Liga Inggris, namun Meksiko unggul kematangan taktik dan rekor pertemuan.", 
+                ht_2h_analysis: { ht_flow: "Pertandingan berjalan dengan tempo sangat cepat dan fisik keras.", ft_flow: "Meksiko memanfaatkan pengalaman untuk mencuri gol kemenangan di menit krusial." }, 
+                over_personal: "Meksiko Over 0.5 / Over 1.0 Goal (Kematangan taktik CONCACAF)", personal_prob: "85%", 
+                over_under_flow: "Over 2.25 Goals / BTTS Yes", ou_prob: "81%" 
             }
         ];
 
@@ -1006,7 +864,7 @@
             if (!leagueInput || !matchInput || !scoreInput || !minuteInput || !resDiv) return;
 
             const league = leagueInput.value.trim() || "UEFA Liga Negara";
-            const match = matchInput.value.trim() || "Serbia vs Jerman";
+            const match = matchInput.value.trim() || "Portugal vs Denmark";
             const score = scoreInput.value.trim() || "1-0";
             const minute = parseInt(minuteInput.value.trim()) || 45;
 
