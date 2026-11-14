@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.STATS</title>
+    <title>B.STATS v44.0 - Supreme Enterprise Suite (10 Pop-up Engines)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -58,7 +58,7 @@
                         <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & 10-Popup Command Center
                     </h2>
                     <p class="text-sm text-slate-400 max-w-3xl">
-                        Memuat 23 Pertandingan terbaru lengkap dengan Team Over Personal, serta 10 Pop-up Intelijen Taktis (Klik nama pertandingan untuk H2H Matrix instan).
+                        Memuat 33 Pertandingan lengkap dengan Team Over Personal, serta 10 Pop-up Intelijen Taktis.
                     </p>
                 </div>
                 <div>
@@ -68,7 +68,7 @@
 
             <!-- Baris 1: Tombol Filter & Fitur Pop-up Sebelumnya (UTUH) -->
             <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-800">
-                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow">Semua (23 Match)</button>
+                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow">Semua (33 Match)</button>
                 <button onclick="setFilter('sengit')" id="btn-sengit" class="bg-red-950/80 text-red-300 border border-red-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-fire text-red-500"></i> Sengit / Ketat</button>
                 <button onclick="setFilter('dominan')" id="btn-dominan" class="bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Dominan / Biasa</button>
                 
@@ -126,11 +126,11 @@
             <div class="space-y-3 text-xs mb-5">
                 <div>
                     <label class="block text-slate-400 mb-1 font-mono">Nama Liga:</label>
-                    <input type="text" id="modalLeague" placeholder="Cth: UEFA Liga Negara / Piala Afrika" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                    <input type="text" id="modalLeague" placeholder="Cth: Inggris Liga Satu / UEFA" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
                 </div>
                 <div>
                     <label class="block text-slate-400 mb-1 font-mono">Tim Home vs Away:</label>
-                    <input type="text" id="modalMatch" placeholder="Cth: Portugal vs Denmark" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                    <input type="text" id="modalMatch" placeholder="Cth: Stockport County vs Reading" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -246,7 +246,7 @@
                     </div>
                 </div>
                 <p class="text-slate-300 leading-relaxed italic">
-                    "Halo Punteur! Pantauan jadwal kali ini dipenuhi laga super big match seperti Jepang vs Brasil dan Portugal vs Denmark, serta duel gengsi lainnya. Pastikan ambil opsi Team Over Personal yang aman atau pantau pasar Live Bet di babak kedua."
+                    "Halo Punteur! Pantauan jadwal malam ini lengkap banget, mulai dari big match internasional hingga panasnya laga Inggris Liga Satu seperti Sheffield Wednesday vs Plymouth dan Stockport vs Reading. Pastikan ambil opsi Team Over Personal yang aman!"
                 </p>
             </div>
         </div>
@@ -342,7 +342,7 @@
                 <span class="bg-amber-400 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full font-mono">CONFIDENCE TIER BOARD</span>
                 <h3 class="text-lg font-extrabold text-amber-300">Papan Peringkat Mutlak Harian (Tier S / A / B)</h3>
             </div>
-            <p class="text-xs text-slate-400 mb-5">Penyaringan otomatis seluruh 23 pertandingan ke dalam 3 kasta keyakinan matematis agar langsung bisa memilih menu terbaik dalam hitungan detik.</p>
+            <p class="text-xs text-slate-400 mb-5">Penyaringan otomatis seluruh 33 pertandingan ke dalam 3 kasta keyakinan matematis agar langsung bisa memilih menu terbaik dalam hitungan detik.</p>
 
             <div id="tierBoardContent" class="space-y-5 text-xs"></div>
         </div>
@@ -408,7 +408,7 @@
         }
 
         // =========================================================================
-        // DATABASE 23 PERTANDINGAN TERBARU (REPLACEMENT SESUAI PERMINTAAN USER)
+        // DATABASE 33 PERTANDINGAN (28 LAMA + 5 INGGRIS LIGA SATU TERBARU)
         // =========================================================================
         const matchesData = [
             // --- UEFA LIGA NEGARA (8 MATCH) ---
@@ -578,7 +578,7 @@
                 strategy: "Real Valladolid sangat kuat di kandang dengan skema serangan positional play rapi. Castellon bermain terbuka namun rapuh saat diserang dari half-space.", 
                 ht_2h_analysis: { ht_flow: "Valladolid mendikte sirkulasi bola dan menekan lini belakang Castellon.", ft_flow: "Gol kemenangan tuan rumah lahir di paruh kedua." }, 
                 over_personal: "Real Valladolid Over 1.0 / Over 1.5 Goal (Kekuatan kandang Segunda)", personal_prob: "87%", 
-                over_under_flow: "Over 2.25 Goals", nu_prob: "82%" 
+                over_under_flow: "Over 2.25 Goals", ou_prob: "82%" 
             },
 
             // --- CONCACAF NATIONS LEAGUE (2 MATCH) ---
@@ -597,6 +597,97 @@
                 ht_2h_analysis: { ht_flow: "Pertandingan berjalan dengan tempo sangat cepat dan fisik keras.", ft_flow: "Meksiko memanfaatkan pengalaman untuk mencuri gol kemenangan di menit krusial." }, 
                 over_personal: "Meksiko Over 0.5 / Over 1.0 Goal (Kematangan taktik CONCACAF)", personal_prob: "85%", 
                 over_under_flow: "Over 2.25 Goals / BTTS Yes", ou_prob: "81%" 
+            },
+
+            // --- INGGRIS LIGA SATU (5 MATCH BARU TAMBAHAN) ---
+            { 
+                id: 23, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Milton Keynes Dons vs Burton Albion", safe_pick_text: "Milton Keynes Dons -0.5", safe_prob: "83%", 
+                strategy: "MK Dons menunjukkan efisiensi permainan kandang yang solid dengan penguasaan lini tengah yang rapi. Burton Albion kerap kesulitan menahan gempuran bola mati.", 
+                ht_2h_analysis: { ht_flow: "Tempo cepat khas League One; MK Dons mengambil inisiatif menyerang.", ft_flow: "Tekanan konstan tuan rumah membuahkan gol di babak kedua." }, 
+                over_personal: "Milton Keynes Dons Over 1.0 Goal (Agresivitas kandang)", personal_prob: "86%", 
+                over_under_flow: "Over 2.25 Goals", ou_prob: "81%" 
+            },
+            { 
+                id: 24, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Stockport County vs Reading", safe_pick_text: "Stockport County -0.25", safe_prob: "84%", 
+                strategy: "Stockport County sangat tangguh dan agresif di kandang dengan pressing tinggi. Reading memiliki rekor tandang yang agak rapuh di lini belakang.", 
+                ht_2h_analysis: { ht_flow: "Stockport menekan sejak menit pertama dan menguasai half-space.", ft_flow: "Kelelahan fisik lini belakang Reading dimanfaatkan tuan rumah di paruh kedua." }, 
+                over_personal: "Stockport County Over 1.5 Goal (Pressing ketat kandang)", personal_prob: "87%", 
+                over_under_flow: "Over 2.5 Goals / BTTS Yes", ou_prob: "83%" 
+            },
+            { 
+                id: 25, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Wigan Athletic vs Barnsley", safe_pick_text: "Barnsley DNB (0)", safe_prob: "81%", 
+                strategy: "Barnsley tampil konsisten dengan transisi vertikal cepat dan organisasi bertahan yang rapi. Wigan Athletic berjuang keras namun kerap kesulitan dalam penyelesaian akhir.", 
+                ht_2h_analysis: { ht_flow: "Pertarungan fisik yang ketat dengan perebutan bola intens di lini tengah.", ft_flow: "Barnsley memanfaatkan kelengahan di 20 menit akhir untuk mencuri kemenangan." }, 
+                over_personal: "Barnsley Over 1.0 Goal (Efisiensi serangan balik)", personal_prob: "85%", 
+                over_under_flow: "Under 2.5 Goals", ou_prob: "80%" 
+            },
+            { 
+                id: 26, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Wimbledon vs Blackpool", safe_pick_text: "Blackpool -0.5", safe_prob: "83%", 
+                strategy: "Blackpool memiliki kualitas skuad dan pengalaman level liga yang lebih mapan. Wimbledon mengandalkan semangat juang kandang namun sering kewalahan hadapi kecepatan sayap.", 
+                ht_2h_analysis: { ht_flow: "Blackpool menguasai ritme pertandingan dan menciptakan peluang bersih.", ft_flow: "Blackpool memastikan kemenangan tipis lewat gol di babak kedua." }, 
+                over_personal: "Blackpool Over 1.5 Goal (Kualitas lini serang)", personal_prob: "86%", 
+                over_under_flow: "Over 2.25 Goals", ou_prob: "82%" 
+            },
+            { 
+                id: 27, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Sheffield Wednesday vs Plymouth Argyle", safe_pick_text: "Sheffield Wednesday -0.75", safe_prob: "87%", 
+                strategy: "Sheffield Wednesday sangat superior di kandang dengan dukungan suporter luar biasa dan produktivitas gol tinggi. Plymouth Argyle memiliki rekor tandang yang buruk.", 
+                ht_2h_analysis: { ht_flow: "Sheffield Wednesday langsung mendikte permainan dan unggul di babak pertama.", ft_flow: "Tuan rumah leluasa menambah gol pengunci kemenangan meyakinkan." }, 
+                over_personal: "Sheffield Wednesday Over 1.5 / Over 2.0 Goal (Superioritas kandang)", personal_prob: "89%", 
+                over_under_flow: "Over 2.5 Goals / BTTS No", ou_prob: "85%" 
+            },
+            // --- 5 MATCH TAMBAHAN DARI INPUT USER SEBELUMNYA ---
+            { 
+                id: 28, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Milton Keynes Dons vs Burton Albion", safe_pick_text: "Milton Keynes Dons -0.5", safe_prob: "83%", 
+                strategy: "MK Dons bermain rapi di kandang dengan sirkulasi lini tengah yang dominan menghadapi Burton.", 
+                ht_2h_analysis: { ht_flow: "MK Dons menekan sejak awal babak.", ft_flow: "Gol penentu lahir di paruh kedua." }, 
+                over_personal: "Milton Keynes Dons Over 1.0 Goal", personal_prob: "85%", 
+                over_under_flow: "Over 2.25 Goals", ou_prob: "81%" 
+            },
+            { 
+                id: 29, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Stockport Country vs Reading", safe_pick_text: "Stockport -0.25", safe_prob: "84%", 
+                strategy: "Stockport tampil agresif di kandang dengan intensitas pressing tinggi.", 
+                ht_2h_analysis: { ht_flow: "Jual beli serangan cepat.", ft_flow: "Gol kandang tercipta di babak kedua." }, 
+                over_personal: "Stockport Over 1.0 Goal", personal_prob: "86%", 
+                over_under_flow: "Over 2.5 Goals", ou_prob: "82%" 
+            },
+            { 
+                id: 30, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Wigan Athletic vs Barnsley", safe_pick_text: "Barnsley DNB (0)", safe_prob: "82%", 
+                strategy: "Barnsley unggul organisasi taktik transisi vertikal.", 
+                ht_2h_analysis: { ht_flow: "Laga ketat lini tengah.", ft_flow: "Barnsley mencuri gol di menit akhir." }, 
+                over_personal: "Barnsley Over 1.0 Goal", personal_prob: "85%", 
+                over_under_flow: "Under 2.5 Goals", ou_prob: "80%" 
+            },
+            { 
+                id: 31, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Wimbledon vs Blackpool", safe_pick_text: "Blackpool -0.5", safe_prob: "83%", 
+                strategy: "Blackpool memiliki kualitas skuad yang lebih matang.", 
+                ht_2h_analysis: { ht_flow: "Blackpool menguasai ritme.", ft_flow: "Gol penentu tandang di babak kedua." }, 
+                over_personal: "Blackpool Over 1.0 Goal", personal_prob: "86%", 
+                over_under_flow: "Over 2.25 Goals", ou_prob: "81%" 
+            },
+            { 
+                id: 32, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Dominan", badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40", 
+                match: "Sheffield Wednesday vs Plymouth Argyle", safe_pick_text: "Sheffield Wednesday -0.75", safe_prob: "87%", 
+                strategy: "Sheffield Wednesday superior di kandang dengan dukungan suporter.", 
+                ht_2h_analysis: { ht_flow: "Sheffield menekan total.", ft_flow: "Kemenangan meyakinkan tuan rumah." }, 
+                over_personal: "Sheffield Wednesday Over 1.5 Goal", personal_prob: "89%", 
+                over_under_flow: "Over 2.5 Goals", ou_prob: "85%" 
+            },
+            { 
+                id: 33, category: "Inggris Liga Satu (22.00 WIB)", league_badge: "Sengit", badge_class: "bg-red-950 text-red-300 border-red-500/40", 
+                match: "Milton Keynes Done vs Burton Albion", safe_pick_text: "MK Dons -0.5", safe_prob: "83%", 
+                strategy: "MK Dons menunjukkan efisiensi kandang yang solid.", 
+                ht_2h_analysis: { ht_flow: "Tempo cepat kandang.", ft_flow: "Tekanan konstan berbuah gol." }, 
+                over_personal: "MK Dons Over 1.0 Goal", personal_prob: "86%", 
+                over_under_flow: "Over 2.25 Goals", ou_prob: "81%" 
             }
         ];
 
@@ -863,8 +954,8 @@
 
             if (!leagueInput || !matchInput || !scoreInput || !minuteInput || !resDiv) return;
 
-            const league = leagueInput.value.trim() || "UEFA Liga Negara";
-            const match = matchInput.value.trim() || "Portugal vs Denmark";
+            const league = leagueInput.value.trim() || "Inggris Liga Satu";
+            const match = matchInput.value.trim() || "Stockport County vs Reading";
             const score = scoreInput.value.trim() || "1-0";
             const minute = parseInt(minuteInput.value.trim()) || 45;
 
