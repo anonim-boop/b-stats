@@ -30,7 +30,7 @@
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
                 </div>
-                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v56.7 33-Match + 22 Tactical Engines</span></h1>
+                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v56.8 5-Match + 22 Tactical Engines</span></h1>
             </div>
             <div class="flex flex-wrap items-center gap-2.5">
                 <button onclick="openModal('simulatorModal')" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
@@ -54,10 +54,10 @@
             <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mb-6">
                 <div>
                     <h2 class="text-xl font-bold text-emerald-300 mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & 33-Match Command Center
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & 5-Match Command Center
                     </h2>
                     <p class="text-sm text-slate-400 max-w-3xl">
-                        Memuat seluruh 33 Pertandingan Lengkap dengan <strong>Data-Driven 99% Safe Bill Calibration</strong> (BTTS Yes, Total Asia Over 2.0/2.25, Over 2.5 Goals, Team Over Personal, Under 2.5 Alot, & HDP Langsung sesuai profil xG/xGC laga) lengkap dengan 15 Pop-up Utama + 6 Pre-Match Deep Lab + <strong>Exact Score xG Predictor</strong>.
+                        Memuat seluruh 5 Pertandingan Baru Lengkap dengan <strong>Data-Driven 99% Safe Bill Calibration</strong> (BTTS Yes, Total Asia Over 2.0/2.25, Over 2.5 Goals, Team Over Personal, Under 2.5 Alot, & HDP Langsung sesuai profil xG/xGC laga) lengkap dengan 15 Pop-up Utama + 6 Pre-Match Deep Lab + <strong>Exact Score xG Predictor</strong>.
                     </p>
                 </div>
                 <div>
@@ -67,15 +67,10 @@
 
             <!-- Baris Filter Kategori -->
             <div class="flex flex-wrap items-center gap-2.5 pt-4 border-t border-slate-800">
-                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow">Semua (33)</button>
-                <button onclick="setFilter('asia')" id="btn-asia" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">HK / PH / KR2 / TW (9)</button>
-                <button onclick="setFilter('indonesia')" id="btn-indonesia" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Liga Nusantara ID (4)</button>
-                <button onclick="setFilter('seriea')" id="btn-seriea" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Serie A (5)</button>
-                <button onclick="setFilter('eredivisie')" id="btn-eredivisie" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Eredivisie (2)</button>
-                <button onclick="setFilter('rusia')" id="btn-rusia" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Rusia & Turki (5)</button>
-                <button onclick="setFilter('epl')" id="btn-epl" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">EPL Inggris (2)</button>
-                <button onclick="setFilter('bundesliga')" id="btn-bundesliga" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Bundesliga (2)</button>
-                <button onclick="setFilter('laliga')" id="btn-laliga" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">La Liga (4)</button>
+                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow">Semua (5)</button>
+                <button onclick="setFilter('spanyol')" id="btn-spanyol" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Spanyol La Liga & Segunda (2)</button>
+                <button onclick="setFilter('eropa')" id="btn-eropa" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Prancis & Portugal (2)</button>
+                <button onclick="setFilter('amerika')" id="btn-amerika" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Peru Divisi 2 (1)</button>
                 <button onclick="openModal('antiL1Modal')" class="bg-red-900/60 hover:bg-red-800 text-red-200 border border-red-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
                     <i class="fa-solid fa-triangle-exclamation text-red-400"></i> Anti-L1 Warning
                 </button>
@@ -172,11 +167,11 @@
             <div class="space-y-3 text-xs mb-5">
                 <div>
                     <label class="block text-slate-400 mb-1 font-mono">Nama Liga:</label>
-                    <input type="text" id="modalLeague" placeholder="Cth: Liga Inggris (EPL)" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                    <input type="text" id="modalLeague" placeholder="Cth: Spanyol La Liga" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
                 </div>
                 <div>
                     <label class="block text-slate-400 mb-1 font-mono">Tim Home vs Away:</label>
-                    <input type="text" id="modalMatch" placeholder="Cth: Liverpool vs Manchester United" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
+                    <input type="text" id="modalMatch" placeholder="Cth: Getafe vs Atlético Madrid" class="bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-slate-200 w-full focus:outline-none focus:border-indigo-500">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -198,7 +193,7 @@
 
     <div id="simulatorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-emerald-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('simulatorModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="space-y-4 text-xs"><div><div class="flex justify-between mb-1 font-mono"><span>Simulasi Menit:</span><strong id="simMinuteVal" class="text-emerald-400">45'</strong></div><input type="range" id="simMinuteRange" min="1" max="90" value="45" oninput="updateSimulator()" class="w-full accent-emerald-500"></div><div class="bg-slate-950 p-4 rounded-xl border border-slate-800"><p id="simResultText" class="text-slate-300">Intensitas pressing stabil.</p></div></div></div></div>
     <div id="antiL1Modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-red-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('antiL1Modal')" class="absolute top-4 right-4 text-slate-400">×</button><p class="text-slate-300 text-xs">Waspadai jebakan pasar. Pilih selalu pasar yang selaras dengan data xGC & karakter tiap pertandingan: BTTS Yes saat kedua tim sama-sama mencetak gol, Total Asia Over 2.0/2.25, Team Over Personal, atau Under untuk duel alot!</p></div></div>
-    <div id="hedgingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-amber-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('hedgingModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="space-y-3 text-xs"><div class="grid grid-cols-2 gap-3"><div><label class="block text-slate-400 mb-1">Jumlah Tim:</label><input type="number" id="hedgeTeams" value="4" min="1" max="33" oninput="calculateHedging()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full"></div><div><label class="block text-slate-400 mb-1">Estimasi Odds:</label><input type="text" id="hedgeOdds" value="11.71" readonly class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-amber-400 font-mono font-bold w-full"></div></div></div></div></div>
+    <div id="hedgingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-amber-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('hedgingModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="space-y-3 text-xs"><div class="grid grid-cols-2 gap-3"><div><label class="block text-slate-400 mb-1">Jumlah Tim:</label><input type="number" id="hedgeTeams" value="4" min="1" max="5" oninput="calculateHedging()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full"></div><div><label class="block text-slate-400 mb-1">Estimasi Odds:</label><input type="text" id="hedgeOdds" value="11.71" readonly class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-amber-400 font-mono font-bold w-full"></div></div></div></div></div>
     <div id="vibeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-sky-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('vibeModal')" class="absolute top-4 right-4 text-slate-400">×</button><p class="text-slate-300 text-xs italic">"Punteur! 99% Safe Bill sudah disetel murni mengikuti data karakter pertandingan: BTTS Yes, Total Asia Over 2.0/2.25, Over 2.5 Goals, Team Over Personal, dan Under 2.5 untuk duel rapat!"</p></div></div>
 
     <div id="h2hModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-cyan-500/50 rounded-2xl w-full max-w-2xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"><button onclick="closeModal('h2hModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="mb-4 text-xs"><select id="h2hMatchSelect" onchange="openH2HModal(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-slate-200 w-full"></select></div><div id="h2hModalContent" class="space-y-4 text-xs"></div></div></div>
@@ -317,963 +312,13 @@
         }
 
         // =========================================================================
-        // DATABASE 33 MATCHES (DATA-DRIVEN 99% SAFE BILL: BTTS, TOTAL ASIA, OVER,
-        // TEAM OVER PERSONAL, UNDER ALOT, & HDP LANGSUNG — TANPA HDP 0 BERLEBIHAN)
+        // DATABASE 5 MATCHES BARU (MATCH LAMA DIHAPUS TOTAL, FITUR TETAP UTUH)
         // =========================================================================
         const matchesData = [
-            // --- HONG KONG DIVISI 3 (14.00 WIB) ---
             {
                 id: 1,
-                type: "asia",
-                category: "Hong Kong Divisi 3 (14.00 WIB)",
-                league_badge: "99% Total Goals",
-                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
-                match: "Konter vs Soar",
-                odds_1x2: "2.10 | 3.55 | 3.00",
-                safe_pick_text: "Over 2.5 Total Goals",
-                safe_prob: "99%",
-                strategy: "Karakter kompetisi Hong Kong Divisi 3 mencatat rata-rata 3.4 gol per pertandingan dengan garis pertahanan terbuka (1.44 vs 1.56 xGC). Jalur Over 2.5 Total Goals adalah pilihan paling presisi sesuai profil gol liga.",
-                over_personal: "Konter Over 1.0 Goal",
-                personal_prob: "94%",
-                over_under_flow: "Over 2.5 Total Goals",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.44 xGC",
-                    xgc_away: "1.56 xGC",
-                    mistakes_note: "Transisi bertahan kedua tim divisi bawah Hong Kong sering menyisakan ruang bebas.",
-                    momentum_alert: "🔥 Tempo terbuka sejak peluit awal Divisi 3!",
-                    market_odds: "2.10",
-                    ai_fair_odds: "1.86",
-                    mot_home: 86,
-                    mot_away: 85,
-                    mot_note: "Persaingan klasemen Hong Kong Divisi 3.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Sesuai Data"
-                }
-            },
-            {
-                id: 2,
-                type: "asia",
-                category: "Hong Kong Divisi 3 (14.00 WIB)",
-                league_badge: "99% Safe HDP",
-                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
-                match: "Sai Kung DSA vs Tuen Mun",
-                odds_1x2: "1.65 | 3.80 | 4.50",
-                safe_pick_text: "Sai Kung DSA HDP -0.5",
-                safe_prob: "99%",
-                strategy: "Sai Kung DSA unggul struktur skuad dan konsistensi lini depan (0.94 xGC) dibanding Tuen Mun yang rapuh saat bermain tandang (1.68 xGC). Kemenangan langsung Sai Kung DSA HDP -0.5 terkalibrasi kuat.",
-                over_personal: "Sai Kung DSA Over 1.5 Goal",
-                personal_prob: "95%",
-                over_under_flow: "Over 2.5 Goals",
-                ou_prob: "94%",
-                pro_data: {
-                    xgc_home: "0.94 xGC",
-                    xgc_away: "1.68 xGC",
-                    mistakes_note: "Tuen Mun kerap kehilangan bentuk pertahanan saat menghadapi serangan sayap.",
-                    momentum_alert: "🔥 Sai Kung DSA dominasi penguasaan bola!",
-                    market_odds: "1.65",
-                    ai_fair_odds: "1.48",
-                    mot_home: 89,
-                    mot_away: 80,
-                    mot_note: "Perburuan zona promosi Hong Kong Divisi 3.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Rapuh"
-                }
-            },
-            {
-                id: 3,
-                type: "asia",
-                category: "Hong Kong Divisi 3 (14.00 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Qi Yi vs St. Joseph Hong Kong",
-                odds_1x2: "3.90 | 3.70 | 1.75",
-                safe_pick_text: "St. Joseph Hong Kong Over 1.5 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "St. Joseph Hong Kong memiliki rekor produktivitas tinggi di Divisi 3 menghadapi Qi Yi (1.74 xGC). Mengunci St. Joseph Hong Kong Over 1.5 Goal memaksimalkan selisih ketajaman lini depan tim tamu.",
-                over_personal: "St. Joseph Hong Kong Over 1.5 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.5 Goals",
-                ou_prob: "95%",
-                pro_data: {
-                    xgc_home: "1.74 xGC",
-                    xgc_away: "0.96 xGC",
-                    mistakes_note: "Qi Yi kesulitan menahan kombinasi umpan terobosan St. Joseph.",
-                    momentum_alert: "🔥 St. Joseph Hong Kong menekan pertahanan tuan rumah!",
-                    market_odds: "1.75",
-                    ai_fair_odds: "1.55",
-                    mot_home: 81,
-                    mot_away: 90,
-                    mot_note: "Target poin penuh tandang St. Joseph Hong Kong.",
-                    xpts_home: "Rapuh",
-                    xpts_away: "Dominan"
-                }
-            },
-
-            // --- FILIPINA UFL (14.00 WIB) ---
-            {
-                id: 4,
-                type: "asia",
-                category: "Sepak Bola Filipina UFL (14.00 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Mendiola 1991 vs Kaya FC-Iloilo",
-                odds_1x2: "11.00 | 6.20 | 1.18",
-                safe_pick_text: "Kaya FC-Iloilo Over 2.0 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Data sepak bola Filipina mencatat kesenjangan kelas sangat besar antara juara bertahan Kaya FC-Iloilo (0.62 xGC) dan Mendiola 1991 (2.45 xGC). Kaya FC-Iloilo rutin mencetak minimal 2-4 gol ke gawang Mendiola.",
-                over_personal: "Kaya FC-Iloilo Over 2.0 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.75 Goals",
-                ou_prob: "97%",
-                pro_data: {
-                    xgc_home: "2.45 xGC",
-                    xgc_away: "0.62 xGC",
-                    mistakes_note: "Mendiola 1991 selalu berada di bawah tekanan konstan melawan tim papan atas Filipina.",
-                    momentum_alert: "🔥 Kaya FC-Iloilo dominasi total penguasaan bola!",
-                    market_odds: "1.18",
-                    ai_fair_odds: "1.10",
-                    mot_home: 74,
-                    mot_away: 94,
-                    mot_note: "Dominasi papan atas Liga Filipina.",
-                    xpts_home: "Rapuh",
-                    xpts_away: "Dominan"
-                }
-            },
-
-            // --- KOREA SELATAN K-LEAGUE 2 (14.30 WIB) ---
-            {
-                id: 5,
-                type: "asia",
-                category: "Kejuaraan Korea Selatan K-League 2 (14.30 WIB)",
-                league_badge: "99% Total Asia",
-                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
-                match: "Paju Frontier vs Cheonan City",
-                odds_1x2: "2.35 | 3.25 | 2.85",
-                safe_pick_text: "Over 2.0 Total Asia",
-                safe_prob: "99%",
-                strategy: "Data K-League 2 menunjukkan Cheonan City selalu kebobolan dalam 8 laga tandang terakhir (1.52 xGC) namun juga aktif menyerang balik melawan Paju Frontier (1.28 xGC). Jalur Over 2.0 Total Asia jauh lebih presisi daripada memegang sisi pemenang.",
-                over_personal: "Paju Frontier Over 1.0 Goal",
-                personal_prob: "94%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.28 xGC",
-                    xgc_away: "1.52 xGC",
-                    mistakes_note: "Cheonan City kerap kehilangan konsentrasi pada fase transisi tandang K-League 2.",
-                    momentum_alert: "⚠️ Duel terbuka kedua kubu di K-League 2!",
-                    market_odds: "2.35",
-                    ai_fair_odds: "2.00",
-                    mot_home: 89,
-                    mot_away: 86,
-                    mot_note: "Persaingan poin K-League 2 Korea Selatan.",
-                    xpts_home: "Solid",
-                    xpts_away: "Sesuai Data"
-                }
-            },
-            {
-                id: 6,
-                type: "asia",
-                category: "Kejuaraan Korea Selatan K-League 2 (14.30 WIB)",
-                league_badge: "99% BTTS Yes",
-                badge_class: "bg-teal-950 text-teal-300 border-teal-500/40",
-                match: "Seoul E-Land vs Chungnam Asan",
-                odds_1x2: "1.95 | 3.40 | 3.65",
-                safe_pick_text: "Both Teams To Score (BTTS - Yes)",
-                safe_prob: "99%",
-                strategy: "Data pertemuan K-League 2 mencatat Seoul E-Land punya xG kandang tinggi (1.76 xG) di Mokdong Stadium, sementara Chungnam Asan punya serangan balik tajam (mencetak gol di 82% laga tandang). BTTS Yes sangat selaras dengan data gol kedua tim.",
-                over_personal: "Seoul E-Land Over 1.0 Goal",
-                personal_prob: "95%",
-                over_under_flow: "Over 2.25 Total Asia",
-                ou_prob: "94%",
-                pro_data: {
-                    xgc_home: "1.22 xGC",
-                    xgc_away: "1.38 xGC",
-                    mistakes_note: "Kedua tim bermain menyerang untuk memburu zona playoff promosi.",
-                    momentum_alert: "🔥 Jual beli serangan Seoul E-Land vs Chungnam Asan!",
-                    market_odds: "1.95",
-                    ai_fair_odds: "1.74",
-                    mot_home: 91,
-                    mot_away: 88,
-                    mot_note: "Perebutan zona playoff promosi K-League 2.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Solid"
-                }
-            },
-
-            // --- TAIWAN LIGA PRIMER (14.00 WIB) ---
-            {
-                id: 7,
-                type: "asia",
-                category: "Kejuaraan Taiwan Liga Primer (14.00 WIB)",
-                league_badge: "99% Total Asia",
-                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
-                match: "Taichung Futuro vs Hang Yuen",
-                odds_1x2: "2.15 | 3.35 | 3.10",
-                safe_pick_text: "Over 2.0 Total Asia",
-                safe_prob: "99%",
-                strategy: "Duel papan atas Taiwan Football Premier League antara Taichung Futuro dan Hang Yuen selalu berlangsung terbuka dengan intensitas tembakan tinggi (1.24 vs 1.32 xGC). Over 2.0 Total Asia mengunci pengembalian modal jika tepat 2 gol.",
-                over_personal: "Taichung Futuro Over 1.0 Goal",
-                personal_prob: "94%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.24 xGC",
-                    xgc_away: "1.32 xGC",
-                    mistakes_note: "Kedua tim bermain menyerang progresif khas Taiwan Liga Primer.",
-                    momentum_alert: "🔥 Jual beli serangan papan atas Liga Taiwan!",
-                    market_odds: "2.15",
-                    ai_fair_odds: "1.90",
-                    mot_home: 90,
-                    mot_away: 89,
-                    mot_note: "Big Match Taiwan Football Premier League.",
-                    xpts_home: "Solid",
-                    xpts_away: "Solid"
-                }
-            },
-            {
-                id: 8,
-                type: "asia",
-                category: "Kejuaraan Taiwan Liga Primer (14.00 WIB)",
-                league_badge: "99% BTTS Yes",
-                badge_class: "bg-teal-950 text-teal-300 border-teal-500/40",
-                match: "Taiwan Power Company vs Tainan City",
-                odds_1x2: "2.65 | 3.30 | 2.45",
-                safe_pick_text: "Both Teams To Score (BTTS - Yes)",
-                safe_prob: "99%",
-                strategy: "El Clasico sepak bola Taiwan antara Taiwan Power Company dan juara bertahan Tainan City mempertemukan dua lini serang terbaik liga (1.36 vs 1.24 xGC). Sebanyak 80% duel mereka menghasilkan gol dari kedua tim (BTTS Yes).",
-                over_personal: "Tainan City Over 1.0 Goal",
-                personal_prob: "95%",
-                over_under_flow: "Over 2.25 Total Asia",
-                ou_prob: "94%",
-                pro_data: {
-                    xgc_home: "1.36 xGC",
-                    xgc_away: "1.24 xGC",
-                    mistakes_note: "Gengsi dua raksasa Taiwan memicu permainan menyerang penuh.",
-                    momentum_alert: "🔥 Big Match klasik Taiwan Liga Primer!",
-                    market_odds: "2.45",
-                    ai_fair_odds: "2.08",
-                    mot_home: 91,
-                    mot_away: 92,
-                    mot_note: "Perburuan gelar juara Taiwan Liga Primer.",
-                    xpts_home: "Solid",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 9,
-                type: "asia",
-                category: "Kejuaraan Taiwan Liga Primer (14.00 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Taichung Rock vs Taiwan Leopard Cat",
-                odds_1x2: "4.60 | 3.90 | 1.62",
-                safe_pick_text: "Taiwan Leopard Cat Over 1.5 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Taiwan Leopard Cat (Tatung) memiliki lini serang agresif menghadapi Taichung Rock yang mencatat 1.72 xGC per pertandingan. Taiwan Leopard Cat Over 1.5 Goal memberikan jaminan akurasi tinggi tanpa terpengaruh kebobolan tim tamu.",
-                over_personal: "Taiwan Leopard Cat Over 1.5 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.5 Goals",
-                ou_prob: "95%",
-                pro_data: {
-                    xgc_home: "1.72 xGC",
-                    xgc_away: "1.06 xGC",
-                    mistakes_note: "Taichung Rock sering terbuka saat transisi bertahan di babak kedua.",
-                    momentum_alert: "🔥 Taiwan Leopard Cat kepung pertahanan tuan rumah!",
-                    market_odds: "1.62",
-                    ai_fair_odds: "1.44",
-                    mot_home: 81,
-                    mot_away: 90,
-                    mot_note: "Target 3 poin Taiwan Leopard Cat.",
-                    xpts_home: "Rapuh",
-                    xpts_away: "Dominan"
-                }
-            },
-
-            // --- INDONESIA LIGA NUSANTARA (15.30 WIB) ---
-            {
-                id: 10,
-                type: "indonesia",
-                category: "Indonesia Liga Nusantara (15.30 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Donggala United vs Perseden Denpasar",
-                odds_1x2: "3.60 | 3.35 | 1.95",
-                safe_pick_text: "Perseden Denpasar Over 1.0 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Perseden Denpasar memiliki lini depan tajam dan pengalaman kompetisi nasional menghadapi Donggala United (1.46 xGC). Mengunci Perseden Denpasar Over 1.0 Goal jauh lebih akurat karena tim asal Bali selalu produktif mencetak gol.",
-                over_personal: "Perseden Denpasar Over 1.0 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "93%",
-                pro_data: {
-                    xgc_home: "1.46 xGC",
-                    xgc_away: "0.96 xGC",
-                    mistakes_note: "Donggala United rentan terhadap bola mati dan umpan silang Perseden Denpasar.",
-                    momentum_alert: "🔥 Perseden Denpasar agresif menekan di Liga Nusantara!",
-                    market_odds: "1.95",
-                    ai_fair_odds: "1.72",
-                    mot_home: 86,
-                    mot_away: 91,
-                    mot_note: "Babak penyisihan Indonesia Liga Nusantara.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 11,
-                type: "indonesia",
-                category: "Indonesia Liga Nusantara (15.30 WIB)",
-                league_badge: "99% Safe HDP",
-                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
-                match: "Persekabpas Pasuruan vs Persipani Paniai",
-                odds_1x2: "1.55 | 3.75 | 5.40",
-                safe_pick_text: "Persekabpas Pasuruan HDP -0.75",
-                safe_prob: "99%",
-                strategy: "Persekabpas Pasuruan memiliki materi pemain berpengalaman dan agresivitas tinggi (0.82 xGC) menghadapi Persipani Paniai (1.76 xGC). Dominasi Laskar Sakera mendukung penuh kemenangan Persekabpas HDP -0.75.",
-                over_personal: "Persekabpas Pasuruan Over 1.5 Goal",
-                personal_prob: "96%",
-                over_under_flow: "Over 2.25 Goals",
-                ou_prob: "94%",
-                pro_data: {
-                    xgc_home: "0.82 xGC",
-                    xgc_away: "1.76 xGC",
-                    mistakes_note: "Persipani Paniai kesulitan keluar dari tekanan pressing tinggi Persekabpas.",
-                    momentum_alert: "🔥 Persekabpas Pasuruan dominasi penuh sejak awal!",
-                    market_odds: "1.55",
-                    ai_fair_odds: "1.38",
-                    mot_home: 93,
-                    mot_away: 82,
-                    mot_note: "Target lolos fase grup Liga Nusantara.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Rapuh"
-                }
-            },
-            {
-                id: 12,
-                type: "indonesia",
-                category: "Indonesia Liga Nusantara (15.30 WIB)",
-                league_badge: "99% Total Asia",
-                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
-                match: "Persibo Bojonegoro vs Gresik United",
-                odds_1x2: "2.30 | 3.15 | 2.95",
-                safe_pick_text: "Over 2.0 Total Asia",
-                safe_prob: "99%",
-                strategy: "Derby Jawa Timur antara Persibo Bojonegoro dan Gresik United mempertemukan dua tim unggulan Liga Nusantara yang sama-sama punya daya gedor tinggi (1.22 vs 1.26 xGC). Jalur Over 2.0 Total Asia sangat sesuai karakter laga terbuka Derby Jatim.",
-                over_personal: "Persibo Bojonegoro Over 1.0 Goal",
-                personal_prob: "94%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.22 xGC",
-                    xgc_away: "1.26 xGC",
-                    mistakes_note: "Gengsi Derby Jawa Timur memicu kedua tim bermain ofensif penuh.",
-                    momentum_alert: "🔥 Tensi tinggi Derby Jawa Timur Liga Nusantara!",
-                    market_odds: "2.30",
-                    ai_fair_odds: "1.98",
-                    mot_home: 93,
-                    mot_away: 92,
-                    mot_note: "Gengsi Derby Jawa Timur Liga Nusantara.",
-                    xpts_home: "Solid",
-                    xpts_away: "Solid"
-                }
-            },
-            {
-                id: 13,
-                type: "indonesia",
-                category: "Indonesia Liga Nusantara (15.30 WIB)",
-                league_badge: "99% Under Alot",
-                badge_class: "bg-cyan-950 text-cyan-300 border-cyan-500/40",
-                match: "PSN Ngada vs Persinab Nabire",
-                odds_1x2: "2.15 | 3.15 | 3.25",
-                safe_pick_text: "Under 2.5 Total Goals",
-                safe_prob: "99%",
-                strategy: "Pertarungan tim Indonesia Timur antara PSN Ngada dan Persinab Nabire mengandalkan duel fisik ketat dan blok pertahanan rapat (1.02 vs 1.14 xGC). Pola skor tipis (1-0, 1-1, atau 0-0) menjadikan Under 2.5 Total Goals paling akurat.",
-                over_personal: "PSN Ngada Over 0.5 Goal",
-                personal_prob: "94%",
-                over_under_flow: "Under 2.5 Total Goals",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.02 xGC",
-                    xgc_away: "1.14 xGC",
-                    mistakes_note: "Kedua tim bermain sangat disiplin dan berhati-hati menjaga lini belakang.",
-                    momentum_alert: "⚠️ Duel fisik ketat & disiplin defensif!",
-                    market_odds: "2.15",
-                    ai_fair_odds: "1.90",
-                    mot_home: 90,
-                    mot_away: 89,
-                    mot_note: "Persaingan zona Timur Liga Nusantara.",
-                    xpts_home: "Solid",
-                    xpts_away: "Solid"
-                }
-            },
-
-            // --- ITALIA SERIE A BABAK 13 (18.30 - 02.45 WIB) ---
-            {
-                id: 14,
-                type: "seriea",
-                category: "Italia Serie A Babak 13 (18.30 WIB)",
-                league_badge: "99% Safe HDP",
-                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
-                match: "Juventus vs Venezia",
-                odds_1x2: "1.36 | 4.65 | 8.50",
-                safe_pick_text: "Juventus HDP -1.0",
-                safe_prob: "99%",
-                strategy: "Data Allianz Stadium menunjukkan pertahanan terkokoh Serie A milik Juventus (0.64 xGC) menghadapi Venezia (1.86 xGC). Dominasi penguasaan bola dan kualitas skuad Bianconeri mendukung penuh Juventus HDP -1.0.",
-                over_personal: "Juventus Over 1.5 Goal",
-                personal_prob: "97%",
-                over_under_flow: "Over 2.25 Goals",
-                ou_prob: "93%",
-                pro_data: {
-                    xgc_home: "0.64 xGC",
-                    xgc_away: "1.86 xGC",
-                    mistakes_note: "Venezia kesulitan keluar dari tekanan konstan di Turin.",
-                    momentum_alert: "🔥 Juventus kurung total lini belakang Venezia!",
-                    market_odds: "1.36",
-                    ai_fair_odds: "1.24",
-                    mot_home: 93,
-                    mot_away: 78,
-                    mot_note: "Babak 13 Serie A Italia.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Rapuh"
-                }
-            },
-            {
-                id: 15,
-                type: "seriea",
-                category: "Italia Serie A Babak 13 (21.00 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Bologna vs Udinese",
-                odds_1x2: "1.85 | 3.45 | 4.20",
-                safe_pick_text: "Bologna Over 1.0 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Bologna di Renato Dall'Ara punya rekor mencetak gol konsisten (1.68 xG kandang) melawan Udinese (1.42 xGC). Mengambil Bologna Over 1.0 Goal menghindari risiko hasil seri 1-1.",
-                over_personal: "Bologna Over 1.0 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "93%",
-                pro_data: {
-                    xgc_home: "0.94 xGC",
-                    xgc_away: "1.42 xGC",
-                    mistakes_note: "Udinese rentan terhadap kombinasi umpan pendek lini tengah Bologna.",
-                    momentum_alert: "🔥 Bologna kuasai permainan di Renato Dall'Ara!",
-                    market_odds: "1.85",
-                    ai_fair_odds: "1.64",
-                    mot_home: 89,
-                    mot_away: 83,
-                    mot_note: "Babak 13 Serie A Italia.",
-                    xpts_home: "Solid",
-                    xpts_away: "Sesuai Data"
-                }
-            },
-            {
-                id: 16,
-                type: "seriea",
-                category: "Italia Serie A Babak 13 (21.00 WIB)",
-                league_badge: "99% Under Alot",
-                badge_class: "bg-cyan-950 text-cyan-300 border-cyan-500/40",
-                match: "Sassuolo vs Genoa",
-                odds_1x2: "2.35 | 3.20 | 3.05",
-                safe_pick_text: "Under 2.5 Total Goals",
-                safe_prob: "99%",
-                strategy: "Genoa memiliki pendekatan tandang yang sangat pragmatis dan rapat (1.08 xGC), sementara Sassuolo tampil hati-hati menjaga keseimbangan lini tengah. Sebanyak 74% pola laga serupa berakhir di bawah 3 gol.",
-                over_personal: "Sassuolo Over 0.5 Goal",
-                personal_prob: "94%",
-                over_under_flow: "Under 2.5 Total Goals",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.16 xGC",
-                    xgc_away: "1.08 xGC",
-                    mistakes_note: "Kedua tim memprioritaskan organisasi blok rendah yang disiplin.",
-                    momentum_alert: "⚠️ Tempo taktis rapat khas Serie A!",
-                    market_odds: "2.35",
-                    ai_fair_odds: "2.05",
-                    mot_home: 87,
-                    mot_away: 86,
-                    mot_note: "Babak 13 Serie A Italia.",
-                    xpts_home: "Solid",
-                    xpts_away: "Solid"
-                }
-            },
-            {
-                id: 17,
-                type: "seriea",
-                category: "Italia Serie A Babak 13 (00.00 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "AC Milan vs Frosinone",
-                odds_1x2: "1.34 | 4.90 | 8.60",
-                safe_pick_text: "AC Milan Over 1.5 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Data San Siro memperlihatkan rata-rata 2.28 xG kandang milik AC Milan menghadapi Frosinone (1.94 xGC). AC Milan Over 1.5 Goal memberikan jaminan tinggi tanpa terpengaruh potensi gol hiburan tim tamu.",
-                over_personal: "AC Milan Over 1.5 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.5 Goals",
-                ou_prob: "96%",
-                pro_data: {
-                    xgc_home: "0.84 xGC",
-                    xgc_away: "1.94 xGC",
-                    mistakes_note: "Frosinone kesulitan membendung kecepatan sayap Rossoneri di San Siro.",
-                    momentum_alert: "🔥 AC Milan bombardir pertahanan Frosinone!",
-                    market_odds: "1.34",
-                    ai_fair_odds: "1.22",
-                    mot_home: 93,
-                    mot_away: 77,
-                    mot_note: "Perburuan Scudetto Serie A Babak 13.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Rapuh"
-                }
-            },
-            {
-                id: 18,
-                type: "seriea",
-                category: "Italia Serie A Babak 13 (02.45 WIB)",
-                league_badge: "99% BTTS Yes",
-                badge_class: "bg-teal-950 text-teal-300 border-teal-500/40",
-                match: "Atalanta vs Inter Milan",
-                odds_1x2: "3.15 | 3.55 | 2.15",
-                safe_pick_text: "Both Teams To Score (BTTS - Yes)",
-                safe_prob: "99%",
-                strategy: "Big Match Derby Lombardy mempertemukan dua mesin gol paling produktif Serie A dengan xG gabungan di atas 3.05 dan transisi cepat selama 90 menit. BTTS Yes sangat sesuai profil ofensif Atalanta dan Inter Milan.",
-                over_personal: "Inter Milan Over 1.0 Goal",
-                personal_prob: "96%",
-                over_under_flow: "Over 2.5 Total Goals",
-                ou_prob: "97%",
-                pro_data: {
-                    xgc_home: "1.32 xGC",
-                    xgc_away: "1.18 xGC",
-                    mistakes_note: "High-pressing Atalanta melawan transisi mematikan Inter selalu memicu hujan peluang.",
-                    momentum_alert: "🔥 Big Match Serie A tempo tinggi di Bergamo!",
-                    market_odds: "2.15",
-                    ai_fair_odds: "1.92",
-                    mot_home: 93,
-                    mot_away: 94,
-                    mot_note: "Big Match papan atas Serie A Babak 13.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Dominan"
-                }
-            },
-
-            // --- BELANDA EREDIVISIE (20.30 WIB) ---
-            {
-                id: 19,
-                type: "eredivisie",
-                category: "Kejuaraan Belanda Eredivisie (20.30 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Sparta Rotterdam vs AZ Alkmaar",
-                odds_1x2: "3.65 | 3.60 | 1.92",
-                safe_pick_text: "AZ Alkmaar Over 1.0 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Data Eredivisie mencatat AZ Alkmaar memiliki efektivitas serangan tandang yang tajam (1.78 xG) menghadapi Sparta Rotterdam (1.46 xGC). Mengunci AZ Alkmaar Over 1.0 Goal aman dari skenario imbang 1-1 atau 2-2.",
-                over_personal: "AZ Alkmaar Over 1.0 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.5 Goals",
-                ou_prob: "95%",
-                pro_data: {
-                    xgc_home: "1.46 xGC",
-                    xgc_away: "1.04 xGC",
-                    mistakes_note: "Sparta Rotterdam kerap terbuka saat meladeni permainan cepat AZ Alkmaar.",
-                    momentum_alert: "🔥 AZ Alkmaar menekan lewat sayap cepat!",
-                    market_odds: "1.92",
-                    ai_fair_odds: "1.70",
-                    mot_home: 84,
-                    mot_away: 90,
-                    mot_note: "Persaingan zona Eropa Eredivisie.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 20,
-                type: "eredivisie",
-                category: "Kejuaraan Belanda Eredivisie (20.30 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Ajax vs ADO Den Haag",
-                odds_1x2: "1.28 | 5.60 | 9.20",
-                safe_pick_text: "Ajax Over 1.5 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Data Johan Cruijff ArenA memperlihatkan dominasi penuh Ajax (2.52 xG kandang) menghadapi ADO Den Haag (2.14 xGC). Ajax Over 1.5 Goal memiliki tingkat kepastian sangat tinggi dibanding handicap besar.",
-                over_personal: "Ajax Over 1.5 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.75 Goals",
-                ou_prob: "97%",
-                pro_data: {
-                    xgc_home: "0.72 xGC",
-                    xgc_away: "2.14 xGC",
-                    mistakes_note: "ADO Den Haag dikurung habis di sepertiga pertahanan sendiri.",
-                    momentum_alert: "🔥 Ajax bombardir pertahanan ADO Den Haag!",
-                    market_odds: "1.28",
-                    ai_fair_odds: "1.18",
-                    mot_home: 94,
-                    mot_away: 76,
-                    mot_note: "Perburuan gelar juara Eredivisie Belanda.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Rapuh"
-                }
-            },
-
-            // --- RUSIA LIGA PRIMER, RUSIA LIGA 1 & TURKI SUPER LIG (15.30 - 23.00 WIB) ---
-            {
-                id: 21,
-                type: "rusia",
-                category: "Sepak Bola Rusia Liga 1 (15.30 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "FC Ufa vs Ural Yekaterinburg",
-                odds_1x2: "3.70 | 3.25 | 1.98",
-                safe_pick_text: "Ural Yekaterinburg Over 1.0 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Ural Yekaterinburg merupakan salah satu tim paling produktif di Rusia Liga 1 (1.64 xG tandang) menghadapi FC Ufa (1.42 xGC). Jalur Ural Over 1.0 Goal mengunci minimal push/win meskipun laga berlangsung ketat di Ufa.",
-                over_personal: "Ural Yekaterinburg Over 1.0 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "93%",
-                pro_data: {
-                    xgc_home: "1.42 xGC",
-                    xgc_away: "0.86 xGC",
-                    mistakes_note: "FC Ufa kesulitan membendung tekanan bola mati dan serangan sayap Ural.",
-                    momentum_alert: "🔥 Ural Yekaterinburg kontrol penuh ritme laga!",
-                    market_odds: "1.98",
-                    ai_fair_odds: "1.74",
-                    mot_home: 83,
-                    mot_away: 91,
-                    mot_note: "Perburuan promosi Rusia Liga 1.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 22,
-                type: "rusia",
-                category: "Turki Liga Super / Süper Lig (17.30 WIB)",
-                league_badge: "99% Total Asia",
-                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
-                match: "BB Erzurumspor vs Göztepe",
-                odds_1x2: "3.30 | 3.30 | 2.10",
-                safe_pick_text: "Over 2.0 Total Asia",
-                safe_prob: "99%",
-                strategy: "Data Süper Lig Turki menunjukkan Göztepe bermain sangat progresif saat tandang sementara BB Erzurumspor agresif di depan pendukung sendiri (1.44 vs 1.26 xGC). Jalur Over 2.0 Total Asia sangat pas dengan tempo menyerang liga Turki.",
-                over_personal: "Göztepe Over 1.0 Goal",
-                personal_prob: "95%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.44 xGC",
-                    xgc_away: "1.26 xGC",
-                    mistakes_note: "BB Erzurumspor rentan terhadap serangan balik cepat Göztepe.",
-                    momentum_alert: "🔥 Jual beli serangan di Süper Lig Turki!",
-                    market_odds: "2.10",
-                    ai_fair_odds: "1.85",
-                    mot_home: 87,
-                    mot_away: 90,
-                    mot_note: "Persaingan klasemen Süper Lig Turki.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Solid"
-                }
-            },
-            {
-                id: 23,
-                type: "rusia",
-                category: "Rusia Liga Primer (18.00 WIB)",
-                league_badge: "99% BTTS Yes",
-                badge_class: "bg-teal-950 text-teal-300 border-teal-500/40",
-                match: "Dynamo Moscow vs FK Krasnodar",
-                odds_1x2: "2.35 | 3.55 | 2.75",
-                safe_pick_text: "Both Teams To Score (BTTS - Yes)",
-                safe_prob: "99%",
-                strategy: "Big Match Rusia Liga Primer antara dua tim paling ofensif di kompetisi (Dynamo Moscow & Krasnodar) dengan xG gabungan di atas 2.95. Kedua tim selalu bermain terbuka sehingga BTTS Yes sangat terkalibrasi.",
-                over_personal: "Dynamo Moscow Over 1.0 Goal",
-                personal_prob: "95%",
-                over_under_flow: "Over 2.5 Total Goals",
-                ou_prob: "98%",
-                pro_data: {
-                    xgc_home: "1.34 xGC",
-                    xgc_away: "1.26 xGC",
-                    mistakes_note: "Gaya menyerang kedua tim menciptakan hujan peluang di VTB Arena.",
-                    momentum_alert: "🔥 Big Match ofensif Rusia Liga Primer!",
-                    market_odds: "2.35",
-                    ai_fair_odds: "2.05",
-                    mot_home: 92,
-                    mot_away: 93,
-                    mot_note: "Perburuan gelar juara Rusia Liga Primer.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 24,
-                type: "rusia",
-                category: "Rusia Liga Primer (20.30 WIB)",
-                league_badge: "99% Safe HDP",
-                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
-                match: "Dynamo Makhachkala vs Spartak Moscow",
-                odds_1x2: "4.60 | 3.60 | 1.72",
-                safe_pick_text: "Spartak Moscow HDP -0.5",
-                safe_prob: "99%",
-                strategy: "Spartak Moscow unggul kualitas individu dan kreativitas lini serang (0.88 xGC) menghadapi Dynamo Makhachkala (1.56 xGC). Kemenangan tandang Spartak Moscow HDP -0.5 didukung selisih kelas yang nyata.",
-                over_personal: "Spartak Moscow Over 1.0 Goal",
-                personal_prob: "96%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "93%",
-                pro_data: {
-                    xgc_home: "1.56 xGC",
-                    xgc_away: "0.88 xGC",
-                    mistakes_note: "Dynamo Makhachkala kesulitan menahan gempuran sayap Spartak Moscow.",
-                    momentum_alert: "🔥 Spartak Moscow kendalikan penuh jalannya laga!",
-                    market_odds: "1.72",
-                    ai_fair_odds: "1.54",
-                    mot_home: 83,
-                    mot_away: 91,
-                    mot_note: "Zona atas Rusia Liga Primer.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 25,
-                type: "rusia",
-                category: "Rusia Liga Primer / Piala (23.00 WIB)",
-                league_badge: "99% Safe HDP",
-                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
-                match: "Rodina Moscow vs Lokomotiv Moscow",
-                odds_1x2: "5.40 | 4.00 | 1.56",
-                safe_pick_text: "Lokomotiv Moscow HDP -0.75",
-                safe_prob: "99%",
-                strategy: "Derby Moskow antara Lokomotiv Moscow (0.84 xGC) dan Rodina Moscow (1.74 xGC) memperlihatkan selisih tempo dan ketajaman lini depan yang mencolok. Lokomotiv Moscow HDP -0.75 menjadi pilihan paling akurat.",
-                over_personal: "Lokomotiv Moscow Over 1.5 Goal",
-                personal_prob: "97%",
-                over_under_flow: "Over 2.25 Goals",
-                ou_prob: "94%",
-                pro_data: {
-                    xgc_home: "1.74 xGC",
-                    xgc_away: "0.84 xGC",
-                    mistakes_note: "Rodina Moscow kewalahan menghadapi kecepatan serangan balik Lokomotiv.",
-                    momentum_alert: "🔥 Lokomotiv Moscow dominasi penuh Derby Moskow!",
-                    market_odds: "1.56",
-                    ai_fair_odds: "1.39",
-                    mot_home: 81,
-                    mot_away: 91,
-                    mot_note: "Duel tim Moskow Rusia.",
-                    xpts_home: "Rapuh",
-                    xpts_away: "Dominan"
-                }
-            },
-
-            // --- KEJUARAAN INGGRIS LIGA PRIMER BABAK 11 (21.00 - 23.30 WIB) ---
-            {
-                id: 26,
-                type: "epl",
-                category: "Kejuaraan Inggris Liga Primer Babak 11 (21.00 WIB)",
-                league_badge: "99% Safe HDP",
-                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
-                match: "Hull City vs Brighton & Hove Albion",
-                odds_1x2: "4.80 | 3.90 | 1.65",
-                safe_pick_text: "Brighton & Hove Albion HDP -0.75",
-                safe_prob: "99%",
-                strategy: "Brighton & Hove Albion unggul jauh dalam struktur build-up, kontrol bola, dan efisiensi xG (0.88 xGC) menghadapi Hull City (1.72 xGC). Jalur Brighton HDP -0.75 sangat terukur untuk kemenangan tim tamu.",
-                over_personal: "Brighton & Hove Albion Over 1.5 Goal",
-                personal_prob: "96%",
-                over_under_flow: "Over 2.25 Goals",
-                ou_prob: "94%",
-                pro_data: {
-                    xgc_home: "1.72 xGC",
-                    xgc_away: "0.88 xGC",
-                    mistakes_note: "Hull City kesulitan memutus sirkulasi umpan pendek Brighton.",
-                    momentum_alert: "🔥 Brighton & Hove Albion dominasi penguasaan bola!",
-                    market_odds: "1.65",
-                    ai_fair_odds: "1.46",
-                    mot_home: 82,
-                    mot_away: 90,
-                    mot_note: "Babak 11 Liga Primer Inggris.",
-                    xpts_home: "Rapuh",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 27,
-                type: "epl",
-                category: "Kejuaraan Inggris Liga Primer Babak 11 (23.30 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Liverpool vs Manchester United",
-                odds_1x2: "1.68 | 4.10 | 4.50",
-                safe_pick_text: "Liverpool Over 1.5 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Data North West Derby di Anfield memperlihatkan rata-rata 2.38 xG kandang milik Liverpool melawan Manchester United (1.66 xGC). Mengunci Liverpool Over 1.5 Goal mengamankan tiket tanpa khawatir kejutan serangan balik tim tamu.",
-                over_personal: "Liverpool Over 1.5 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.5 Total Goals",
-                ou_prob: "96%",
-                pro_data: {
-                    xgc_home: "0.86 xGC",
-                    xgc_away: "1.66 xGC",
-                    mistakes_note: "Manchester United kerap tertekan oleh intensitas pressing tinggi Liverpool di Anfield.",
-                    momentum_alert: "🔥 North West Derby membara di Anfield!",
-                    market_odds: "1.68",
-                    ai_fair_odds: "1.50",
-                    mot_home: 95,
-                    mot_away: 92,
-                    mot_note: "Super Big Match Babak 11 Liga Primer Inggris.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Sesuai Data"
-                }
-            },
-
-            // --- BUNDESLIGA JERMAN (21.30 - 23.30 WIB) ---
-            {
-                id: 28,
-                type: "bundesliga",
-                category: "Liga Jerman / Bundesliga (21.30 WIB)",
-                league_badge: "99% Total Asia",
-                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
-                match: "FC Augsburg vs FSV Mainz 05",
-                odds_1x2: "2.35 | 3.45 | 2.85",
-                safe_pick_text: "Over 2.25 Total Asia",
-                safe_prob: "99%",
-                strategy: "Data Bundesliga mencatat kedua tim bermain agresif dengan duel fisik cepat dan rata-rata xGC tinggi (1.44 vs 1.48 xGC). Over 2.25 Total Asia sangat selaras dengan tren gol kedua tim di Bundesliga.",
-                over_personal: "FC Augsburg Over 1.0 Goal",
-                personal_prob: "94%",
-                over_under_flow: "Over 2.25 Total Asia",
-                ou_prob: "99%",
-                pro_data: {
-                    xgc_home: "1.44 xGC",
-                    xgc_away: "1.48 xGC",
-                    mistakes_note: "Transisi cepat dan bola mati memicu banyak peluang di kedua kotak penalti.",
-                    momentum_alert: "⚠️ Jual beli serangan terbuka di WWK Arena!",
-                    market_odds: "2.35",
-                    ai_fair_odds: "2.05",
-                    mot_home: 88,
-                    mot_away: 87,
-                    mot_note: "Persaingan papan tengah Bundesliga.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Sesuai Data"
-                }
-            },
-            {
-                id: 29,
-                type: "bundesliga",
-                category: "Liga Jerman / Bundesliga (23.30 WIB)",
-                league_badge: "99% BTTS Yes",
-                badge_class: "bg-teal-950 text-teal-300 border-teal-500/40",
-                match: "Werder Bremen vs Hamburger SV",
-                odds_1x2: "2.25 | 3.60 | 2.90",
-                safe_pick_text: "Both Teams To Score (BTTS - Yes)",
-                safe_prob: "99%",
-                strategy: "Nordderby panas antara Werder Bremen dan Hamburger SV selalu berlangsung dengan intensitas emosional tinggi, pressing terbuka, dan xG gabungan di atas 2.90. BTTS Yes adalah kesimpulan murni dari profil Nordderby.",
-                over_personal: "Werder Bremen Over 1.0 Goal",
-                personal_prob: "95%",
-                over_under_flow: "Over 2.5 Total Goals",
-                ou_prob: "98%",
-                pro_data: {
-                    xgc_home: "1.42 xGC",
-                    xgc_away: "1.48 xGC",
-                    mistakes_note: "Gengsi Nordderby Jerman membuat kedua tim tampil menyerang total.",
-                    momentum_alert: "🔥 Nordderby panas di Weserstadion!",
-                    market_odds: "2.25",
-                    ai_fair_odds: "1.96",
-                    mot_home: 93,
-                    mot_away: 93,
-                    mot_note: "Rivalitas klasik Nordderby Jerman.",
-                    xpts_home: "Solid",
-                    xpts_away: "Sesuai Data"
-                }
-            },
-
-            // --- KEJUARAAN SPANYOL LA LIGA (20.00 - 03.00 WIB) ---
-            {
-                id: 30,
-                type: "laliga",
-                category: "Kejuaraan Spanyol La Liga (20.00 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "FC Barcelona vs Villarreal",
-                odds_1x2: "1.45 | 4.65 | 6.20",
-                safe_pick_text: "FC Barcelona Over 1.5 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Data La Liga memperlihatkan rata-rata 2.48 xG kandang milik FC Barcelona berhadapan dengan garis pertahanan tinggi Villarreal (1.78 xGC). Mengambil FC Barcelona Over 1.5 Goal punya tingkat hit rate 93% tanpa terpengaruh serangan balik Villarreal.",
-                over_personal: "FC Barcelona Over 1.5 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.75 Goals",
-                ou_prob: "97%",
-                pro_data: {
-                    xgc_home: "0.88 xGC",
-                    xgc_away: "1.78 xGC",
-                    mistakes_note: "Garis tinggi Villarreal sangat rentan dieksploitasi kecepatan lini depan Barcelona.",
-                    momentum_alert: "🔥 FC Barcelona dominasi penuh serangan!",
-                    market_odds: "1.45",
-                    ai_fair_odds: "1.30",
-                    mot_home: 94,
-                    mot_away: 86,
-                    mot_note: "Perburuan gelar juara La Liga Spanyol.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Sesuai Data"
-                }
-            },
-            {
-                id: 31,
-                type: "laliga",
-                category: "Kejuaraan Spanyol La Liga (22.15 WIB)",
-                league_badge: "99% Team Over",
-                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
-                match: "Racing de Santander vs Real Sociedad",
-                odds_1x2: "3.75 | 3.45 | 1.95",
-                safe_pick_text: "Real Sociedad Over 1.0 Goal (Team Personal)",
-                safe_prob: "99%",
-                strategy: "Real Sociedad unggul jauh dalam kontrol bola, kualitas teknis lini tengah, dan kreativitas serangan (1.68 xG) menghadapi Racing de Santander (1.48 xGC). Mengunci Real Sociedad Over 1.0 Goal sangat presisi sesuai produktivitas tim tamu.",
-                over_personal: "Real Sociedad Over 1.0 Goal",
-                personal_prob: "99%",
-                over_under_flow: "Over 2.0 Total Asia",
-                ou_prob: "93%",
-                pro_data: {
-                    xgc_home: "1.48 xGC",
-                    xgc_away: "0.86 xGC",
-                    mistakes_note: "Racing de Santander kesulitan merebut penguasaan bola dari gelandang Real Sociedad.",
-                    momentum_alert: "🔥 Real Sociedad kontrol penuh ritme permainan!",
-                    market_odds: "1.95",
-                    ai_fair_odds: "1.72",
-                    mot_home: 85,
-                    mot_away: 90,
-                    mot_note: "Kejuaraan Spanyol La Liga.",
-                    xpts_home: "Sesuai Data",
-                    xpts_away: "Dominan"
-                }
-            },
-            {
-                id: 32,
-                type: "laliga",
-                category: "Kejuaraan Spanyol La Liga (00.30 WIB)",
-                league_badge: "99% Safe HDP",
-                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
-                match: "CA Osasuna vs Málaga CF",
-                odds_1x2: "1.78 | 3.45 | 4.60",
-                safe_pick_text: "CA Osasuna HDP -0.5",
-                safe_prob: "99%",
-                strategy: "Data El Sadar menempatkan CA Osasuna sebagai salah satu tim kandang paling tangguh di Spanyol (0.88 xGC) menghadapi Málaga CF (1.58 xGC). Intensitas duel udara dan tekanan kandang mendukung penuh Osasuna HDP -0.5.",
-                over_personal: "CA Osasuna Over 1.0 Goal",
-                personal_prob: "96%",
-                over_under_flow: "Under 2.75 Goals",
-                ou_prob: "92%",
-                pro_data: {
-                    xgc_home: "0.88 xGC",
-                    xgc_away: "1.58 xGC",
-                    mistakes_note: "Málaga CF kerap kewalahan menghadapi tekanan fisik di Stadion El Sadar.",
-                    momentum_alert: "🔥 CA Osasuna dominan di depan publik El Sadar!",
-                    market_odds: "1.78",
-                    ai_fair_odds: "1.58",
-                    mot_home: 90,
-                    mot_away: 81,
-                    mot_note: "Target 3 poin kandang La Liga Spanyol.",
-                    xpts_home: "Dominan",
-                    xpts_away: "Rapuh"
-                }
-            },
-            {
-                id: 33,
-                type: "laliga",
-                category: "Kejuaraan Spanyol La Liga (03.00 WIB)",
+                type: "spanyol",
+                category: "Spanyol La Liga (03.00 WIB)",
                 league_badge: "99% Safe HDP",
                 badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
                 match: "Getafe vs Atlético Madrid",
@@ -1297,6 +342,122 @@
                     mot_note: "Perburuan papan atas La Liga Spanyol.",
                     xpts_home: "Sesuai Data",
                     xpts_away: "Dominan"
+                }
+            },
+            {
+                id: 2,
+                type: "eropa",
+                category: "Prancis Coupe de France / Cup (02.45 WIB)",
+                league_badge: "99% Team Over",
+                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
+                match: "Olympique de Marseille vs Le Mans FC",
+                odds_1x2: "1.22 | 6.10 | 11.50",
+                safe_pick_text: "Olympique de Marseille Over 1.5 Goal (Team Personal)",
+                safe_prob: "99%",
+                strategy: "Kesenjangan kasta sangat tajam antara raksasa Ligue 1 Olympique de Marseille (2.42 xG kandang di Vélodrome) melawan Le Mans FC (1.96 xGC). Mengunci Marseille Over 1.5 Goal mengamankan bill tanpa terpengaruh handicap besar.",
+                over_personal: "Olympique de Marseille Over 1.5 Goal",
+                personal_prob: "99%",
+                over_under_flow: "Over 2.5 Total Goals",
+                ou_prob: "96%",
+                pro_data: {
+                    xgc_home: "0.78 xGC",
+                    xgc_away: "1.96 xGC",
+                    mistakes_note: "Le Mans FC terkurung habis oleh intensitas serangan sayap Marseille.",
+                    momentum_alert: "🔥 Marseille dominasi mutlak penguasaan bola di Vélodrome!",
+                    market_odds: "1.22",
+                    ai_fair_odds: "1.14",
+                    mot_home: 92,
+                    mot_away: 80,
+                    mot_note: "Target lolos fase gugur Piala Prancis.",
+                    xpts_home: "Dominan",
+                    xpts_away: "Rapuh"
+                }
+            },
+            {
+                id: 3,
+                type: "spanyol",
+                category: "Spanyol Segunda División (03.00 WIB)",
+                league_badge: "99% Under Alot",
+                badge_class: "bg-cyan-950 text-cyan-300 border-cyan-500/40",
+                match: "Burgos CF vs Albacete Balompié",
+                odds_1x2: "2.15 | 3.10 | 3.45",
+                safe_pick_text: "Under 2.5 Total Goals",
+                safe_prob: "99%",
+                strategy: "Data El Plantío mencatat Burgos CF sebagai salah satu tim dengan pertahanan kandang paling rapat di Spanyol Segunda (0.78 xGC), sementara Albacete bermain hati-hati saat tandang (1.14 xGC). Sebanyak 78% laga Burgos berakhir dengan maksimal 2 gol.",
+                over_personal: "Burgos CF Over 0.5 Goal",
+                personal_prob: "94%",
+                over_under_flow: "Under 2.5 Total Goals",
+                ou_prob: "99%",
+                pro_data: {
+                    xgc_home: "0.78 xGC",
+                    xgc_away: "1.14 xGC",
+                    mistakes_note: "Organisasi blok rendah Burgos CF sangat disiplin menutup ruang tembak.",
+                    momentum_alert: "⚠️ Duel taktis ketat khas Spanyol Segunda!",
+                    market_odds: "2.15",
+                    ai_fair_odds: "1.90",
+                    mot_home: 89,
+                    mot_away: 86,
+                    mot_note: "Persaingan klasemen Spanyol Segunda División.",
+                    xpts_home: "Solid",
+                    xpts_away: "Solid"
+                }
+            },
+            {
+                id: 4,
+                type: "eropa",
+                category: "Piala Portugal / Taça de Portugal (03.45 WIB)",
+                league_badge: "99% Team Over",
+                badge_class: "bg-indigo-950 text-indigo-300 border-indigo-500/40",
+                match: "SCU Torreense vs SL Benfica",
+                odds_1x2: "13.00 | 6.50 | 1.18",
+                safe_pick_text: "SL Benfica Over 2.0 Goal (Team Personal)",
+                safe_prob: "99%",
+                strategy: "SL Benfica memiliki kualitas lini depan level Liga Champions (2.68 xG tandang melawan tim divisi dua) menghadapi SCU Torreense (2.18 xGC). Jalur Benfica Over 2.0 Goal (Team Personal) terkalibrasi penuh untuk agresivitas tim tamu.",
+                over_personal: "SL Benfica Over 2.0 Goal",
+                personal_prob: "99%",
+                over_under_flow: "Over 2.75 Goals",
+                ou_prob: "97%",
+                pro_data: {
+                    xgc_home: "2.18 xGC",
+                    xgc_away: "0.66 xGC",
+                    mistakes_note: "SCU Torreense kesulitan mengimbangi kecepatan transisi dan sirkulasi bola Benfica.",
+                    momentum_alert: "🔥 SL Benfica kepung total pertahanan SCU Torreense!",
+                    market_odds: "1.18",
+                    ai_fair_odds: "1.10",
+                    mot_home: 82,
+                    mot_away: 94,
+                    mot_note: "Babak gugur Taça de Portugal.",
+                    xpts_home: "Rapuh",
+                    xpts_away: "Dominan"
+                }
+            },
+            {
+                id: 5,
+                type: "amerika",
+                category: "Peru Divisi Kedua / Liga 2 (03.00 WIB)",
+                league_badge: "99% Total Asia",
+                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
+                match: "Unión Comercio vs Universidad San Martín",
+                odds_1x2: "1.88 | 3.45 | 3.85",
+                safe_pick_text: "Over 2.0 Total Asia",
+                safe_prob: "99%",
+                strategy: "Data Liga 2 Peru menunjukkan Unión Comercio punya agresivitas tinggi saat bermain di kandang (1.82 xG) namun juga sering menyisakan celah transisi melawan Universidad San Martín (1.46 xGC). Over 2.0 Total Asia mengunci pengembalian modal jika tepat 2 gol.",
+                over_personal: "Unión Comercio Over 1.0 Goal",
+                personal_prob: "95%",
+                over_under_flow: "Over 2.0 Total Asia",
+                ou_prob: "99%",
+                pro_data: {
+                    xgc_home: "1.24 xGC",
+                    xgc_away: "1.46 xGC",
+                    mistakes_note: "Transisi cepat kedua tim Liga 2 Peru memicu banyak peluang bersih.",
+                    momentum_alert: "🔥 Tempo terbuka di Liga 2 Peru!",
+                    market_odds: "1.88",
+                    ai_fair_odds: "1.68",
+                    mot_home: 90,
+                    mot_away: 85,
+                    mot_note: "Persaingan promosi Peru Divisi Kedua.",
+                    xpts_home: "Dominan",
+                    xpts_away: "Sesuai Data"
                 }
             }
         ];
@@ -1780,7 +941,7 @@
         function openBoJalModal() { openModal('bojalModal'); }
         function closeBoJalModal() { closeModal('bojalModal'); }
         function runModalBoJalAnalysis() {
-            const match = document.getElementById('modalMatch').value || "Liverpool vs Manchester United";
+            const match = document.getElementById('modalMatch').value || "Getafe vs Atlético Madrid";
             const score = document.getElementById('modalScore').value || "0-0";
             const min = document.getElementById('modalMinute').value || "60";
             document.getElementById('modalResult').classList.remove('hidden');
@@ -1789,7 +950,7 @@
 
         function setFilter(type) {
             currentFilter = type;
-            ['semua', 'asia', 'indonesia', 'seriea', 'eredivisie', 'rusia', 'epl', 'bundesliga', 'laliga'].forEach(t => {
+            ['semua', 'spanyol', 'eropa', 'amerika'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (btn) {
                     if (t === type) btn.className = "bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow";
