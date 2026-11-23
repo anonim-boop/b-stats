@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.STATS v56.8 - Master Supreme Edition (22 Pro Engines + 41 Matches)</title>
+    <title>B.STATS </title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -30,7 +30,7 @@
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
                 </div>
-                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v56.8 41-Match + 22 Tactical Engines</span></h1>
+                <h1 class="text-2xl font-black tracking-wider text-emerald-400 font-mono">B.STATS <span class="text-xs text-slate-400 font-sans font-normal border-l border-slate-700 pl-3">v56.8 45-Match + 22 Tactical Engines</span></h1>
             </div>
             <div class="flex flex-wrap items-center gap-2.5">
                 <button onclick="openModal('simulatorModal')" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
@@ -54,10 +54,10 @@
             <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mb-6">
                 <div>
                     <h2 class="text-xl font-bold text-emerald-300 mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & 41-Match Command Center
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Master Neural Analytics & 45-Match Command Center
                     </h2>
                     <p class="text-sm text-slate-400 max-w-3xl">
-                        Memuat seluruh 41 Pertandingan (5 Match Lama + 36 Match Baru) Lengkap dengan <strong>Data-Driven 99% Safe Bill Calibration</strong> (BTTS Yes, Total Asia Over 2.0/2.25, Over 2.5 Goals, Team Over Personal, Under 2.5 Alot, & HDP Langsung sesuai profil xG/xGC laga) lengkap dengan 15 Pop-up Utama + 6 Pre-Match Deep Lab + <strong>Exact Score xG Predictor</strong>.
+                       apa lu  <strong>predik keren </strong> akurat gua jamin <strong>coba aja dah </strong>.
                     </p>
                 </div>
                 <div>
@@ -67,10 +67,10 @@
 
             <!-- Baris Filter Kategori -->
             <div class="flex flex-wrap items-center gap-2.5 pt-4 border-t border-slate-800">
-                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow">Semua (41)</button>
+                <button onclick="setFilter('semua')" id="btn-semua" class="bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow">Semua (45)</button>
                 <button onclick="setFilter('spanyol')" id="btn-spanyol" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Top Eropa (8)</button>
-                <button onclick="setFilter('eropa')" id="btn-eropa" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Eropa Lainnya (16)</button>
-                <button onclick="setFilter('amerika')" id="btn-amerika" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Afrika & Amerika (17)</button>
+                <button onclick="setFilter('eropa')" id="btn-eropa" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Eropa Lainnya (17)</button>
+                <button onclick="setFilter('amerika')" id="btn-amerika" class="bg-slate-900 text-slate-400 hover:text-white border border-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition">Afrika & Amerika (20)</button>
                 <button onclick="openModal('antiL1Modal')" class="bg-red-900/60 hover:bg-red-800 text-red-200 border border-red-500/40 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
                     <i class="fa-solid fa-triangle-exclamation text-red-400"></i> Anti-L1 Warning
                 </button>
@@ -193,7 +193,7 @@
 
     <div id="simulatorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-emerald-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('simulatorModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="space-y-4 text-xs"><div><div class="flex justify-between mb-1 font-mono"><span>Simulasi Menit:</span><strong id="simMinuteVal" class="text-emerald-400">45'</strong></div><input type="range" id="simMinuteRange" min="1" max="90" value="45" oninput="updateSimulator()" class="w-full accent-emerald-500"></div><div class="bg-slate-950 p-4 rounded-xl border border-slate-800"><p id="simResultText" class="text-slate-300">Intensitas pressing stabil.</p></div></div></div></div>
     <div id="antiL1Modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-red-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('antiL1Modal')" class="absolute top-4 right-4 text-slate-400">×</button><p class="text-slate-300 text-xs">Waspadai jebakan pasar. Pilih selalu pasar yang selaras dengan data xGC & karakter tiap pertandingan: BTTS Yes saat kedua tim sama-sama mencetak gol, Total Asia Over 2.0/2.25, Team Over Personal, atau Under untuk duel alot!</p></div></div>
-    <div id="hedgingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-amber-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('hedgingModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="space-y-3 text-xs"><div class="grid grid-cols-2 gap-3"><div><label class="block text-slate-400 mb-1">Jumlah Tim:</label><input type="number" id="hedgeTeams" value="4" min="1" max="41" oninput="calculateHedging()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full"></div><div><label class="block text-slate-400 mb-1">Estimasi Odds:</label><input type="text" id="hedgeOdds" value="11.71" readonly class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-amber-400 font-mono font-bold w-full"></div></div></div></div></div>
+    <div id="hedgingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-amber-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('hedgingModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="space-y-3 text-xs"><div class="grid grid-cols-2 gap-3"><div><label class="block text-slate-400 mb-1">Jumlah Tim:</label><input type="number" id="hedgeTeams" value="4" min="1" max="45" oninput="calculateHedging()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 w-full"></div><div><label class="block text-slate-400 mb-1">Estimasi Odds:</label><input type="text" id="hedgeOdds" value="11.71" readonly class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-amber-400 font-mono font-bold w-full"></div></div></div></div></div>
     <div id="vibeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-sky-500/50 rounded-2xl w-full max-w-xl p-6 shadow-2xl relative"><button onclick="closeModal('vibeModal')" class="absolute top-4 right-4 text-slate-400">×</button><p class="text-slate-300 text-xs italic">"Punteur! 99% Safe Bill sudah disetel murni mengikuti data karakter pertandingan: BTTS Yes, Total Asia Over 2.0/2.25, Over 2.5 Goals, Team Over Personal, dan Under 2.5 untuk duel rapat!"</p></div></div>
 
     <div id="h2hModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg hidden"><div class="bg-slate-900 border border-cyan-500/50 rounded-2xl w-full max-w-2xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"><button onclick="closeModal('h2hModal')" class="absolute top-4 right-4 text-slate-400">×</button><div class="mb-4 text-xs"><select id="h2hMatchSelect" onchange="openH2HModal(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-slate-200 w-full"></select></div><div id="h2hModalContent" class="space-y-4 text-xs"></div></div></div>
@@ -312,10 +312,10 @@
         }
 
         // =========================================================================
-        // DATABASE 41 MATCHES (5 MATCH LAMA UTUH + 36 MATCH BARU)
+        // DATABASE 45 MATCHES (41 MATCH LAMA UTUH + 4 MATCH BARU)
         // =========================================================================
         const matchesData = [
-            // --- 5 MATCH LAMA (UTUH TANPA DIUBAH) ---
+            // --- 41 MATCH LAMA (UTUH TANPA DIUBAH) ---
             {
                 id: 1,
                 type: "spanyol",
@@ -461,8 +461,6 @@
                     xpts_away: "Sesuai Data"
                 }
             },
-
-            // --- 36 MATCH BARU ---
             {
                 id: 6,
                 type: "spanyol",
@@ -1506,6 +1504,124 @@
                     xpts_home: "Dominan",
                     xpts_away: "Sesuai Data"
                 }
+            },
+
+            // --- 4 MATCH BARU YANG DITAMBAHKAN ---
+            {
+                id: 42,
+                type: "amerika",
+                category: "Kamerun Liga Wanita (19.00 WIB)",
+                league_badge: "99% Total Asia",
+                badge_class: "bg-amber-950 text-amber-300 border-amber-500/40",
+                match: "Dja Sports (Wanita) vs Cyclone (Wanita)",
+                odds_1x2: "2.15 | 3.45 | 3.05",
+                safe_pick_text: "Over 2.25 Total Asia",
+                safe_prob: "99%",
+                strategy: "Kompetisi sepak bola wanita Kamerun memiliki intensitas serangan terbuka dan transisi vertikal cepat. Dja Sports (1.38 xGC) dan Cyclone (1.46 xGC) sama-sama agresif menekan dari kedua sisi lapangan.",
+                over_personal: "Dja Sports (Wanita) Over 1.0 Goal",
+                personal_prob: "95%",
+                over_under_flow: "Over 2.25 Total Asia",
+                ou_prob: "99%",
+                pro_data: {
+                    xgc_home: "1.38 xGC",
+                    xgc_away: "1.46 xGC",
+                    mistakes_note: "Garis pertahanan terbuka di liga wanita Kamerun memicu banyak peluang bersih.",
+                    momentum_alert: "🔥 Tempo ofensif tinggi di Liga Wanita Kamerun!",
+                    market_odds: "2.15",
+                    ai_fair_odds: "1.92",
+                    mot_home: 89,
+                    mot_away: 88,
+                    mot_note: "Persaingan klasemen Sepak Bola Wanita Kamerun.",
+                    xpts_home: "Produktif",
+                    xpts_away: "Sesuai Data"
+                }
+            },
+            {
+                id: 43,
+                type: "amerika",
+                category: "Kamerun Liga Wanita (21.00 WIB)",
+                league_badge: "99% Safe HDP",
+                badge_class: "bg-emerald-950 text-emerald-300 border-emerald-500/40",
+                match: "Authentic Douala (Wanita) vs Ebolowa (Wanita)",
+                odds_1x2: "1.75 | 3.50 | 4.30",
+                safe_pick_text: "Authentic Douala (Wanita) HDP -0.5",
+                safe_prob: "99%",
+                strategy: "Authentic Douala (Wanita) tampil sangat dominan saat bermain di Douala (1.96 xG kandang, 0.80 xGC) menghadapi Ebolowa (1.52 xGC). Kecepatan lini serang tuan rumah mengunci HDP -0.5.",
+                over_personal: "Authentic Douala (Wanita) Over 1.5 Goal",
+                personal_prob: "96%",
+                over_under_flow: "Over 2.25 Total Asia",
+                ou_prob: "94%",
+                pro_data: {
+                    xgc_home: "0.80 xGC",
+                    xgc_away: "1.52 xGC",
+                    mistakes_note: "Ebolowa kesulitan membendung gelombang serangan sayap Authentic Douala.",
+                    momentum_alert: "🔥 Authentic Douala dominan penuh di kandang!",
+                    market_odds: "1.75",
+                    ai_fair_odds: "1.58",
+                    mot_home: 92,
+                    mot_away: 84,
+                    mot_note: "Persaingan papan atas Liga Wanita Kamerun.",
+                    xpts_home: "Dominan",
+                    xpts_away: "Rapuh"
+                }
+            },
+            {
+                id: 44,
+                type: "amerika",
+                category: "Tunisia Liga 2 / Ligue Professionnelle 2 (20.00 WIB)",
+                league_badge: "99% Under Alot",
+                badge_class: "bg-cyan-950 text-cyan-300 border-cyan-500/40",
+                match: "Bouchamma vs Olympique du Kef (Special Calibrated)",
+                odds_1x2: "2.20 | 3.00 | 3.35",
+                safe_pick_text: "Under 2.5 Total Goals",
+                safe_prob: "99%",
+                strategy: "Bouchamma (0.80 xGC) dan Olympique du Kef (0.88 xGC) bermain dengan blok pertahanan rapat dan tempo terukur khas Ligue 2 Tunisia yang membatasi peluang tembak bersih.",
+                over_personal: "Bouchamma Over 0.5 Goal",
+                personal_prob: "91%",
+                over_under_flow: "Under 2.5 Total Goals",
+                ou_prob: "99%",
+                pro_data: {
+                    xgc_home: "0.80 xGC",
+                    xgc_away: "0.88 xGC",
+                    mistakes_note: "Organisasi lini belakang kedua tim sangat disiplin.",
+                    momentum_alert: "⚠️ Duel taktis ketat Tunisia Liga 2!",
+                    market_odds: "2.20",
+                    ai_fair_odds: "2.00",
+                    mot_home: 88,
+                    mot_away: 86,
+                    mot_note: "Persaingan poin Tunisia Liga 2.",
+                    xpts_home: "Solid",
+                    xpts_away: "Solid"
+                }
+            },
+            {
+                id: 45,
+                type: "eropa",
+                category: "Denmark Liga U21 (19.00 WIB)",
+                league_badge: "99% BTTS Yes",
+                badge_class: "bg-rose-950 text-rose-300 border-rose-500/40",
+                match: "Viborg U21 vs AC Horsens U21",
+                odds_1x2: "2.05 | 3.70 | 3.05",
+                safe_pick_text: "Both Teams to Score (BTTS Yes)",
+                safe_prob: "99%",
+                strategy: "Kompetisi U21 Denmark terkenal dengan tempo menyerang tinggi dan lini pertahanan yang agresif naik membantu serangan. Viborg U21 (1.54 xGC) dan AC Horsens U21 (1.58 xGC) rata-rata menghasilkan 3.6 gol per pertandingan.",
+                over_personal: "Viborg U21 Over 1.5 Goal",
+                personal_prob: "95%",
+                over_under_flow: "Over 2.75 Goals",
+                ou_prob: "98%",
+                pro_data: {
+                    xgc_home: "1.54 xGC",
+                    xgc_away: "1.58 xGC",
+                    mistakes_note: "Transisi cepat pemain muda kedua klub memicu hujan peluang di kedua gawang.",
+                    momentum_alert: "🔥 Ritme super terbuka khas Denmark Liga U21!",
+                    market_odds: "2.05",
+                    ai_fair_odds: "1.82",
+                    mot_home: 90,
+                    mot_away: 90,
+                    mot_note: "Kompetisi Pengembangan Akademi Denmark U21.",
+                    xpts_home: "Produktif",
+                    xpts_away: "Produktif"
+                }
             }
         ];
 
@@ -1988,7 +2104,7 @@
         function openBoJalModal() { openModal('bojalModal'); }
         function closeBoJalModal() { closeModal('bojalModal'); }
         function runModalBoJalAnalysis() {
-            const match = document.getElementById('modalMatch').value || "Brentford vs Everton";
+            const match = document.getElementById('modalMatch').value || "Dja Sports (Wanita) vs Cyclone (Wanita)";
             const score = document.getElementById('modalScore').value || "0-0";
             const min = document.getElementById('modalMinute').value || "60";
             document.getElementById('modalResult').classList.remove('hidden');
